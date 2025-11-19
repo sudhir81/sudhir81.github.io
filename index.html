@@ -3,173 +3,128 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TerraForge Cloud</title>
+    <title>TerraForge Cloud – Coming Soon</title>
 
     <style>
         body {
             margin: 0;
             font-family: "Segoe UI", sans-serif;
-            background: linear-gradient(135deg, #0d1b2a, #1b263b);
-            color: white;
-            text-align: center;
-            overflow-x: hidden;
-        }
-
-        /* Smooth Fade-in Animation */
-        .fade-in {
-            animation: fadeIn 1.6s ease-in-out forwards;
-            opacity: 0;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Navigation Header */
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            padding: 20px;
-            font-size: 18px;
-        }
-
-        nav a {
-            color: #9ecfff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
+            background: linear-gradient(135deg, #0a0f1f, #101b33);
             color: #ffffff;
-            text-shadow: 0 0 8px #75a7ff;
+            text-align: center;
         }
 
-        /* Logo */
-        .logo {
-            width: 80px;
-            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.4));
-            margin-top: 10px;
-        }
-
-        /* Glassmorphism Card */
-        .card {
-            margin: auto;
-            margin-top: 30px;
-            max-width: 700px;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.08);
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.04);
             backdrop-filter: blur(12px);
-            border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            position: sticky;
+            top: 0;
+        }
+
+        .navbar a {
+            color: #9fc1ff;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: 500;
+        }
+
+        .logo {
+            height: 45px;
         }
 
         .hero-image {
-            width: 60%;
-            max-width: 400px;
-            animation: float 4s ease-in-out infinite;
+            width: 300px;
+            margin-top: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
         }
 
-        /* Floating Animation */
-        @keyframes float {
-            0%,100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        h1 {
+            font-size: 38px;
+            font-weight: 700;
+            margin-top: 10px;
+            color: #9cb8ff;
+        }
+
+        .subtitle {
+            margin-top: 5px;
+            color: #d3d7e5;
+            font-size: 16px;
+        }
+
+        .progress {
+            width: 40%;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 20px auto;
+            border-radius: 5px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 65%;
+            background: linear-gradient(90deg, #7da2ff, #b38bff);
+            border-radius: 5px;
+        }
+
+        .countdown {
+            margin-top: 15px;
+            font-size: 22px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 25px;
+            background: #58a6ff;
+            color: #000;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
         }
 
         .wip-image {
-            width: 260px;
-            margin-top: 35px;
-            opacity: 0.85;
-        }
-
-        /* Countdown */
-        #countdown {
-            font-size: 26px;
-            font-weight: bold;
-            margin: 20px 0;
-            color: #a8caff;
-            text-shadow: 0 0 10px #4c8bff;
-        }
-
-        /* Button */
-        .btn {
-            background: linear-gradient(135deg, #4ea8ff, #1e90ff);
-            padding: 15px 30px;
-            border-radius: 10px;
-            color: #fff;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 15px;
-            font-weight: 600;
-            transition: 0.3s;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            width: 240px;
+            margin-top: 20px;
+            opacity: 0.95;
         }
     </style>
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
-    <nav class="fade-in">
-        <a href="https://github.com/sudhir81" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/sudhir-dalvi" target="_blank">LinkedIn</a>
-    </nav>
-
-    <!-- LOGO -->
-    <img src="assets/logo.png" class="logo fade-in" />
-
-    <!-- MAIN CARD -->
-    <div class="card fade-in">
-        <img src="assets/Panda.png" class="hero-image" alt="Panda" />
-
-        <h1 style="font-size: 40px; margin-top: 15px;">
-            🐼 TerraForge Cloud
-        </h1>
-
-        <p style="font-size: 18px; opacity: 0.85;">
-            Welcome! Our next-gen cloud platform is almost ready.
-        </p>
-
-        <!-- COUNTDOWN -->
-        <div id="countdown">Loading...</div>
-
-        <a href="https://github.com/sudhir81" target="_blank" class="btn">
-            🔗 Explore My GitHub Work
-        </a>
-
-        <img src="assets/WIP.png" class="wip-image fade-in" alt="Work in Progress" />
+    <!-- Navigation -->
+    <div class="navbar">
+        <img src="assets/logo.png" class="logo" alt="TerraForge Cloud Logo">
+        <div>
+            <a href="https://github.com/sudhir81" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/sudhir-dalvi" target="_blank">LinkedIn</a>
+        </div>
     </div>
 
-    <script>
-        // Countdown Timer (10 days from now)
-        function countdownTimer() {
-            const launchDate = new Date();
-            launchDate.setDate(launchDate.getDate() + 10);
+    <!-- Panda Image -->
+    <img src="assets/Panda.png" class="hero-image" alt="Panda">
 
-            setInterval(() => {
-                const now = new Date().getTime();
-                const diff = launchDate - now;
+    <h1>TerraForge Cloud</h1>
 
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-                const minutes = Math.floor((diff / (1000 * 60)) % 60);
-                const seconds = Math.floor((diff / 1000) % 60);
+    <p class="subtitle">Welcome! Our next-gen cloud platform is almost ready.</p>
 
-                document.getElementById("countdown").textContent =
-                    `Launching In: ${days} Days ${hours} Hours ${minutes} Minutes ${seconds} Sec`;
-            }, 1000);
-        }
+    <div class="progress">
+        <div class="progress-bar"></div>
+    </div>
 
-        countdownTimer();
-    </script>
+    <p class="countdown">Launching In: 9 Days 23 Hours 59 Minutes</p>
+
+    <a href="https://github.com/sudhir81" class="btn" target="_blank">Explore My GitHub Work</a>
+
+    <!-- Work In Progress -->
+    <img src="assets/WIP.png" class="wip-image" alt="Work in Progress">
 
 </body>
 </html>
