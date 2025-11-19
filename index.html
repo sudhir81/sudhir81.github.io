@@ -1,238 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TerraForge Cloud – Coming Soon</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TerraForge Cloud</title>
 
-<!-- Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", sans-serif;
+            background: linear-gradient(135deg, #0d1b2a, #1b263b);
+            color: white;
+            text-align: center;
+            overflow-x: hidden;
+        }
 
-<style>
-/* ------------------- GLOBAL STYLES ------------------- */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: "Segoe UI", Roboto, sans-serif;
-    background: #0f172a;
-    color: white;
-    transition: 0.3s;
-}
+        /* Smooth Fade-in Animation */
+        .fade-in {
+            animation: fadeIn 1.6s ease-in-out forwards;
+            opacity: 0;
+        }
 
-/* Light mode */
-body.light {
-    background: #f4f4f4;
-    color: #0f172a;
-}
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-.container {
-    padding: 40px 20px;
-    max-width: 900px;
-    margin: auto;
-    text-align: center;
-}
+        /* Navigation Header */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            padding: 20px;
+            font-size: 18px;
+        }
 
-/* ------------------- NAVBAR ------------------- */
-nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 30px;
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(8px);
-}
+        nav a {
+            color: #9ecfff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
 
-nav a {
-    color: #38bdf8;
-    text-decoration: none;
-    font-weight: bold;
-    margin: 0 12px;
-}
+        nav a:hover {
+            color: #ffffff;
+            text-shadow: 0 0 8px #75a7ff;
+        }
 
-.mode-toggle {
-    cursor: pointer;
-    font-size: 1.4rem;
-}
+        /* Logo */
+        .logo {
+            width: 80px;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.4));
+            margin-top: 10px;
+        }
 
-/* ------------------- PANDA HERO ------------------- */
-.hero-img {
-    width: 70%;
-    max-width: 420px;
-    border-radius: 12px;
-    animation: float 4s ease-in-out infinite;
-    margin-top: 20px;
-}
+        /* Glassmorphism Card */
+        .card {
+            margin: auto;
+            margin-top: 30px;
+            max-width: 700px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
 
-@keyframes float {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
-    100% { transform: translateY(0); }
-}
+        .hero-image {
+            width: 60%;
+            max-width: 400px;
+            animation: float 4s ease-in-out infinite;
+        }
 
-/* ------------------- TITLE ------------------- */
-h1 {
-    font-size: 2.8rem;
-    margin-top: 15px;
-    background: linear-gradient(to right, #38bdf8, #818cf8, #c084fc);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+        /* Floating Animation */
+        @keyframes float {
+            0%,100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
 
-/* ------------------- LOADING BAR ------------------- */
-.loader {
-    width: 80%;
-    max-width: 400px;
-    height: 8px;
-    background: rgba(255,255,255,0.1);
-    margin: 20px auto;
-    border-radius: 10px;
-    overflow: hidden;
-}
+        .wip-image {
+            width: 260px;
+            margin-top: 35px;
+            opacity: 0.85;
+        }
 
-.loader-bar {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
-    animation: loading 6s infinite;
-}
+        /* Countdown */
+        #countdown {
+            font-size: 26px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #a8caff;
+            text-shadow: 0 0 10px #4c8bff;
+        }
 
-@keyframes loading {
-    0% { width: 0%; }
-    50% { width: 100%; }
-    100% { width: 0%; }
-}
+        /* Button */
+        .btn {
+            background: linear-gradient(135deg, #4ea8ff, #1e90ff);
+            padding: 15px 30px;
+            border-radius: 10px;
+            color: #fff;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
 
-/* ------------------- COUNTDOWN ------------------- */
-#countdown {
-    font-size: 1.5rem;
-    margin-top: 20px;
-    font-weight: bold;
-}
-
-/* ------------------- BUTTON ------------------- */
-.btn {
-    display: inline-block;
-    margin-top: 20px;
-    background: #38bdf8;
-    color: #0f172a;
-    padding: 14px 22px;
-    border-radius: 10px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    text-decoration: none;
-    box-shadow: 0 5px 20px rgba(56,189,248,0.4);
-    transition: 0.3s;
-}
-
-.btn:hover {
-    transform: translateY(-3px);
-    background: #0ea5e9;
-}
-
-/* ------------------- WIP IMAGE ------------------- */
-.wip-img {
-    width: 60%;
-    max-width: 320px;
-    opacity: 0.95;
-    margin-top: 25px;
-}
-
-/* ------------------- FOOTER ------------------- */
-footer {
-    margin-top: 60px;
-    padding: 20px;
-    font-size: 0.9rem;
-    opacity: 0.7;
-}
-
-.social i {
-    margin: 0 10px;
-    font-size: 1.4rem;
-    color: #38bdf8;
-}
-</style>
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- NAVIGATION BAR -->
-<nav>
-    <div><strong>TerraForge Cloud</strong></div>
-    <div>
+    <!-- NAVIGATION -->
+    <nav class="fade-in">
         <a href="https://github.com/sudhir81" target="_blank">GitHub</a>
-        <a href="https://linkedin.com/in/sudhir-dalvi" target="_blank">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/sudhir-dalvi" target="_blank">LinkedIn</a>
+    </nav>
+
+    <!-- LOGO -->
+    <img src="assets/logo.png" class="logo fade-in" />
+
+    <!-- MAIN CARD -->
+    <div class="card fade-in">
+        <img src="assets/Panda.png" class="hero-image" alt="Panda" />
+
+        <h1 style="font-size: 40px; margin-top: 15px;">
+            🐼 TerraForge Cloud
+        </h1>
+
+        <p style="font-size: 18px; opacity: 0.85;">
+            Welcome! Our next-gen cloud platform is almost ready.
+        </p>
+
+        <!-- COUNTDOWN -->
+        <div id="countdown">Loading...</div>
+
+        <a href="https://github.com/sudhir81" target="_blank" class="btn">
+            🔗 Explore My GitHub Work
+        </a>
+
+        <img src="assets/WIP.png" class="wip-image fade-in" alt="Work in Progress" />
     </div>
-    <div class="mode-toggle" onclick="toggleMode()">
-        <i id="modeIcon" class="fa-solid fa-moon"></i>
-    </div>
-</nav>
 
-<div class="container">
-    <!-- PANDA -->
-    <img class="hero-img" src="https://i.imgur.com/8vj2Jlm.jpeg" alt="Panda">
+    <script>
+        // Countdown Timer (10 days from now)
+        function countdownTimer() {
+            const launchDate = new Date();
+            launchDate.setDate(launchDate.getDate() + 10);
 
-    <!-- TITLE -->
-    <h1>🐼 TerraForge Cloud</h1>
+            setInterval(() => {
+                const now = new Date().getTime();
+                const diff = launchDate - now;
 
-    <p>Welcome! Our next-gen cloud platform is almost ready.</p>
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((diff / (1000 * 60)) % 60);
+                const seconds = Math.floor((diff / 1000) % 60);
 
-    <!-- Loader Bar -->
-    <div class="loader">
-        <div class="loader-bar"></div>
-    </div>
+                document.getElementById("countdown").textContent =
+                    `Launching In: ${days} Days ${hours} Hours ${minutes} Minutes ${seconds} Sec`;
+            }, 1000);
+        }
 
-    <!-- Countdown -->
-    <div id="countdown">Launching in loading...</div>
-
-    <!-- GitHub Button -->
-    <a class="btn" href="https://github.com/sudhir81" target="_blank">
-        Explore My GitHub Work
-    </a>
-
-    <br>
-    <img class="wip-img" src="https://i.imgur.com/tmT03h3.png" alt="Work In Progress">
-</div>
-
-<!-- FOOTER -->
-<footer>
-    <div class="social">
-        <a href="https://github.com/sudhir81" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://linkedin.com/in/sudhir-dalvi" target="_blank"><i class="fab fa-linkedin"></i></a>
-    </div>
-    <p>© 2025 TerraForge Cloud • All Rights Reserved</p>
-</footer>
-
-<!-- ------------------- JAVASCRIPT ------------------- -->
-<script>
-/* Dark / Light Mode Toggle */
-function toggleMode() {
-    document.body.classList.toggle("light");
-    let icon = document.getElementById("modeIcon");
-    icon.classList.toggle("fa-sun");
-    icon.classList.toggle("fa-moon");
-}
-
-/* Countdown Timer (10 days demo) */
-let launchDate = new Date();
-launchDate.setDate(launchDate.getDate() + 10);
-
-let timer = setInterval(function() {
-    let now = new Date().getTime();
-    let diff = launchDate - now;
-
-    if (diff <= 0) {
-        document.getElementById("countdown").innerHTML = "🚀 We are LIVE!";
-        clearInterval(timer);
-        return;
-    }
-
-    let days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    let mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-
-    document.getElementById("countdown").innerHTML =
-        `Launching In: ${days} Days ${hours} Hours ${mins} Minutes`;
-}, 1000);
-</script>
+        countdownTimer();
+    </script>
 
 </body>
 </html>
