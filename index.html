@@ -1,362 +1,141 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>TerraForge Cloud — WIP</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TerraForge Cloud</title>
+
 <style>
-  :root{
-    --neon: #7da2ff;
-    --neon-2: #b38bff;
-    --glass-bg: rgba(0,0,0,0.18);
-    --white: #ffffff;
-  }
-  html,body{height:100%;margin:0;font-family: "Segoe UI", Roboto, Arial, sans-serif;background:#000;}
-  /* FULLSCREEN CLEAR PANDA */
-  body{
-    background: url("assets/Panda.png") no-repeat center center/cover;
-    background-attachment: fixed;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    color:var(--white);
-  }
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", sans-serif;
+        background: url("assets/Panda.png") no-repeat center center / cover;
+        height: 100vh;
+        overflow: hidden;
+        text-align: center;
+        color: white;
+    }
 
-  /* NAV */
-  .nav{
-    display:flex;justify-content:space-between;align-items:center;padding:14px 28px;
-    background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.08));
-  }
-  .nav a{color: #cfe3ff;text-decoration:none;margin-left:14px;font-weight:600}
-  .logo{height:40px}
+    /* Top Links */
+    .top-links {
+        position: absolute;
+        top: 25px;
+        right: 40px;
+        font-size: 20px;
+    }
+    .top-links a {
+        margin-left: 20px;
+        color: #d0d0ff;
+        text-decoration: none;
+        font-weight: 500;
+    }
+    .top-links a:hover {
+        text-decoration: underline;
+    }
 
-  /* Center content (no glass box per request) */
-  .center {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:flex-start;
-    min-height: calc(100vh - 120px);
-    padding-top:90px;
-    text-align:center;
-    text-shadow:0 4px 18px rgba(0,0,0,0.6);
-  }
+    /* Title & Subtitle – moved lower */
+    .content {
+        margin-top: 43vh;   /* <— Adjusted lower so panda face stays visible */
+    }
 
-  h1{
-    margin:10px 0 6px;
-    font-size:44px;
-    letter-spacing:0.6px;
-    color: linear-gradient(#fff,#ddd);
-    color: var(--neon);
-    text-shadow: 0 6px 28px rgba(123,160,255,0.24), 0 1px 0 rgba(0,0,0,0.6);
-  }
-  .subtitle{color:rgba(230,235,250,0.9);font-size:18px;margin-bottom:18px}
+    h1 {
+        font-size: 60px;
+        font-weight: 700;
+        margin: 0;
+        background: linear-gradient(to right, #7bb0ff, #b98bff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
 
-  .btn{
-    background: linear-gradient(90deg,var(--neon),var(--neon-2));
-    padding:12px 22px;border-radius:12px;color:#001;display:inline-block;text-decoration:none;font-weight:700;box-shadow:0 10px 36px rgba(81,120,255,0.18);
-  }
+    .subtitle {
+        font-size: 22px;
+        margin-top: 10px;
+        opacity: 0.95;
+    }
 
-  /* BOTTOM AREA — WIP animation container */
-  .wip-area {
-    position:fixed;
-    left:50%;
-    bottom:44px;
-    transform:translateX(-50%);
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:14px;
-    z-index:999;
-    pointer-events:none; /* ensures icons elsewhere clickable */
-  }
+    .btn {
+        margin-top: 25px;
+        padding: 14px 32px;
+        font-size: 20px;
+        font-weight: 600;
+        background: linear-gradient(to right, #6aa8ff, #c38bff);
+        color: #0e0e0e;
+        border-radius: 12px;
+        border: none;
+        cursor: pointer;
+    }
+    .btn:hover {
+        opacity: 0.85;
+    }
 
-  /* TYPEWRITER TEXT */
-  .wip-type {
-    color: #cfe6ff;
-    font-weight:900;
-    font-size:26px;
-    letter-spacing: 1.6px;
-    text-shadow: 0 4px 26px rgba(80,120,255,0.18);
-    min-height:36px;
-  }
+    /* WORK IN PROGRESS — Typewriter + Blink + Slide away */
+    #wip {
+        position: absolute;
+        bottom: 70px;
+        width: 100%;
+        font-size: 34px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        animation: typewriter 4s steps(25) 1,
+                   blinkColors 0.8s 4s 3,
+                   slideAway 1.4s 6.5s forwards;
+    }
 
-  /* blink animation (for the 3 blinks) */
-  .blink {
-    animation: blinkfast 0.28s steps(1,end) 6;
-  }
-  @keyframes blinkfast {
-    0%{opacity:1}50%{opacity:0.05}100%{opacity:1}
-  }
+    /* Typewriter Effect */
+    @keyframes typewriter {
+        from { width: 0; opacity: 0; }
+        to   { width: 100%; opacity: 1; }
+    }
 
-  /* Slide out containers with three parts */
-  .wip-slide {
-    position:relative;
-    width:680px;
-    max-width:92vw;
-    height:54px;
-    margin-top:4px;
-    pointer-events:none;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:18px;
-  }
-  .slide-part {
-    display:inline-block;
-    font-weight:900;
-    color:#fff;
-    font-size:28px;
-    padding:8px 14px;
-    border-radius:6px;
-    transform:translateX(0) translateY(0);
-    opacity:0;
-    text-shadow: 0 8px 28px rgba(0,0,0,0.4);
-  }
+    /* Color Blinking: Red → Blue → Green */
+    @keyframes blinkColors {
+        0%   { color: red; }
+        33%  { color: blue; }
+        66%  { color: green; }
+        100% { color: red; }
+    }
 
-  /* police siren bar */
-  .siren {
-    display:flex;
-    gap:10px;
-    align-items:center;
-    justify-content:center;
-    margin-top:8px;
-    opacity:0;
-  }
-  .siren .bulb{
-    width:22px;height:22px;border-radius:50%;
-    box-shadow:0 6px 18px rgba(0,0,0,0.45);
-    opacity:0.95;
-    transform:translateY(0);
-  }
-  .bulb.red{background:#ff3d3d; box-shadow:0 6px 18px rgba(255,61,61,0.45);}
-  .bulb.blue{background:#3db3ff; box-shadow:0 6px 18px rgba(61,179,255,0.45);}
-  .bulb.white{background:#ffffff; box-shadow:0 6px 18px rgba(255,255,255,0.45);}
+    /* Slide Away Animation */
+    @keyframes slideAway {
+        0%   { opacity: 1; }
+        25%  { transform: translateX(-50px); opacity: 0.6; }
+        50%  { transform: translateX(50px); opacity: 0.4; }
+        100% { transform: translateY(120px); opacity: 0; }
+    }
 
-  /* contact icons row (neon style) - use uploaded assets */
-  .contacts {
-    position:fixed;
-    right:20px;
-    top: 70%;
-    transform: translateY(-50%);
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-    z-index:999;
-    pointer-events:auto;
-  }
-  .contact-btn{
-    display:inline-flex;align-items:center;justify-content:center;
-    width:56px;height:56px;border-radius:12px;background:rgba(0,0,0,0.22);
-    box-shadow: 0 8px 22px rgba(0,0,0,0.45);
-    border:1px solid rgba(255,255,255,0.04);
-    transition: transform .18s ease, box-shadow .18s ease;
-  }
-  .contact-btn img{width:36px;height:36px;display:block;filter: drop-shadow(0 4px 8px rgba(0,0,0,0.6));}
-  .contact-btn:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.6);}
-
-  /* small responsive tweaks */
-  @media(max-width:700px){
-    h1{font-size:30px}
-    .wip-type{font-size:20px}
-    .slide-part{font-size:20px}
-    .contacts{right:12px}
-  }
 </style>
 </head>
+
 <body>
 
-<!-- NAV (logo right links) -->
-<div class="nav">
-  <img class="logo" src="assets/logo.png" alt="logo">
-  <div style="display:flex;align-items:center;">
-    <a class="nav-link" href="https://github.com/sudhir81" target="_blank">GitHub</a>
-    <a class="nav-link" href="https://linkedin.com/in/sudhir-dalvi" target="_blank">LinkedIn</a>
-  </div>
+<div class="top-links">
+    <a href="https://github.com/sudhir81" target="_blank">GitHub</a>
+    <a href="https://linkedin.com/in/sudhir-dalvi" target="_blank">LinkedIn</a>
 </div>
 
-<div class="center">
-  <h1>🐼 TerraForge Cloud</h1>
-  <div class="subtitle">Welcome — our next-gen cloud platform is under construction.</div>
-  <a class="btn" href="https://github.com/sudhir81" target="_blank">🔗 Explore My GitHub Work</a>
+<div class="content">
+    <h1>🐼 TerraForge Cloud</h1>
+    <div class="subtitle">Welcome — our next-gen cloud platform is under construction.</div>
+
+    <button class="btn" onclick="window.open('https://github.com/sudhir81','_blank');">
+        🔗 Explore My GitHub Work
+    </button>
 </div>
 
-<!-- WIP animation area (bottom center) -->
-<div class="wip-area" aria-hidden="false">
+<!-- WORK IN PROGRESS — animated -->
+<div id="wip">WORK IN PROGRESS</div>
 
-  <!-- 1: typewriter element -->
-  <div id="typewriter" class="wip-type" aria-live="polite"></div>
-
-  <!-- 2: slide parts (hidden until animation time) -->
-  <div id="slideContainer" class="wip-slide" role="presentation">
-    <div id="partWork" class="slide-part">WORK</div>
-    <div id="partIn" class="slide-part">IN</div>
-    <div id="partProgress" class="slide-part">PROGRESS</div>
-  </div>
-
-  <!-- 3: police siren bulbs -->
-  <div id="siren" class="siren" aria-hidden="true">
-    <div class="bulb red"></div>
-    <div class="bulb blue"></div>
-    <div class="bulb white"></div>
-  </div>
-
-</div>
-
-<!-- floating neon contact icons (right side) -->
-<div class="contacts" aria-hidden="false">
-  <a class="contact-btn" href="https://wa.me/918588818710" target="_blank" title="+91 85888 18710 (WhatsApp)">
-    <img src="assets/whatsapp.png" alt="WhatsApp">
-  </a>
-
-  <a class="contact-btn" href="mailto:support@terraforgecloud.com?subject=Support%20Request" title="support@terraforgecloud.com">
-    <img src="assets/email.png" alt="Email">
-  </a>
-</div>
-
+<!-- Restart Loop -->
 <script>
-/*
- Animation cycle:
- 1) Typewriter reveal "WORK IN PROGRESS"
- 2) Blink text 3 times
- 3) Slide-out: WORK -> left; IN -> down; PROGRESS -> right
- 4) Police siren: red-blue-white blink 3 times
- 5) repeat
-*/
-
-const phrase = "WORK IN PROGRESS";
-const typeEl = document.getElementById("typewriter");
-const partWork = document.getElementById("partWork");
-const partIn = document.getElementById("partIn");
-const partProgress = document.getElementById("partProgress");
-const slideContainer = document.getElementById("slideContainer");
-const siren = document.getElementById("siren");
-const bulbs = siren.querySelectorAll(".bulb");
-
-// initial state
-typeEl.textContent = "";
-partWork.style.opacity = 0;
-partIn.style.opacity = 0;
-partProgress.style.opacity = 0;
-siren.style.opacity = 0;
-
-// helper timers
-const wait = (ms) => new Promise(r => setTimeout(r, ms));
-
-// typewriter function (one-by-one letters)
-async function typeWriter(text, speed=80){
-  typeEl.textContent = "";
-  for(let i=0;i<text.length;i++){
-    typeEl.textContent += text[i];
-    await wait(speed);
-  }
-}
-
-// blink n times (toggle class that animates visibility via CSS)
-async function blinkElement(el, times=3, interval=350){
-  for(let i=0;i<times;i++){
-    el.classList.add('blink');
-    await wait(interval);
-    el.classList.remove('blink');
-    await wait(interval/2);
-  }
-}
-
-// slide out animation for three parts
-async function slideOutParts(){
-  // show parts (fade in)
-  partWork.style.opacity=1;
-  partIn.style.opacity=1;
-  partProgress.style.opacity=1;
-
-  // reset transforms
-  partWork.style.transition = "transform 700ms cubic-bezier(.2,.9,.2,1), opacity 400ms";
-  partIn.style.transition = "transform 700ms cubic-bezier(.2,.9,.2,1), opacity 400ms";
-  partProgress.style.transition = "transform 700ms cubic-bezier(.2,.9,.2,1), opacity 400ms";
-
-  // small pause for readability
-  await wait(350);
-
-  // animate: WORK slides left, IN slides down, PROGRESS slides right
-  partWork.style.transform = "translateX(-380px)";
-  partWork.style.opacity = 0;
-  partIn.style.transform = "translateY(60px)";
-  partIn.style.opacity = 0;
-  partProgress.style.transform = "translateX(380px)";
-  partProgress.style.opacity = 0;
-
-  // wait for animation to finish
-  await wait(800);
-
-  // reset positions (without transition) for next cycle
-  partWork.style.transition = "none";
-  partIn.style.transition = "none";
-  partProgress.style.transition = "none";
-  partWork.style.transform = "translateX(0)";
-  partIn.style.transform = "translateY(0)";
-  partProgress.style.transform = "translateX(0)";
-  partWork.style.opacity = 0;
-  partIn.style.opacity = 0;
-  partProgress.style.opacity = 0;
-}
-
-// police siren blink sequence (red -> blue -> white) repeated 3 times
-async function blinkSiren(times=3, speed=350){
-  siren.style.opacity = 1;
-  for(let i=0;i<times;i++){
-    // red on
-    bulbs.forEach(b=>b.style.opacity = 0.25);
-    bulbs[0].style.boxShadow = "0 10px 28px rgba(255,61,61,0.65)";
-    bulbs[0].style.opacity = 1;
-    await wait(speed);
-    // blue on
-    bulbs[0].style.opacity = 0.25; bulbs[0].style.boxShadow = "";
-    bulbs[1].style.boxShadow = "0 10px 28px rgba(61,179,255,0.65)"; bulbs[1].style.opacity = 1;
-    await wait(speed);
-    // white on
-    bulbs[1].style.opacity = 0.25; bulbs[1].style.boxShadow = "";
-    bulbs[2].style.boxShadow = "0 10px 28px rgba(255,255,255,0.9)"; bulbs[2].style.opacity = 1;
-    await wait(speed);
-
-    // clear bulbs for quick fade in-between
-    bulbs.forEach(b=>{ b.style.opacity = 0.25; b.style.boxShadow = "";});
-    await wait(120);
-  }
-  // fade out siren
-  siren.style.opacity = 0;
-}
-
-// main loop
-async function runCycle(){
-  while(true){
-    // 1. typewriter
-    await typeWriter(phrase, 70);
-
-    // 2. blink 3 times
-    await blinkElement(typeEl, 3, 300);
-
-    // 3. slide out parts
-    // show parts text quickly:
-    partWork.style.opacity = 1;
-    partIn.style.opacity = 1;
-    partProgress.style.opacity = 1;
-    // small delay then slide
-    await wait(220);
-    await slideOutParts();
-
-    // 4. police siren blink 3 times
-    await blinkSiren(3, 320);
-
-    // short pause then clear typewriter
-    await wait(380);
-    typeEl.textContent = "";
-    await wait(400);
-    // loop continues
-  }
-}
-
-// start the animation loop after small delay
-setTimeout(()=>{ runCycle(); }, 700);
-
+    function restartAnimation() {
+        const el = document.getElementById("wip");
+        el.style.animation = "none";
+        void el.offsetWidth; 
+        el.style.animation = null;
+    }
+    setInterval(restartAnimation, 8000);
 </script>
+
 </body>
 </html>
