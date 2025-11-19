@@ -1,123 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TerraForge Cloud – Coming Soon</title>
 
     <style>
         body {
             margin: 0;
-            font-family: "Segoe UI", sans-serif;
+            padding: 0;
+            font-family: Arial, sans-serif;
             color: white;
             text-align: center;
-            overflow-x: hidden;
+            background: url("assets/Panda.png") no-repeat center center fixed;
+            background-size: cover;
         }
 
-        /* CLEAR FULL-SCREEN PANDA BACKGROUND */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
+        .overlay {
+            background: rgba(0, 0, 0, 0.55);
+            height: 100vh;
             width: 100%;
-            height: 100%;
-            background: url("assets/Panda.png") no-repeat center center / cover;
-            z-index: -1;
-        }
-
-        /* NAV BAR */
-        .navbar {
             display: flex;
-            justify-content: space-between;
-            padding: 15px 30px;
-            background: rgba(0, 0, 0, 0.25);
-            backdrop-filter: blur(5px);
-            position: sticky;
-            top: 0;
-        }
-
-        .navbar a {
-            color: #bcd2ff;
-            margin: 0 12px;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .logo {
-            height: 42px;
-        }
-
-        /* TEXT CONTENT (NO BOX) */
-        .content {
-            margin-top: 160px;
-            padding: 20px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         h1 {
-            font-size: 48px;
-            margin-bottom: 10px;
-            text-shadow: 0 3px 10px rgba(0,0,0,0.55);
+            font-size: 42px;
+            text-shadow: 0 0 12px black;
         }
 
-        .subtitle {
-            font-size: 20px;
-            margin-bottom: 25px;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.45);
-        }
-
-        /* BUTTON */
-        .btn {
-            padding: 14px 28px;
-            background: #58a6ff;
-            border-radius: 12px;
+        .button {
+            background: #4da3ff;
+            color: white;
+            padding: 12px 24px;
+            margin-top: 20px;
+            border-radius: 10px;
             text-decoration: none;
-            color: #000;
-            font-weight: 600;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+            font-size: 18px;
+            display: inline-block;
+            transition: 0.2s;
         }
 
-        /* WIP BLINKING IMAGE */
-        .wip-container {
-            position: fixed;
-            bottom: 35px;
-            left: 50%;
-            transform: translateX(-50%);
+        .button:hover {
+            background: #1b76d1;
         }
 
-        .wip-image {
+        /* WIP Image blink */
+        .wip-blink {
+            animation: pulse 1.3s infinite alternate;
             width: 260px;
-            animation: blink 1.3s infinite alternate;
+            margin-top: 25px;
         }
 
-        @keyframes blink {
-            from { opacity: 0.40; }
-            to { opacity: 1; }
+        @keyframes pulse {
+            from { opacity: 0.55; }
+            to   { opacity: 1; }
         }
 
+        /* Contact icons */
+        .contact-section {
+            margin-top: 35px;
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+        }
+
+        .contact-icon {
+            width: 48px;
+            transition: 0.25s;
+            filter: drop-shadow(0px 0px 4px black);
+        }
+
+        .contact-icon:hover {
+            transform: scale(1.18);
+            filter: drop-shadow(0px 0px 9px white);
+        }
     </style>
 </head>
 
 <body>
+    <div class="overlay">
+        <h1>🐼 TerraForge Cloud</h1>
+        <p>Welcome! Our next-gen cloud platform is under construction.</p>
 
-    <div class="navbar">
-        <img src="assets/logo.png" class="logo">
+        <a class="button" href="https://github.com/sudhir81" target="_blank">
+            🔗 Explore My GitHub Work
+        </a>
+
         <div>
-            <a href="https://github.com/sudhir81" target="_blank">GitHub</a>
-            <a href="https://linkedin.com/in/sudhir-dalvi" target="_blank">LinkedIn</a>
+            <img src="assets/WIP.png" class="wip-blink" alt="Work in Progress" />
+        </div>
+
+        <!-- Contact Icons -->
+        <div class="contact-section">
+
+            <!-- WhatsApp -->
+            <a href="https://wa.me/918588818710" target="_blank">
+                <img src="assets/whatsapp.png" class="contact-icon" alt="WhatsApp" />
+            </a>
+
+            <!-- Email -->
+            <a href="mailto:support@terraforgecloud.com">
+                <img src="assets/email.png" class="contact-icon" alt="Email" />
+            </a>
+
         </div>
     </div>
-
-    <div class="content">
-        <h1>🐼 TerraForge Cloud</h1>
-        <p class="subtitle">Our next-gen cloud platform is under construction.</p>
-        <a class="btn" href="https://github.com/sudhir81" target="_blank">🔗 Explore My GitHub Work</a>
-    </div>
-
-    <!-- BLINKING WIP -->
-    <div class="wip-container">
-        <img src="assets/WIP.png" class="wip-image" alt="Work In Progress">
-    </div>
-
 </body>
 </html>
