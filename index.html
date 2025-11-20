@@ -1,140 +1,186 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>TerraForge Cloud — Coming Soon</title>
+
 <style>
-  html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,sans-serif;background:#081021;color:#fff}
-  .hero{
-    position:relative;height:100vh;overflow:hidden;
-    background:center/cover no-repeat url('assets/Panda.png');
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: "Segoe UI", sans-serif;
+    background: #000;
+    color: white;
   }
 
-  /* video styles — full width but not cover entire screen, positioned top */
-  .heli-video {
-    position:absolute; left:0; top:10%;
-    width:120%; height:auto; transform:translateX(-10%);
-    z-index:2; pointer-events:none;
+  /* FULLSCREEN VIDEO BACKGROUND */
+  #bg-video {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -10;
+    opacity: 0.85;
   }
 
-  /* center card */
-  .card {
-    position:relative; z-index:6; max-width:900px; margin:0 auto; padding-top:50vh; text-align:center;
-    color:#e9f0ff;
+  /* TOP LINKS */
+  .top-links {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 20px;
+    font-weight: 600;
+    z-index: 10;
   }
-  h1{font-size:46px;margin:6px 0;color:#b9c9ff}
-  p.lead{margin:8px 0 20px;color:rgba(255,255,255,0.85)}
-  a.cta{display:inline-block;padding:14px 28px;border-radius:14px;background:linear-gradient(90deg,#8ea8ff,#b99cff);color:#051027;text-decoration:none;font-weight:700}
-
-  /* WIP letters zone at bottom center */
-  #wipZone {
-    position:absolute; bottom:12%; left:50%; transform:translateX(-50%); z-index:7;
-    pointer-events:none; font-weight:900; font-size:42px; letter-spacing:6px; text-transform:uppercase;
-    color:#fff;
+  .top-links a {
+    margin-left: 20px;
+    color: #c77b30; /* brown */
+    text-decoration: none;
   }
-  .wip-letter{ display:inline-block; opacity:0; transform:translateY(-50px); transition:transform .35s, opacity .2s; }
+  .top-links a:hover {
+    opacity: 0.6;
+  }
 
-  /* strobe classes */
-  .strobe-red{ color:#ff3b3b; text-shadow:0 8px 28px rgba(255,59,59,0.6); }
-  .strobe-blue{ color:#3b8eff; text-shadow:0 8px 28px rgba(59,142,255,0.6); }
-  .strobe-green{ color:#3bff94; text-shadow:0 8px 28px rgba(59,255,148,0.6); }
+  /* MAIN TEXT */
+  .center-box {
+    position: absolute;
+    bottom: 140px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 10;
+  }
+  .title {
+    font-size: 42px;
+    font-weight: 700;
+    color: #caaaff;
+  }
+  .subtitle {
+    font-size: 18px;
+    margin-top: -10px;
+    color: #f0f0f0;
+  }
+  .btn {
+    margin-top: 20px;
+    padding: 14px 28px;
+    background: linear-gradient(45deg, #6a82fb, #b46ff9);
+    border-radius: 12px;
+    color: black;
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+  }
+
+  /* SIDE CONTACT ICONS */
+  .icon-box {
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    z-index: 20;
+  }
+  .glass-icon {
+    width: 65px;
+    height: 65px;
+    background: rgba(0,0,0,0.38);
+    border-radius: 18px;
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  .glass-icon img {
+    width: 70%;
+    filter: drop-shadow(0 0 6px #00ffff);
+  }
+
+  /* WORK IN PROGRESS TEXT */
+  #wip {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 46px;
+    font-weight: bold;
+    color: white;
+    opacity: 0;
+    z-index: 12;
+  }
+
+  /* Color strobe animation */
+  @keyframes strobe {
+    0%   { color: red; }
+    33%  { color: dodgerblue; }
+    66%  { color: lime; }
+    100% { color: white; }
+  }
 </style>
 </head>
+
 <body>
-  <div class="hero">
-    <!-- video: uses your uploaded raw github url -->
-    <video id="heliVideo" class="heli-video" playsinline muted loop preload="auto" poster="https://raw.githubusercontent.com/sudhir81/sudhir81.github.io/main/assets/heli_poster.jpg">
-      <source src="https://raw.githubusercontent.com/sudhir81/sudhir81.github.io/main/assets/heli_loop.mp4" type="video/mp4">
-      <source src="https://raw.githubusercontent.com/sudhir81/sudhir81.github.io/main/assets/heli_loop.webm" type="video/webm">
-      Your browser doesn't support the video tag.
-    </video>
 
-    <div class="card">
-      <h1>🐼 TerraForge Cloud</h1>
-      <p class="lead">Welcome — our next-gen cloud platform is under construction.</p>
-      <a class="cta" href="https://github.com/sudhir81" target="_blank">🔗 Explore My GitHub Work</a>
-    </div>
+<!-- BACKGROUND VIDEO -->
+<video id="bg-video" autoplay muted loop playsinline>
+  <source src="https://raw.githubusercontent.com/sudhir81/sudhir81.github.io/main/assets/heli_loop.mp4" type="video/mp4">
+</video>
 
-    <div id="wipZone" aria-hidden="true"></div>
+<!-- TOP LINKS -->
+<div class="top-links">
+  <a href="https://github.com/sudhir81" target="_blank">GitHub</a>
+  <a href="https://linkedin.com/in/sudhir-dalvi" target="_blank">LinkedIn</a>
+</div>
+
+<!-- CENTER TEXT -->
+<div class="center-box">
+  <div class="title">🐼 TerraForge Cloud</div>
+  <div class="subtitle">Welcome — our next-gen cloud platform is under construction.</div>
+  <button class="btn" onclick="window.open('https://github.com/sudhir81')">🔗 Explore My GitHub Work</button>
+</div>
+
+<!-- WORK IN PROGRESS TEXT -->
+<div id="wip">WORK IN PROGRESS</div>
+
+<!-- WHATSAPP + EMAIL ICONS -->
+<div class="icon-box">
+  <div class="glass-icon" onclick="window.open('https://wa.me/918588818710')">
+    <img src="assets/whatsapp.png" />
   </div>
+  <div class="glass-icon" onclick="window.location.href='mailto:support@terraforgecloud.com'">
+    <img src="assets/email.png" />
+  </div>
+</div>
 
 <script>
-  const video = document.getElementById('heliVideo');
-  const wipZone = document.getElementById('wipZone');
-  const TEXT = 'WORK IN PROGRESS';
+  const video = document.getElementById("bg-video");
+  const wip = document.getElementById("wip");
 
-  // create letter spans
-  function buildLetters(){
-    wipZone.innerHTML = '';
-    for(let ch of TEXT){
-      const span = document.createElement('span');
-      span.className = 'wip-letter';
-      span.textContent = ch;
-      wipZone.appendChild(span);
-    }
-  }
-  buildLetters();
-
-  // typing + strobe + hold + slide-out sequence
-  async function runWIP(){
-    const letters = Array.from(document.querySelectorAll('.wip-letter'));
-    // reveal letters sequentially
-    for(let i=0;i<letters.length;i++){
-      const el = letters[i];
-      if(el.textContent === ' '){
-        await sleep(80);
-        continue;
-      }
-      el.style.opacity = 1;
-      el.style.transform = 'translateY(0)';
-      await sleep(80);
-    }
-    // strobe RGB 3 cycles
-    await strobeLetters(3);
-    // hold 5s
-    await sleep(5000);
-    // slide out & clear
-    letters.forEach((el,i)=>{
-      el.style.transition = 'transform .8s ease, opacity .6s';
-      el.style.transform = `translateY(60px) translateX(${(i%2===0?-120:120)}px)`;
-      el.style.opacity = 0;
-    });
-    await sleep(900);
-    // rebuild for next loop
-    buildLetters();
+  function showWIP() {
+    wip.style.opacity = 1;
+    wip.style.animation = "strobe 0.3s infinite";
+    
+    setTimeout(() => {
+      wip.style.opacity = 0;
+      wip.style.animation = "none";
+    }, 5500);
   }
 
-  function sleep(ms){ return new Promise(r=>setTimeout(r,ms)); }
-
-  async function strobeLetters(cycles){
-    const letters = Array.from(document.querySelectorAll('.wip-letter'));
-    const classes = ['strobe-red','strobe-blue','strobe-green'];
-    for(let c=0;c<cycles;c++){
-      for(let cl of classes){
-        letters.forEach(l=>{ l.classList.remove(...classes); l.classList.add(cl); });
-        await sleep(320);
-      }
-    }
-    letters.forEach(l=> l.classList.remove('strobe-red','strobe-blue','strobe-green'));
-  }
-
-  // trigger when video reaches midpoint
-  let triggered = false;
-  video.addEventListener('timeupdate', () => {
-    if(!video.duration) return;
-    const mid = video.duration * 0.5; // midpoint
-    if(!triggered && video.currentTime >= mid - 0.05){
-      triggered = true;
-      runWIP().then(()=> {
-        // reset trigger so next loop will trigger again
-        setTimeout(()=> triggered = false, 400);
-      });
+  // Trigger midway through video loop
+  video.addEventListener("timeupdate", () => {
+    if (video.currentTime >= video.duration * 0.5 &&
+        video.currentTime <= video.duration * 0.5 + 0.1) {
+      showWIP();
     }
   });
-
-  // autoplay may require a user gesture on some devices; ensure it plays
-  video.play().catch(()=>{/* muted autoplay allowed but some browsers block autoplay initially */});
 </script>
+
 </body>
 </html>
