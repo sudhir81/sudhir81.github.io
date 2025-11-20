@@ -1,275 +1,189 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>TerraForge Cloud — Coming Soon</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TerraForge Cloud</title>
 
 <style>
-  :root{
-    --brown:#8B4513;
-    --glass-bg: rgba(18,22,30,0.45);
-    --glass-border: rgba(255,255,255,0.06);
-    --neon-glow: 0 10px 30px rgba(110,95,255,0.14);
-    --accent1: linear-gradient(90deg,#7bb0ff,#b98bff);
-  }
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: url("assets/Panda.png") no-repeat center center fixed;
+        background-size: cover;
+        font-family: "Segoe UI", sans-serif;
+    }
 
-  html,body{
-    height:100%;
-    margin:0;
-    font-family: "Segoe UI", Roboto, -apple-system, "Helvetica Neue", Arial;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    color: #f3f6fb;
-    overflow:hidden;
-    background-color:#060617;
-  }
+    /* TOP RIGHT LINKS */
+    .top-links {
+        position: absolute;
+        top: 20px;
+        right: 40px;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    .top-links a {
+        margin-left: 20px;
+        color: #c77b30; /* brown */
+        text-decoration: none;
+    }
+    .top-links a:hover {
+        opacity: 0.6;
+    }
 
-  /* Full-screen centered Panda background (clear, not zoomed) */
-  .bg {
-    position:fixed;
-    inset:0;
-    background-image: url("assets/Panda.png");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    filter: saturate(1) contrast(0.98);
-    z-index:0;
-  }
+    /* MAIN TITLE AREA */
+    .center-box {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white;
+    }
 
-  /* subtle overlay so text reads well */
-  .overlay {
-    position: fixed; inset:0; 
-    background: linear-gradient(180deg, rgba(2,6,12,0.18) 0%, rgba(2,6,12,0.6) 75%);
-    z-index:1;
-  }
+    .title {
+        font-size: 48px;
+        font-weight: 700;
+        color: #bfa4ff;
+    }
 
-  /* Top-right links */
-  .nav {
-    position: fixed;
-    right:28px;
-    top:18px;
-    z-index:10;
-    display:flex;
-    gap:18px;
-    align-items:center;
-    font-weight:600;
-    color:var(--brown);
-    font-size:16px;
-  }
-  .nav a { color:var(--brown); text-decoration:none; opacity:0.95; }
-  .nav a:hover { text-decoration:underline; opacity:1; }
+    .subtitle {
+        font-size: 20px;
+        color: #e0e0e0;
+        margin-top: -10px;
+        margin-bottom: 20px;
+    }
 
-  /* Center card area -- but translucent (we removed glossy square per your request) */
-  .center {
-    position: absolute;
-    left:50%;
-    transform:translateX(-50%);
-    bottom:20%;
-    z-index:5;
-    width: min(920px, 86%);
-    text-align:center;
-  }
+    .btn {
+        padding: 12px 28px;
+        background: linear-gradient(45deg, #6a82fb, #b46ff9);
+        border-radius: 12px;
+        color: black;
+        font-weight: 700;
+        font-size: 18px;
+        cursor: pointer;
+        border: none;
+    }
 
-  /* Title + subtitle (reverted smaller than earlier) */
-  h1.title {
-    margin:0;
-    font-size:48px; /* reverted size */
-    font-weight:800;
-    letter-spacing:0.6px;
-    line-height:1;
-    background: var(--accent1);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    text-shadow: 0 6px 20px rgba(43,55,90,0.12);
-  }
+    /* FIXED SIDE ICONS */
+    .icon-box {
+        position: fixed;
+        bottom: 40px;
+        right: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
 
-  .subtitle {
-    margin-top:12px;
-    color:rgba(243,246,251,0.9); 
-    font-size:18px;
-    font-weight:500;
-  }
+    .glass-icon {
+        width: 65px;
+        height: 65px;
+        background: rgba(0,0,0,0.38);
+        border-radius: 18px;
+        backdrop-filter: blur(8px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+    .glass-icon img {
+        width: 70%;
+        filter: drop-shadow(0 0 8px #00ffff);
+    }
 
-  .cta {
-    margin-top:20px;
-    display:inline-block;
-    padding:12px 28px;
-    border-radius:14px;
-    font-weight:700;
-    font-size:16px;
-    color:#06202e;
-    background: linear-gradient(90deg,#8fb9ff,#c092ff);
-    box-shadow: 0 10px 30px rgba(80,60,140,0.18);
-    text-decoration:none;
-  }
+    /* HELICOPTER ANIMATION */
+    #helicopter {
+        position: absolute;
+        top: 38%;
+        left: -350px;
+        width: 340px;
+        pointer-events: none;
+        animation: fly 12s linear infinite;
+    }
 
-  /* WORK IN PROGRESS block - centered and slightly above the center area */
-  #wip {
-    position: absolute;
-    left:50%;
-    top:46%;
-    transform: translate(-50%,-50%);
-    z-index:6;
-    font-size:36px;
-    font-weight:800;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    color: transparent; /* filled by background-clip text while animating */
-    -webkit-text-stroke: 0.5px rgba(255,255,255,0.06);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    white-space:nowrap;
-    pointer-events:none;
-  }
+    @keyframes fly {
+        0%   { left: -350px; }
+        45%  { left: 46%; }   /* Midpoint = trigger typing */
+        60%  { left: 80%; }
+        100% { left: 120%; }
+    }
 
-  /* typing effect by animating mask width */
-  .type {
-    display:inline-block;
-    overflow:hidden;
-    vertical-align:bottom;
-    -webkit-mask-image: linear-gradient(90deg,#000 0 0);
-  }
+    /* WORK IN PROGRESS TEXT */
+    #wip {
+        position: absolute;
+        bottom: 100px;
+        width: 100%;
+        text-align: center;
+        font-size: 46px;
+        font-weight: bold;
+        color: white;
+        opacity: 0;
+    }
 
-  /* We'll use a pseudo element to show text, animate its opacity and color */
-  #wip::after {
-    content: "WORK IN PROGRESS";
-    display:inline-block;
-    color:#fff;
-    mix-blend-mode:screen;
-    opacity:0;
-    filter: drop-shadow(0 6px 18px rgba(0,0,0,0.45));
-    animation: typeShow 2.5s steps(18, end) 0s 1 forwards,
-               colorBlink 1.6s linear 2.7s 3 forwards,
-               slideOut 1.0s linear 7.0s 1 forwards;
-  }
-
-  /* reveal letters like typewriter */
-  @keyframes typeShow {
-    0% { opacity:0; transform: translateX(0); }
-    100% { opacity:1; }
-  }
-
-  /* Blink in colors: Red -> Blue -> Green (3 blinks) */
-  @keyframes colorBlink {
-    0%   { color: red; text-shadow: 0 0 12px rgba(255,0,0,0.8); }
-    33%  { color: blue; text-shadow: 0 0 12px rgba(0,120,255,0.85); }
-    66%  { color: lime; text-shadow: 0 0 12px rgba(0,255,100,0.85); }
-    100% { color: rgba(255,255,255,0.95); text-shadow:none; }
-  }
-
-  /* Slide away and fade */
-  @keyframes slideOut {
-    0% { transform: translateY(0); opacity:1; }
-    30% { transform: translateY(-6px) scale(1.02); opacity:0.95; }
-    100% { transform: translateY(120px) scale(0.98); opacity:0; }
-  }
-
-  /* make the whole cycle restart via JS (we reset animation) */
-
-  /* floating icon container (right-bottom) */
-  .contact-float {
-    position: fixed;
-    right:24px;
-    bottom:24px;
-    z-index:12;
-    display:flex;
-    flex-direction:column;
-    gap:14px;
-    align-items:center;
-  }
-
-  .glass-icon {
-    width:62px;
-    height:62px;
-    border-radius:12px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-    border: 1px solid rgba(255,255,255,0.06);
-    box-shadow: 0 6px 30px rgba(0,0,0,0.6), 0 0 18px rgba(120,95,255,0.06);
-    backdrop-filter: blur(6px) saturate(130%);
-    cursor:pointer;
-  }
-  .glass-icon img { width:34px; height:34px; object-fit:contain; }
-
-  /* small label below icons when hovered */
-  .glass-icon:hover { transform: translateY(-4px); transition: transform 180ms ease; }
-
-  /* responsive adjustments */
-  @media (max-width:820px){
-    h1.title { font-size:36px; }
-    .subtitle { font-size:16px; }
-    .cta { font-size:15px; padding:12px 22px; }
-    #wip { font-size:26px; top:50%; }
-    .center { width:94%; bottom:16%; }
-    .glass-icon { width:56px; height:56px; }
-  }
-
+    /* Strobe effect */
+    @keyframes strobe {
+        0%   { color: red; }
+        33%  { color: blue; }
+        66%  { color: lime; }
+        100% { color: white; }
+    }
 </style>
 </head>
+
 <body>
 
-  <div class="bg" aria-hidden="true"></div>
-  <div class="overlay" aria-hidden="true"></div>
+<!-- TOP LINKS -->
+<div class="top-links">
+    <a href="https://github.com/sudhir81" target="_blank">GitHub</a>
+    <a href="https://linkedin.com/in/sudhir-dalvi" target="_blank">LinkedIn</a>
+</div>
 
-  <!-- Top right links -->
-  <div class="nav" role="navigation" aria-label="social-links">
-    <a href="https://github.com/sudhir81" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://linkedin.com/in/sudhir-dalvi" target="_blank" rel="noopener">LinkedIn</a>
-  </div>
-
-  <!-- WORK IN PROGRESS (centered) -->
-  <div id="wip" aria-hidden="false"></div>
-
-  <!-- Title area (lower center) -->
-  <div class="center" role="main" aria-labelledby="site-title">
-    <h1 id="site-title" class="title">🐼 TerraForge Cloud</h1>
+<!-- MAIN CENTER TEXT -->
+<div class="center-box">
+    <div class="title">🐼 TerraForge Cloud</div>
     <div class="subtitle">Welcome — our next-gen cloud platform is under construction.</div>
-    <a class="cta" href="https://github.com/sudhir81" target="_blank" rel="noopener">
-      🔗 Explore My GitHub Work
-    </a>
-  </div>
+    <button class="btn" onclick="window.open('https://github.com/sudhir81')">
+        🔗 Explore My GitHub Work
+    </button>
+</div>
 
-  <!-- Floating contact icons -->
-  <div class="contact-float" aria-hidden="false">
-    <a class="glass-icon" href="https://wa.me/918588818710" target="_blank" title="WhatsApp">
-      <img src="assets/whatsapp.png" alt="WhatsApp" />
-    </a>
+<!-- HELICOPTER -->
+<img id="helicopter" src="assets/heli.png">
 
-    <a class="glass-icon" href="mailto:support@terraforgecloud.com" title="Email">
-      <img src="assets/email.png" alt="Email" />
-    </a>
-  </div>
+<!-- WORK IN PROGRESS ANIMATION TEXT -->
+<div id="wip">WORK IN PROGRESS</div>
+
+<!-- SIDE BUTTONS -->
+<div class="icon-box">
+    <div class="glass-icon" onclick="window.open('https://wa.me/918588818710')">
+        <img src="assets/whatsapp.png">
+    </div>
+    <div class="glass-icon" onclick="window.location.href='mailto:support@terraforgecloud.com'">
+        <img src="assets/email.png">
+    </div>
+</div>
 
 <script>
-  // animation restart loop for WORK IN PROGRESS
-  const wip = document.getElementById('wip');
+/* 🔥 HELICOPTER MIDWAY TRIGGER + TYPEWRITER + STROBE + DELAY */
+setInterval(() => {
+    const heli = document.getElementById("helicopter");
+    const wip = document.getElementById("wip");
 
-  function playWip() {
-    // reset
-    wip.style.animation = 'none';
-    wip.style.opacity = '1';
-    void wip.offsetWidth;
-    // ensure pseudo-element animations run by toggling a classless update:
-    wip.style.animation = '';
-    // we set innerContent to trigger the pseudo ::after (it uses content property)
-    // The ::after content is hard-coded, it will animate via CSS rules above.
-  }
+    setTimeout(() => {
+        wip.style.opacity = 1;
+        wip.style.animation = "strobe 0.2s infinite";
 
-  // run initially and then repeat every 8s (approx length of animations)
-  playWip();
-  setInterval(playWip, 8000);
+    }, 5200); // mid-flight midpoint
 
-  // Accessibility: allow skip focus to the CTA quickly with keyboard
-  document.addEventListener('keydown', (e) => {
-    if(e.key === 'k' && (e.ctrlKey || e.metaKey)) {
-      const cta = document.querySelector('.cta');
-      if(cta) cta.focus();
-    }
-  });
+    /* Hide text after 5s */
+    setTimeout(() => {
+        wip.style.opacity = 0;
+        wip.style.animation = "none";
+    }, 10500);
 
+}, 12000);
 </script>
+
 </body>
 </html>
