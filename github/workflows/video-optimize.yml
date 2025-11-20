@@ -1,0 +1,38 @@
+name: Optimize Helicopter Video
+on:
+  push:
+    paths:
+      - 'assets/heli_loop.mp4'
+      - '.github/workflows/video-optimize.yml'
+jobs:
+  optimize-video:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      - name: Trim and re-encode MP4
+        run: |
+          mkdir -p assets/out
+          ffmpeg -y -i assets/heli_loop.mp4 -ss 0 -to 10 -c:v libx264 -crf 23 -preset medium -movflags +faststart -c:a aac -b:a 96k assets/out/heli_trim.mp4
+
+      - name: Create WebM (VP9)
+        run: |
+          ffmpeg -y -i assets/out/heli_trim.mp4 -c:v libvpx-vp9 -b:v 0 -crf 32 -c:a libopus assets/out/heli_loop.webm
+
+      - name: Create Poster
+        run: ffmpeg -y -i assets/out/heli_trim.mp4 -ss 00:00:01 -vframes 1 -q:v 2 assets/out/heli_poster.jpg
+
+      - name: Commit optimized assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "actions@github.com"
+          mv assets/out/heli_trim.mp4 assets/heli_trim.mp4
+          mv assets/out/heli_loop.webm assets/heli_loop.webm
+          mv assets/out/heli_poster.jpg assets/heli_poster.jpg
+          git add assets/heli_trim.mp4 assets/heli_loop.webm assets/heli_poster.jpg
+          git commit -m "chore(video): add optimized heli_loop.webm + poster" || echo "nothing to commit"
+          git push
