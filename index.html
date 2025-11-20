@@ -1,185 +1,240 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>TerraForge Cloud — Coming Soon</title>
-
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>TerraForge Cloud — Coming Soon (v6)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
 <style>
-  body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    font-family: "Segoe UI", sans-serif;
-    background: #000;
-    color: white;
+  :root {
+    --accent1: #8ea8ff;
+    --accent2: #c08bff;
+    --purple: #6a0dad;
   }
+  html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,sans-serif}
+  body{background:#000; color:#fff; overflow:hidden}
 
-  /* FULLSCREEN VIDEO BACKGROUND */
+  /* Fullscreen video background */
   #bg-video {
     position: fixed;
-    top: 0; 
-    left: 0;
+    inset: 0;
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-    z-index: -10;
-    opacity: 0.85;
+    z-index: -2;
+    filter: saturate(0.95) contrast(1.02);
   }
 
-  /* TOP LINKS */
+  /* Overlay */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(2,6,12,0.18), rgba(1,3,6,0.45));
+    z-index: -1;
+  }
+
+  /* Top links */
   .top-links {
     position: absolute;
-    top: 20px;
-    right: 40px;
-    font-size: 20px;
-    font-weight: 600;
-    z-index: 10;
+    top: 18px;
+    right: 28px;
+    z-index: 40;
+    display:flex; gap:14px; align-items:center;
+    font-weight:700;
   }
-  .top-links a {
-    margin-left: 20px;
-    color: #c77b30; /* brown */
-    text-decoration: none;
+  .top-links a{
+    color: var(--purple) !important; 
+    text-decoration:none;
+    font-size:15px;
+    font-weight:700;
   }
-  .top-links a:hover {
-    opacity: 0.6;
-  }
-
-  /* MAIN TEXT */
-  .center-box {
-    position: absolute;
-    bottom: 140px;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    z-index: 10;
-  }
-  .title {
-    font-size: 42px;
-    font-weight: 700;
-    color: #caaaff;
-  }
-  .subtitle {
-    font-size: 18px;
-    margin-top: -10px;
-    color: #f0f0f0;
-  }
-  .btn {
-    margin-top: 20px;
-    padding: 14px 28px;
-    background: linear-gradient(45deg, #6a82fb, #b46ff9);
-    border-radius: 12px;
-    color: black;
-    font-weight: 700;
-    font-size: 18px;
-    cursor: pointer;
-    border: none;
+  .top-links a:hover{
+    color:#b366ff;
+    text-shadow:0 0 12px rgba(179,102,255,0.7);
   }
 
-  /* SIDE CONTACT ICONS */
-  .icon-box {
+  /* Hero card */
+  .hero {
+    position: relative;
+    width:100%;
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:30;
+  }
+  .card {
+    width:min(980px,94%);
+    text-align:center;
+    background:rgba(7,10,18,0.22);
+    padding:32px 28px;
+    border-radius:14px;
+    box-shadow: 0 24px 80px rgba(2,6,20,0.65);
+    backdrop-filter: blur(6px) saturate(1.05);
+  }
+  .brand {
+    font-size:44px;
+    font-weight:900;
+    color:var(--accent1);
+    margin-bottom:6px;
+  }
+  .subtitle { color:rgba(255,255,255,0.92); margin-bottom:18px; font-size:18px; }
+  .cta { display:inline-block; padding:12px 26px; border-radius:14px; background:linear-gradient(90deg,var(--accent1),var(--accent2)); color:#041627; font-weight:800; text-decoration:none; }
+
+  /* WORK IN PROGRESS */
+  .wip-zone {
     position: fixed;
-    bottom: 40px;
-    right: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    z-index: 20;
-  }
-  .glass-icon {
-    width: 65px;
-    height: 65px;
-    background: rgba(0,0,0,0.38);
-    border-radius: 18px;
-    backdrop-filter: blur(8px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-  }
-  .glass-icon img {
-    width: 70%;
-    filter: drop-shadow(0 0 6px #00ffff);
-  }
-
-  /* WORK IN PROGRESS TEXT */
-  #wip {
-    position: absolute;
-    bottom: 60px;
-    left: 50%;
+    left:50%;
     transform: translateX(-50%);
-    text-align: center;
-    font-size: 46px;
-    font-weight: bold;
-    color: white;
-    opacity: 0;
-    z-index: 12;
+    bottom:10%;
+    z-index:80;
+    white-space:nowrap;
+    display:flex;
+    gap:6px;
+    pointer-events:none;
   }
+  .wip-letter {
+    display:inline-block;
+    font-weight:900;
+    font-size:44px;
+    letter-spacing:6px;
+    color:#e6eeff;
+    opacity:0;
+    transform: translateY(-48px) rotate(-6deg);
+    transition: transform .42s cubic-bezier(.2,.9,.25,1), opacity .25s;
+  }
+  .strobe-red{ color:#ff3b3b; text-shadow:0 8px 28px rgba(255,59,59,0.55) }
+  .strobe-blue{ color:#3b8eff; text-shadow:0 8px 28px rgba(59,142,255,0.55) }
+  .strobe-green{ color:#3bff94; text-shadow:0 8px 28px rgba(59,255,148,0.55) }
 
-  /* Color strobe animation */
-  @keyframes strobe {
-    0%   { color: red; }
-    33%  { color: dodgerblue; }
-    66%  { color: lime; }
-    100% { color: white; }
-  }
+  .slide-left { transform: translateX(-160px) translateY(60px) rotate(-10deg); opacity:0; transition: .8s ease; }
+  .slide-right{ transform: translateX(160px) translateY(60px) rotate(10deg); opacity:0; transition: .8s ease; }
+  .slide-middle{ transform: translateY(60px) scale(.96); opacity:0; transition: .7s ease; }
+
+  /* Contact Icons */
+  .contact-icons { position: fixed; right:20px; bottom:18px; display:flex; flex-direction:column; gap:12px; z-index:82; }
+  .contact-icons a { width:64px; height:64px; border-radius:12px; display:flex; align-items:center; justify-content:center; background: rgba(6,8,14,0.42); box-shadow:0 8px 26px rgba(0,0,0,0.55); }
+  .contact-icons img{ width:36px; height:36px; }
+
 </style>
 </head>
 
 <body>
 
-<!-- BACKGROUND VIDEO -->
-<video id="bg-video" autoplay muted loop playsinline>
+<!-- Background Video -->
+<video id="bg-video" autoplay muted loop playsinline preload="auto">
   <source src="https://raw.githubusercontent.com/sudhir81/sudhir81.github.io/main/assets/heli_loop.mp4" type="video/mp4">
 </video>
 
-<!-- TOP LINKS -->
+<div class="overlay"></div>
+
+<!-- Top Links -->
 <div class="top-links">
   <a href="https://github.com/sudhir81" target="_blank">GitHub</a>
   <a href="https://linkedin.com/in/sudhir-dalvi" target="_blank">LinkedIn</a>
 </div>
 
-<!-- CENTER TEXT -->
-<div class="center-box">
-  <div class="title">🐼 TerraForge Cloud</div>
-  <div class="subtitle">Welcome — our next-gen cloud platform is under construction.</div>
-  <button class="btn" onclick="window.open('https://github.com/sudhir81')">🔗 Explore My GitHub Work</button>
+<!-- Hero Content -->
+<div class="hero">
+  <div class="card">
+    <div class="brand">TerraForge Cloud</div>
+    <p class="subtitle">Welcome — our next-gen cloud platform is under construction.</p>
+    <a class="cta" href="https://github.com/sudhir81" target="_blank">🔗 Explore My GitHub Work</a>
+  </div>
 </div>
 
-<!-- WORK IN PROGRESS TEXT -->
-<div id="wip">WORK IN PROGRESS</div>
+<!-- WORK IN PROGRESS -->
+<div class="wip-zone" id="wipZone"></div>
 
-<!-- WHATSAPP + EMAIL ICONS -->
-<div class="icon-box">
-  <div class="glass-icon" onclick="window.open('https://wa.me/918588818710')">
-    <img src="assets/whatsapp.png" />
-  </div>
-  <div class="glass-icon" onclick="window.location.href='mailto:support@terraforgecloud.com'">
-    <img src="assets/email.png" />
-  </div>
+<!-- Contact Icons -->
+<div class="contact-icons">
+  <a href="https://wa.me/918588818710" target="_blank">
+    <img src="/assets/whatsapp.png">
+  </a>
+  <a href="mailto:support@terraforgecloud.com">
+    <img src="/assets/email.png">
+  </a>
 </div>
 
 <script>
-  const video = document.getElementById("bg-video");
-  const wip = document.getElementById("wip");
+const VIDEO = document.getElementById('bg-video');
+const WIP_ZONE = document.getElementById('wipZone');
+const TEXT = 'WORK IN PROGRESS';
 
-  function showWIP() {
-    wip.style.opacity = 1;
-    wip.style.animation = "strobe 0.3s infinite";
-    
-    setTimeout(() => {
-      wip.style.opacity = 0;
-      wip.style.animation = "none";
-    }, 5500);
+function buildLetters() {
+  WIP_ZONE.innerHTML = '';
+  for (let ch of TEXT) {
+    const span = document.createElement('span');
+    span.className = 'wip-letter';
+    span.textContent = ch === ' ' ? '\u00A0' : ch;
+    WIP_ZONE.appendChild(span);
   }
+}
+buildLetters();
 
-  // Trigger midway through video loop
-  video.addEventListener("timeupdate", () => {
-    if (video.currentTime >= video.duration * 0.5 &&
-        video.currentTime <= video.duration * 0.5 + 0.1) {
-      showWIP();
+function sleep(ms){ return new Promise(r=>setTimeout(r,ms)); }
+
+async function revealLetters(){
+  const letters = [...document.querySelectorAll('.wip-letter')];
+  for (let el of letters){
+    if (el.textContent.trim()===''){ await sleep(80); continue; }
+    el.style.opacity = 1;
+    el.style.transform = 'translateY(0) rotate(0deg)';
+    await sleep(85);
+  }
+}
+
+async function strobe(){
+  const letters=[...document.querySelectorAll('.wip-letter')];
+  const classes=['strobe-red','strobe-blue','strobe-green'];
+  for (let i=0;i<3;i++){
+    for (let cls of classes){
+      letters.forEach(l=>{
+        l.classList.remove(...classes);
+        l.classList.add(cls);
+      });
+      await sleep(320);
     }
+  }
+  letters.forEach(l=>l.classList.remove(...classes));
+}
+
+async function slideOut(){
+  const letters=[...document.querySelectorAll('.wip-letter')];
+  letters.forEach((el,i)=>{
+    if (i<4) el.classList.add('slide-left');
+    else if (i>=8) el.classList.add('slide-right');
+    else el.classList.add('slide-middle');
   });
+  await sleep(900);
+  WIP_ZONE.innerHTML='';
+  buildLetters();
+}
+
+let running=false;
+async function runSequence(){
+  if (running) return;
+  running = true;
+  await revealLetters();
+  await sleep(200);
+  await strobe();
+  await sleep(5000);
+  await slideOut();
+  running=false;
+}
+
+let triggered=false;
+VIDEO.addEventListener('timeupdate',()=>{
+  if (!VIDEO.duration) return;
+  const mid = VIDEO.duration * 0.5;
+  if (!triggered && VIDEO.currentTime >= mid-0.2 && VIDEO.currentTime <= mid+0.5){
+    runSequence();
+    triggered = true;
+  }
+});
+VIDEO.addEventListener('play',()=>{
+  if (VIDEO.currentTime < 0.3) triggered=false;
+});
 </script>
 
 </body>
