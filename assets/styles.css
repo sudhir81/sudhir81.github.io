@@ -2,11 +2,11 @@
 /*  BASE + COLORS                                             */
 /* ========================================================= */
 :root {
-  --bg: #05050a;
+  --bg: #0a0a0f;
+  --card: rgba(255,255,255,0.02);
+  --accent: #00d5ff;
+  --accent2: #ff2d95;
   --text: #ffffff;
-  --card: rgba(255,255,255,0.03);
-  --glow-blue: #00eaff;
-  --glow-pink: #ff3bd4;
 }
 
 body {
@@ -17,31 +17,21 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 28px auto;
-  padding: 18px;
-}
+.container { max-width:1200px; margin:28px auto; padding:18px; }
 
-/* NAVIGATION */
+/* NAV */
 .nav {
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
 .menu a {
-  color:rgba(255,255,255,0.9);
+  color:rgba(255,255,255,0.85);
   margin-left:18px;
   text-decoration:none;
   font-weight:500;
 }
-.brand {
-  text-decoration:none;
-  color:white;
-  display:flex;
-  gap:12px;
-  align-items:center;
-}
+.brand { text-decoration:none; color:white; display:flex; gap:12px; align-items:center; }
 
 /* FOOTER */
 .footer {
@@ -52,110 +42,111 @@ body {
 }
 
 /* ========================================================= */
-/*    C I N E M A T I C   V 2   N E O N   C O R R I D O R     */
+/*   C I N E M A T I C   N E O N   C O R R I D O R   V2       */
 /* ========================================================= */
 
-.hero-v2 {
+.hero-grid {
   position: relative;
-  height: 520px;
+  width: 100%;
+  height: 800px;   /* CINEMATIC DEPTH */
+  background: radial-gradient(circle at 50% 20%, 
+    rgba(0, 180, 255, 0.55) 0%,
+    rgba(0, 80, 255, 0.22) 25%,
+    rgba(10, 10, 20, 1) 60%
+  );
   overflow: hidden;
-  border-radius: 16px;
-  background: #000014;
+  border-radius: 14px;
+  margin-top: 28px;
 }
 
-/* Floor (main grid) */
-.grid-plane {
-  position:absolute;
-  bottom:0;
-  left:50%;
-  transform: translateX(-50%) perspective(800px) rotateX(60deg);
-  width:200%;
-  height:200%;
-  background:
-     repeating-linear-gradient(#00eaff55 0px, #00eaff55 2px, transparent 2px, transparent 40px),
-     repeating-linear-gradient(90deg, #ff3bd455 0px, #ff3bd455 2px, transparent 2px, transparent 40px);
-  animation: pulseGrid 4s infinite ease-in-out;
-  filter: drop-shadow(0 0 20px var(--glow-blue));
+/* MOVING GRID WALL — cinematic depth */
+.hero-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(0,180,255,0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,50,150,0.15) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.30;
+  animation: gridMove 18s linear infinite;
 }
 
-/* Left Wall */
-.grid-left {
-  position:absolute;
-  left:0;
-  top:0;
-  width:50%;
-  height:100%;
-  transform: perspective(1000px) rotateY(60deg);
-  transform-origin:left;
-  background:
-     repeating-linear-gradient(#00eaff55 0px, #00eaff55 2px, transparent 2px, transparent 40px),
-     repeating-linear-gradient(90deg, #ff3bd455 0px, #ff3bd455 2px, transparent 2px, transparent 40px);
-  filter: drop-shadow(0 0 20px var(--glow-blue));
-  opacity:0.75;
+@keyframes gridMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(40px); }
 }
 
-/* Right Wall */
-.grid-right {
-  position:absolute;
-  right:0;
-  top:0;
-  width:50%;
-  height:100%;
-  transform: perspective(1000px) rotateY(-60deg);
-  transform-origin:right;
-  background:
-     repeating-linear-gradient(#ff3bd455 0px, #ff3bd455 2px, transparent 2px, transparent 40px),
-     repeating-linear-gradient(90deg, #00eaff55 0px, #00eaff55 2px, transparent 2px, transparent 40px);
-  filter: drop-shadow(0 0 20px var(--glow-pink));
-  opacity:0.75;
+/* LEFT NEON COLUMN */
+.hero-grid::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -160px;
+  width: 340px;
+  height: 160%;
+  background: linear-gradient(
+    90deg,
+    rgba(0,150,255,0.8),
+    rgba(0,120,255,0.4),
+    transparent
+  );
+  filter: blur(22px);
+  animation: pulseBlue 5s ease-in-out infinite;
 }
 
-/* Ceiling */
-.grid-ceiling {
-  position:absolute;
-  top:-30%;
-  left:50%;
-  transform: translateX(-50%) perspective(800px) rotateX(-60deg);
-  width:200%;
-  height:200%;
-  background:
-     repeating-linear-gradient(#00eaff55 0px, #00eaff55 2px, transparent 2px, transparent 40px),
-     repeating-linear-gradient(90deg, #ff3bd455 0px, #ff3bd455 2px, transparent 2px, transparent 40px);
-  opacity:0.75;
-  filter: drop-shadow(0 0 20px var(--glow-pink));
+/* RIGHT NEON COLUMN */
+.beam-right {
+  position: absolute;
+  top: -20%;
+  right: -160px;
+  width: 340px;
+  height: 160%;
+  background: linear-gradient(
+    270deg,
+    rgba(255,60,150,0.8),
+    rgba(255,20,100,0.4),
+    transparent
+  );
+  filter: blur(22px);
+  animation: pulsePink 5s ease-in-out infinite;
 }
 
-/* Grid Pulse Animation */
-@keyframes pulseGrid {
-  0%,100% { filter: brightness(1) drop-shadow(0 0 12px var(--glow-blue)); }
-  50% { filter: brightness(1.25) drop-shadow(0 0 22px var(--glow-pink)); }
+@keyframes pulseBlue {
+  0%,100% { opacity: 0.7; }
+  50%    { opacity: 1; }
+}
+@keyframes pulsePink {
+  0%,100% { opacity: 0.7; }
+  50%    { opacity: 1; }
 }
 
 /* HERO TEXT */
-.hero-v2-content {
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform: translate(-50%, -50%);
-  text-align:center;
-  z-index:5;
+.hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 180px;
 }
-.hero-v2-content h1 {
-  font-size:44px;
-  font-weight:900;
-  line-height:1.1;
-  text-shadow:0 0 20px rgba(0,238,255,0.55);
+
+.hero-content h1 {
+  font-size: 48px;
+  font-weight: 900;
+  line-height: 1.1;
 }
-.hero-v2-content p {
-  margin-top:12px;
-  color:rgba(255,255,255,0.88);
-  font-size:18px;
-  text-shadow:0 0 12px rgba(255,60,212,0.5);
+
+.hero-content p {
+  margin-top: 14px;
+  color: rgba(255,255,255,0.85);
+  font-size: 20px;
 }
 
 /* ========================================================= */
 /*  GRID + CARDS                                              */
 /* ========================================================= */
+
 h2 {
   margin-top:32px;
   margin-bottom:18px;
@@ -177,8 +168,18 @@ h2 {
   box-shadow:0 6px 22px rgba(0,0,0,0.55);
 }
 
+.leader { display:flex; gap:12px; align-items:center; }
+
+.avatar {
+  width:56px; height:56px; border-radius:10px;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:700; color:white; font-size:18px;
+}
+
 /* MOBILE */
 @media(max-width:880px){
-  .hero-v2 { height:420px; }
-  .hero-v2-content h1 { font-size:30px; }
-}/* cache-break Fri Nov 28 14:08:53 IST 2025 */
+  .hero-grid { height: 600px; }
+  .hero-content { padding-top: 120px; }
+  .hero-content h1 { font-size:34px; }
+  .hero-content p { font-size:16px; }
+}
