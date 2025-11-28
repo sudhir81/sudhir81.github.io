@@ -2,145 +2,69 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Home — TerraForge Cloud</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>TerraForge Cloud</title>
 
-  <link rel="icon" href="/assets/A_2D_vector_graphic_features_a_logo_with_the_initi.png"/>
-  <link rel="stylesheet" href="/assets/styles.css"/>
+  <!-- Correct Path -->
+  <link rel="stylesheet" href="assets/styles.css" />
+
+  <link rel="icon" href="assets/A_2D_vector_graphic_features_a_logo_with_the_initi.png"/>
 </head>
 
 <body>
 
-  <!-- ===================== HEADER ===================== -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="/index.html">
-        <img src="/assets/A_2D_vector_graphic_features_a_logo_with_the_initi.png" alt="Logo"/>
-        <span class="brand-name">TerraForge Cloud</span>
-      </a>
+<!-- NAVBAR -->
+<div class="nav-container">
+  <div class="brand">
+    <img src="assets/A_2D_vector_graphic_features_a_logo_with_the_initi.png" class="logo">
+    <span>TerraForge Cloud</span>
+  </div>
 
-      <nav class="site-nav">
-        <a href="/index.html">Home</a>
-        <a href="/services.html">Services</a>
-        <a href="/leadership.html">Leadership</a>
-        <a href="/contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
+  <nav class="menu">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="leadership.html">Leadership</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</div>
 
-  <!-- ===================== FULL SCREEN HERO ===================== -->
-  <section class="hero-wrap">
+<!-- FULL SCREEN NEON CORRIDOR HERO -->
+<section class="hero-fullscreen">
+  <div class="tube left-tube"></div>
+  <div class="tube right-tube"></div>
+  <div class="floor-reflection"></div>
 
-    <!-- The neon corridor background -->
-    <div class="corridor" aria-hidden="true">
-      <div class="corridor-tubes">
-        <div class="tube left-tube"></div>
-        <div class="tube right-tube"></div>
+  <div class="hero-text">
+    <h1>Engineering the Future of Cloud, AI & Enterprise Platforms</h1>
+    <p>End-to-end solutions across Cloud, DevOps, AI Automation, Virtualization, Messaging & Infrastructure.</p>
+    <a class="cta" href="assets/TerraForge_Company_Profile_Premium_v3.pdf" download>Download Company Profile</a>
+  </div>
+</section>
 
-        <div class="tube left-tube inner-1"></div>
-        <div class="tube right-tube inner-1"></div>
+<!-- TECHNOLOGY DOMAINS -->
+<main class="content">
 
-        <div class="tube left-tube inner-2"></div>
-        <div class="tube right-tube inner-2"></div>
-      </div>
+<h2>Technology Domains</h2>
+<div class="grid">
+  <div class="card"><h3>Cloud Engineering & Architecture</h3><p>- Cloud Management</p><p>- Infrastructure & DevOps</p><p>- Compliance & Strategy</p><p>- Migration & Modernization</p></div>
+  <div class="card"><h3>Digital Workspaces</h3><p>- Digital Employee Experience</p><p>- Unified Endpoint Management</p><p>- Virtual Desktops & Apps</p></div>
+  <div class="card"><h3>AI, Data Science & Automation</h3><p>- LLM Automation</p><p>- Data Engineering</p><p>- Predictive Analytics</p><p>- Conversational AI</p></div>
+  <div class="card"><h3>Messaging & Modern Workplace</h3><p>- Exchange Hybrid</p><p>- Mail Flow Engineering</p><p>- Security & Governance</p></div>
+  <div class="card"><h3>VMware & Virtualization</h3><p>- vSphere, ESXi</p><p>- Horizon VDI</p><p>- DR & SRM</p><p>- Virtualization Migrations</p></div>
+  <div class="card"><h3>Wintel & Core Infrastructure</h3><p>- Hybrid Datacenter Integration</p><p>- Enterprise Support</p></div>
+</div>
 
-      <div class="floor-reflection"></div>
-      <div class="vanish-gradient"></div>
-    </div>
+<h2>Leadership</h2>
+<div class="grid">
+  <div class='card leader'><div class='avatar purple'>SD</div><div><strong>Sudhir Dalvi</strong><p>Cloud Architect • DevOps • Terraform • MCT</p></div></div>
+  <div class='card leader'><div class='avatar cyan'>DG</div><div><strong>Deepak Gautam</strong><p>Director – AI & Data Engineering</p></div></div>
+  <div class='card leader'><div class='avatar pink'>AD</div><div><strong>Abhijeet Deshmukh</strong><p>VMware & Virtualization Expert</p></div></div>
+  <div class='card leader'><div class='avatar green'>VG</div><div><strong>Vikas Guyal</strong><p>Cloud & Infrastructure Specialist</p></div></div>
+</div>
 
-    <!-- Centered HERO TEXT -->
-    <div class="hero-center">
-      <h1>Engineering the Future of Cloud, AI & Enterprise Platforms</h1>
-      <p class="hero-sub">
-        Scalable, secure and automation-first solutions across Cloud, DevOps,
-        AI, Virtualization, Messaging & Infrastructure.
-      </p>
+</main>
 
-      <a class="hero-btn" href="/assets/TerraForge_Company_Profile_Premium_v3.pdf" download>
-        Download Company Profile
-      </a>
-    </div>
-  </section>
-
-
-  <!-- ===================== SECTIONS BELOW HERO ===================== -->
-  <main class="container below-hero">
-
-    <h2>Technology Domains</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Cloud Engineering & Architecture</h3>
-        <ul>
-          <li>Cloud Management</li>
-          <li>Infrastructure & DevOps</li>
-          <li>Compliance & Strategy</li>
-          <li>Migration & Modernization</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>Digital Workspaces</h3>
-        <ul>
-          <li>Digital Employee Experience</li>
-          <li>Unified Endpoint Management</li>
-          <li>Virtual Desktops & Apps</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>AI, Data Science & Automation</h3>
-        <ul>
-          <li>LLM Automation</li>
-          <li>Data Engineering</li>
-          <li>Predictive Analytics</li>
-          <li>Conversational AI</li>
-        </ul>
-      </div>
-    </div>
-
-    <h2>Leadership</h2>
-    <div class="grid small">
-      <div class="leader card">
-        <div class="avatar" style="background:#7C3AED">SD</div>
-        <div>
-          <strong>Sudhir Dalvi</strong>
-          <p class="small">Microsoft Azure | Cloud Architect</p>
-        </div>
-      </div>
-
-      <div class="leader card">
-        <div class="avatar" style="background:#06B6D4">DG</div>
-        <div>
-          <strong>Deepak Gautam</strong>
-          <p class="small">Director – AI & Data Engineering</p>
-        </div>
-      </div>
-
-      <div class="leader card">
-        <div class="avatar" style="background:#FF2D95">AD</div>
-        <div>
-          <strong>Abhijeet Deshmukh</strong>
-          <p class="small">VMware & Virtualization Expert</p>
-        </div>
-      </div>
-
-      <div class="leader card">
-        <div class="avatar" style="background:#10B981">VG</div>
-        <div>
-          <strong>Vikas Guyal</strong>
-          <p class="small">Cloud & Infrastructure Specialist</p>
-        </div>
-      </div>
-    </div>
-
-  </main>
-
-  <!-- ===================== FOOTER ===================== -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>© TerraForge Cloud — <a href="https://www.terraforgecloud.com">terraforgecloud.com</a></p>
-    </div>
-  </footer>
+<footer class="footer">© TerraForge Cloud — <a href="https://www.terraforgecloud.com">terraforgecloud.com</a></footer>
 
 </body>
 </html>
