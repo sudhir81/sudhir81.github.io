@@ -1,235 +1,142 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TerraForge Cloud — Home</title>
-
-  <!-- Favicon -->
-  <link rel="icon" href="assets/A_2D_vector_graphic_features_a_logo_with_the_initi.png" />
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="assets/styles.css" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Home — TerraForge Cloud</title>
+  <link rel="icon" href="/assets/A_2D_vector_graphic_features_a_logo_with_the_initi.png" />
+  <link rel="stylesheet" href="/assets/styles.css" />
 </head>
-
 <body>
-
-  <!-- =====================================================
-       HEADER / NAVIGATION
-  ====================================================== -->
   <header class="site-header">
     <div class="container header-inner">
-
-      <!-- Branding -->
-      <a class="brand" href="index.html">
-        <img src="assets/A_2D_vector_graphic_features_a_logo_with_the_initi.png" alt="TerraForge" class="logo" />
+      <a class="brand" href="/index.html">
+        <img src="/assets/A_2D_vector_graphic_features_a_logo_with_the_initi.png" alt="TerraForge logo" />
         <span class="brand-name">TerraForge Cloud</span>
       </a>
-
-      <!-- Navigation -->
-      <nav class="site-nav">
-        <a href="index.html" class="active">Home</a>
-        <a href="services.html">Services</a>
-        <a href="leadership.html">Leadership</a>
-        <a href="cases.html">Case Studies</a>
-        <a href="contact.html">Contact</a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/index.html">Home</a>
+        <a href="/services.html">Services</a>
+        <a href="/leadership.html">Leadership</a>
+        <a href="/contact.html">Contact</a>
       </nav>
-
     </div>
   </header>
 
+  <main>
+    <!-- HERO WRAP: corridor is full-width background, hero content floats left -->
+    <section class="hero-wrap">
+      <!-- Neon corridor background (pure CSS) -->
+      <div class="corridor" aria-hidden="true">
+        <div class="corridor-tubes">
+          <!-- multiple tube elements create depth -->
+          <div class="tube left-tube"></div>
+          <div class="tube right-tube"></div>
+          <div class="tube left-tube inner-1"></div>
+          <div class="tube right-tube inner-1"></div>
+          <div class="tube left-tube inner-2"></div>
+          <div class="tube right-tube inner-2"></div>
+        </div>
 
-  <!-- =====================================================
-       HERO SECTION — FULL-SCREEN NEON CORRIDOR
-  ====================================================== -->
-  <section class="hero-wrap">
-
-    <!-- Neon corridor background -->
-    <div class="corridor" aria-hidden="true">
-
-      <!-- Outer glowing tubes -->
-      <div class="tube left-tube"></div>
-      <div class="tube right-tube"></div>
-
-      <!-- Inner tubes (soft glow) -->
-      <div class="tube left-inner"></div>
-      <div class="tube right-inner"></div>
-
-      <!-- Floor glow reflection -->
-      <div class="floor-reflect"></div>
-
-    </div>
-
-    <!-- Hero content -->
-    <div class="hero-center container">
-      <h1>
-        Engineering the Future of Cloud, AI & Enterprise Platforms
-      </h1>
-
-      <p class="lead">
-        Scalable, secure and automation-first solutions across Cloud, DevOps,
-        AI, Virtualization, Messaging & Infrastructure.
-      </p>
-
-      <div class="hero-cta">
-        <a class="btn-primary" href="assets/TerraForge_Company_Profile_Premium_v3.pdf" download>
-          Download Company Profile
-        </a>
-
-        <a class="btn-ghost" href="services.html">See Services</a>
+        <div class="floor-reflection" aria-hidden="true"></div>
+        <div class="vanish-gradient" aria-hidden="true"></div>
       </div>
-    </div>
 
-  </section>
+      <!-- Hero content that sits on top of corridor -->
+      <div class="container hero-content">
+        <div class="hero-text">
+          <h1>Engineering the Future of Cloud, AI &amp; Enterprise Platforms</h1>
+          <p class="lead">
+            End-to-end solutions across Cloud, DevOps, AI Automation, Virtualization,
+            Messaging &amp; Infrastructure — built for scale, security and speed.
+          </p>
+          <p class="actions">
+            <a class="btn-primary" href="/assets/TerraForge_Company_Profile_Premium_v3.pdf" download>
+              Download Company Profile
+            </a>
+            <a class="btn-ghost" href="/contact.html">Contact Sales</a>
+          </p>
+        </div>
 
+        <!-- Optional decorative right column (kept empty so corridor shows through) -->
+        <div class="hero-visual" aria-hidden="true"></div>
+      </div>
+    </section>
 
-
-  <!-- =====================================================
-       MAIN CONTENT
-  ====================================================== -->
-  <main class="container content">
-
-    <!-- ------------------------------------------
-         TECHNOLOGY DOMAINS
-    ------------------------------------------- -->
-    <section class="section">
+    <!-- CONTENT SECTIONS -->
+    <section class="container domains">
       <h2>Technology Domains</h2>
-
       <div class="grid">
-
-        <!-- Cloud -->
-        <article class="card">
+        <div class="card">
           <h3>Cloud Engineering &amp; Architecture</h3>
           <ul>
             <li>Cloud Management</li>
-            <li>Infrastructure & DevOps</li>
-            <li>Compliance & Strategy</li>
-            <li>Migration & Modernization</li>
+            <li>Infrastructure &amp; DevOps</li>
+            <li>Compliance &amp; Strategy</li>
+            <li>Migration &amp; Modernization</li>
           </ul>
-        </article>
-
-        <!-- Digital Workspace -->
-        <article class="card">
+        </div>
+        <div class="card">
           <h3>Digital Workspaces</h3>
           <ul>
             <li>Digital Employee Experience</li>
             <li>Unified Endpoint Management</li>
-            <li>Virtual Desktops & Apps</li>
+            <li>Virtual Desktops &amp; Apps</li>
           </ul>
-        </article>
-                <!-- AI & Data -->
-        <article class="card">
+        </div>
+        <div class="card">
           <h3>AI, Data Science &amp; Automation</h3>
           <ul>
             <li>LLM Automation</li>
-            <li>Data Engineering Pipelines</li>
+            <li>Data Engineering</li>
             <li>Predictive Analytics</li>
-            <li>Conversational AI</li>
           </ul>
-        </article>
-
-        <!-- Messaging -->
-        <article class="card">
-          <h3>Messaging &amp; Modern Workplace</h3>
-          <ul>
-            <li>Exchange Online / Hybrid</li>
-            <li>Mail Flow Engineering</li>
-            <li>Email Security & Compliance</li>
-          </ul>
-        </article>
-
-        <!-- VMware -->
-        <article class="card">
-          <h3>VMware &amp; Virtualization</h3>
-          <ul>
-            <li>vSphere, ESXi, vCenter</li>
-            <li>Horizon VDI</li>
-            <li>DR & Replication (SRM)</li>
-            <li>Virtualization Migrations</li>
-          </ul>
-        </article>
-
-        <!-- Wintel -->
-        <article class="card">
-          <h3>Wintel &amp; Core Infrastructure</h3>
-          <ul>
-            <li>Hybrid Datacenter Integration</li>
-            <li>Procurement, Implementation & Support</li>
-          </ul>
-        </article>
-
+        </div>
       </div>
     </section>
 
-
-    <!-- ------------------------------------------
-         LEADERSHIP
-    ------------------------------------------- -->
-    <section class="section">
+    <section class="container leadership">
       <h2>Leadership</h2>
-
-      <div class="grid leaders">
-
-        <!-- Sudhir -->
-        <article class="leader-card">
+      <div class="grid small">
+        <div class="leader card">
           <div class="avatar" style="background:#7C3AED">SD</div>
           <div>
             <strong>Sudhir Dalvi</strong>
-            <p class="role">Microsoft Azure | Cloud Architect</p>
-            <p class="desc">
-              MCT since 2008. Technical Lead – Automation, DevOps & Terraform.
-            </p>
+            <p class="small">Microsoft Azure | Cloud Architect</p>
           </div>
-        </article>
+        </div>
 
-        <!-- Deepak -->
-        <article class="leader-card">
+        <div class="leader card">
           <div class="avatar" style="background:#06B6D4">DG</div>
           <div>
             <strong>Deepak Gautam</strong>
-            <p class="role">Director – AI & Data Engineering</p>
-            <p class="desc">LLM Specialist & Data Engineering Architect.</p>
+            <p class="small">Director – AI &amp; Data Engineering</p>
           </div>
-        </article>
+        </div>
 
-        <!-- Abhijeet -->
-        <article class="leader-card">
+        <div class="leader card">
           <div class="avatar" style="background:#FF2D95">AD</div>
           <div>
             <strong>Abhijeet Deshmukh</strong>
-            <p class="role">VMware & Virtualization Expert</p>
-            <p class="desc">Entrepreneur & VMware Instructor (VMCS).</p>
+            <p class="small">VMware &amp; Virtualization Expert</p>
           </div>
-        </article>
+        </div>
 
-        <!-- Vikas J (updated everywhere) -->
-        <article class="leader-card">
-          <div class="avatar" style="background:#10B981">VJ</div>
+        <div class="leader card">
+          <div class="avatar" style="background:#10B981">VG</div>
           <div>
-            <strong>Vikas J</strong>
-            <p class="role">Cloud & Infrastructure Specialist</p>
-            <p class="desc">Hybrid Datacenter Modernization & Enterprise Support.</p>
+            <strong>Vikas Guyal</strong>
+            <p class="small">Cloud &amp; Infrastructure Specialist</p>
           </div>
-        </article>
-
+        </div>
       </div>
     </section>
-
   </main>
 
-
-  <!-- =====================================================
-       FOOTER
-  ====================================================== -->
-  <footer class="footer">
-    <div class="container">
-      © TerraForge Cloud — 
-      <a href="https://www.terraforgecloud.com">
-        terraforgecloud.com
-      </a>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© TerraForge Cloud — <a href="https://www.terraforgecloud.com">terraforgecloud.com</a></p>
     </div>
   </footer>
-
 </body>
 </html>
