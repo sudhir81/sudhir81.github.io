@@ -1,197 +1,110 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact — TerraForge Cloud</title>
 
-  <!-- keep the same styles file -->
-  <link rel="stylesheet" href="assets/styles.css" />
-  <link rel="icon" href="assets/A_2D_vector_graphic_features_a_logo_with_the_initi.png" />
-  <style>
-    /* small page-specific tweaks */
-    .contact-hero {
-      max-width:1200px;
-      margin:24px auto 12px;
-      padding:0 20px;
-    }
-    .contact-hero h1{font-size:44px;margin-bottom:8px;}
-    .contact-intro{opacity:.9;margin-bottom:20px;font-size:18px}
-
-    .contact-container { max-width:1200px;margin:10px auto;padding:0 20px; }
-    .contact-grid { display:flex; gap:28px; align-items:flex-start; flex-wrap:wrap; }
-    .contact-side {
-      flex:1 1 360px;
-      min-width:280px;
-    }
-    .contact-form-wrap {
-      flex:1 1 420px;
-      min-width:280px;
-    }
-
-    .contact-box { padding:28px;border-radius:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06); }
-    .contact-row { margin-bottom:18px; display:flex; gap:12px; align-items:center; }
-    .contact-row svg, .contact-row img { width:26px;height:26px; display:inline-block }
-
-    label { display:block; margin-bottom:6px; font-weight:700; }
-    .contact-form input, .contact-form textarea {
-      width:100%; padding:10px 12px; border-radius:8px; background:#0b0b10; border:1px solid #2b2b34; color:white;
-    }
-    textarea { min-height:160px; resize:vertical; }
-
-    .row-2 { display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
-    .submit-btn{ background:linear-gradient(90deg,#866bff,#4cc3ff); color:#fff; border:0; padding:12px 18px; border-radius:10px; font-weight:700; cursor:pointer }
-
-    .small-note { font-size:13px; opacity:.8; margin-top:10px; }
-
-    @media (max-width:880px){
-      .row-2{grid-template-columns:1fr}
-      .contact-grid{flex-direction:column}
-      .contact-hero h1{font-size:32px}
-      textarea{min-height:140px}
-    }
-  </style>
+  <link rel="icon" href="/assets/A_2D_vector_graphic_features_a_logo_with_the_initi.png">
+  <link rel="stylesheet" href="/assets/styles.css" />
 </head>
 
 <body>
-  <!-- NAV (same as index) -->
-  <div class="nav-container">
-    <div class="brand">
-      <img src="assets/A_2D_vector_graphic_features_a_logo_with_the_initi.png" class="logo" alt="TerraForge logo">
-      <span>TerraForge Cloud</span>
-    </div>
 
-    <nav class="menu">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="leadership.html">Leadership</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+<!-- NAV -->
+<div class="container nav">
+  <a class="brand" href="/index.html">
+    <img src="/assets/A_2D_vector_graphic_features_a_logo_with_the_initi.png" />
+    <span style="font-size:18px;font-weight:600;">TerraForge Cloud</span>
+  </a>
+
+  <nav class="menu">
+    <a href="/index.html">Home</a>
+    <a href="/services.html">Services</a>
+    <a href="/leadership.html">Leadership</a>
+    <a href="/contact.html">Contact</a>
+  </nav>
+</div>
+
+<main class="container">
+
+  <!-- Hero Title -->
+  <div style="margin-top:30px;text-align:center;">
+    <h1 style="font-size:32px;margin-bottom:8px;">Have a Question? Let’s Talk</h1>
+    <p style="opacity:0.8;">Need something cleared up? Reach us anytime.</p>
   </div>
 
-  <!-- Page intro -->
-  <div class="contact-hero">
-    <h1>Have a Question? Let’s Talk</h1>
-    <div class="contact-intro">Need something cleared up? Feel free to reach us — pick whichever is easiest: email, phone or WhatsApp.</div>
-  </div>
 
-  <!-- Contact content -->
-  <main class="contact-container">
+  <!-- CONTACT INFO -->
+  <div class="contact-card" style="margin-top:32px;">
+
     <div class="contact-grid">
 
-      <!-- Left: contact details -->
-      <aside class="contact-side">
-        <div class="contact-box">
-          <div class="contact-row">
-            <!-- email icon (inline simple) -->
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M3 6.5C3 5.12 4.12 4 5.5 4h13C20.88 4 22 5.12 22 6.5v11c0 1.38-1.12 2.5-2.5 2.5h-13C4.12 20 3 18.88 3 17.5v-11z" stroke="#a8c9ff" stroke-width="1.2" fill="none"/>
-              <path d="M4 7.5l8 5 8-5" stroke="#a8c9ff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            </svg>
-            <div>
-              <div style="font-weight:700">Email</div>
-              <div><a href="mailto:info@terraforgecloud.com">info@terraforgecloud.com</a></div>
-            </div>
-          </div>
-
-          <div class="contact-row" style="margin-top:14px">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19 19 0 0 1 3 5.18 2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.72c.12 1.05.43 2.07.9 3.01a2 2 0 0 1-.45 2.11L9.91 11.91a15 15 0 0 0 6.18 6.18l1.06-1.06a2 2 0 0 1 2.11-.45c.94.47 1.96.78 3.01.9A2 2 0 0 1 22 16.92z" stroke="#a8c9ff" stroke-width="1.2" fill="none"/>
-            </svg>
-            <div>
-              <div style="font-weight:700">Phone</div>
-              <div><a href="tel:+918588818710">+91 8588818710</a></div>
-            </div>
-          </div>
-
-          <div class="contact-row" style="margin-top:14px">
-            <!-- WhatsApp icon (from assets) -->
-            <img src="assets/whatsapp.svg" alt="WhatsApp" class="whatsapp-icon">
-            <div>
-              <div style="font-weight:700">WhatsApp</div>
-              <div><a href="https://wa.me/918588818710" target="_blank" rel="noopener">Chat on WhatsApp</a></div>
-            </div>
-          </div>
-
-          <div class="small-note">
-            For a direct email, use the form to the right — it will open your mail client (Outlook/Gmail) prefilled with message text.
-          </div>
+      <div class="contact-item">
+        <img src="/assets/mail.svg" alt="Email" />
+        <div>
+          <strong>Email</strong><br>
+          info@terraforgecloud.com
         </div>
-      </aside>
+      </div>
 
-      <!-- Right: contact form -->
-      <section class="contact-form-wrap">
-        <div class="contact-box">
-          <form id="contactForm" class="contact-form" onsubmit="return sendMail(event)">
-            <div class="row-2">
-              <div>
-                <label for="name">Your Name</label>
-                <input id="name" name="name" placeholder="Your full name" required />
-              </div>
-              <div>
-                <label for="phone">Phone Number</label>
-                <input id="phone" name="phone" placeholder="+91 9XXXXXXXXX" />
-              </div>
-            </div>
-
-            <div style="margin-top:12px">
-              <label for="email">Your E-mail</label>
-              <input id="email" name="email" type="email" placeholder="you@company.com" required />
-            </div>
-
-            <div style="margin-top:12px">
-              <label for="subject">Subject</label>
-              <input id="subject" name="subject" placeholder="Quick question about Azure migration" />
-            </div>
-
-            <div style="margin-top:12px">
-              <label for="message">Your Message</label>
-              <textarea id="message" name="message" placeholder="Tell us about your requirement, timelines and budget (if any)"></textarea>
-            </div>
-
-            <div style="margin-top:14px; display:flex; gap:12px; align-items:center;">
-              <button type="submit" class="submit-btn">Send via Email</button>
-              <div class="small-note">If your mail client doesn't open, copy/paste the message into your email and send to <a href="mailto:info@terraforgecloud.com">info@terraforgecloud.com</a></div>
-            </div>
-          </form>
+      <div class="contact-item">
+        <img src="/assets/phone.svg" alt="Phone" />
+        <div>
+          <strong>Phone</strong><br>
+          +91 8588818710
         </div>
-      </section>
+      </div>
+
+      <div class="contact-item">
+        <img src="/assets/whatsapp.svg" alt="WhatsApp" />
+        <div>
+          <strong>WhatsApp</strong><br>
+          Click icon to chat
+        </div>
+        <a href="https://wa.me/918588818710" target="_blank">
+          <img src="/assets/whatsapp.svg" style="width:34px;height:34px;margin-left:8px;">
+        </a>
+      </div>
 
     </div>
-  </main>
+  </div>
 
-  <footer class="footer">© TerraForge Cloud — <a href="https://www.terraforgecloud.com">terraforgecloud.com</a></footer>
 
-  <script>
-    // Build mailto link and open user's default mail client.
-    function sendMail(event){
-      event.preventDefault();
-      const name = encodeURIComponent(document.getElementById('name').value.trim());
-      const phone = encodeURIComponent(document.getElementById('phone').value.trim());
-      const email = encodeURIComponent(document.getElementById('email').value.trim());
-      const subject = encodeURIComponent(document.getElementById('subject').value.trim() || 'Enquiry from website');
-      const message = encodeURIComponent(document.getElementById('message').value.trim());
+  <!-- CONTACT FORM -->
+  <div class="contact-card">
 
-      // Compose email body with some structured details
-      let body = `Name: ${name}%0D%0A`;
-      if(phone) body += `Phone: ${phone}%0D%0A`;
-      body += `Email: ${email}%0D%0A%0D%0A`;
-      body += `Message:%0D%0A${message}%0D%0A%0D%0A`;
-      body += `---%0D%0ASent from TerraForge Cloud website`;
+    <form method="POST" action="https://formsubmit.co/info@terraforgecloud.com">
 
-      // Mailto: open in mail client (Outlook / default)
-      const mailto = `mailto:info@terraforgecloud.com?subject=${subject}&body=${body}`;
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="box">
 
-      // Try to open mail client
-      window.location.href = mailto;
+      <label>Your Name</label>
+      <input type="text" name="name" required>
 
-      // As a safety, show a tiny message if blocked (optional)
-      setTimeout(() => {
-        // If the page is still visible after opening mail client, show short hint
-        // (We keep it minimal - user will see mail app usually.)
-      }, 600);
-      return false;
-    }
-  </script>
+      <label style="margin-top:14px;">Phone Number</label>
+      <input type="text" name="phone" required>
+
+      <label style="margin-top:14px;">Your Email</label>
+      <input type="email" name="email" required>
+
+      <label style="margin-top:14px;">Subject</label>
+      <input type="text" name="subject" required>
+
+      <label style="margin-top:14px;">Message</label>
+      <textarea name="message" required></textarea>
+
+      <button class="send-btn" type="submit">SEND MESSAGE</button>
+    </form>
+
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<div class="container footer">
+  <p>© TerraForge Cloud — <a href="https://www.terraforgecloud.com">terraforgecloud.com</a></p>
+</div>
+
 </body>
 </html>
