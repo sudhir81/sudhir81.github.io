@@ -1,148 +1,171 @@
-/* GLOBAL THEME */
+/* ---------- GLOBAL ---------- */
 body {
-  margin: 0;
-  padding: 0;
-  background: #070b14;
-  font-family: 'Inter', sans-serif;
-  color: white;
+  margin:0;
+  font-family:system-ui, sans-serif;
+  background:#050510;
+  color:white;
+}
+a{color:#8abfff;text-decoration:none;}
+h1,h2,h3{margin:0 0 12px 0;}
+
+/* ---------- NAV ---------- */
+.nav-container {
+  max-width:1200px;
+  margin:20px auto;
+  padding:10px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo {height:40px;border-radius:6px;}
+.menu a {margin-left:16px;color:white;font-weight:500;}
+.menu a:hover {opacity:0.7;}
+
+/* ---------- FULL SCREEN HERO ---------- */
+.hero-fullscreen {
+  position:relative;
+  height:92vh;
+  width:100%;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
-/* CONTAINER */
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 20px;
+.hero-text {
+  position:relative;
+  text-align:center;
+  max-width:800px;
+  z-index:10;
+}
+.hero-text h1 {font-size:48px;font-weight:900;}
+.hero-text p {font-size:18px;margin-top:10px;opacity:0.85;}
+
+.cta {
+  margin-top:20px;
+  display:inline-block;
+  padding:12px 22px;
+  border-radius:10px;
+  background:linear-gradient(90deg,#866bff,#4cc3ff);
+  font-weight:700;
+  color:white;
 }
 
-/* NAVBAR */
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.menu a {
-  margin-left: 20px;
-  color: rgba(255,255,255,0.8);
-  text-decoration: none;
-  font-weight: 500;
-}
-.menu a.active,
-.menu a:hover {
-  color: #a78bfa;
+/* ---------- CORRIDOR NEON TUBES ---------- */
+.tube {
+  position:absolute;
+  width:300px;
+  height:120vh;
+  top:-10vh;
+  background:rgba(0,0,0,0.2);
 }
 
-/* PAGE TITLES */
-.page-title {
-  font-size: 36px;
-  font-weight: 900;
-  margin-top: 20px;
-}
-.page-sub {
-  margin-top: -10px;
-  color: rgba(255,255,255,0.7);
+.left-tube {
+  left:-120px;
+  background:linear-gradient(90deg,rgba(0,180,255,0.9),rgba(0,120,255,0.4));
+  box-shadow:60px 0 120px rgba(0,140,255,0.4);
+  animation:pulseBlue 3.5s infinite;
 }
 
-/* CONTACT CARD */
-.contact-card {
-  margin-top: 30px;
-  background: rgba(255,255,255,0.03);
-  border-radius: 18px;
-  padding: 30px;
-  display: flex;
-  gap: 40px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 0 40px rgba(0,0,0,0.4);
+.right-tube {
+  right:-120px;
+  background:linear-gradient(270deg,rgba(255,60,150,0.9),rgba(255,20,100,0.4));
+  box-shadow:-60px 0 120px rgba(255,60,150,0.4);
+  animation:pulsePink 3.5s infinite;
 }
 
-/* LEFT PANEL */
-.contact-left {
-  flex: 1;
-}
-.contact-row {
-  display: flex;
-  align-items: center;
-  margin-bottom: 22px;
-}
-.icon-small {
-  width: 40px;
-  height: 40px;
-  margin-right: 14px;
-  filter: drop-shadow(0 0 8px rgba(255,255,255,0.25));
+.floor-reflection {
+  position:absolute;
+  bottom:-20vh;
+  width:160%;
+  height:40vh;
+  left:-30%;
+  background:radial-gradient(circle,rgba(0,150,255,0.3),rgba(255,40,130,0.3),transparent);
+  filter:blur(50px);
 }
 
-/* WhatsApp button */
-.wa-btn {
-  display: inline-block;
-  margin-top: 6px;
-  padding: 6px 14px;
-  background: #25D366;
-  color: black;
-  font-weight: 600;
-  border-radius: 6px;
-  text-decoration: none;
-  box-shadow: 0 0 12px rgba(37,211,102,0.7);
-}
-.wa-btn:hover {
-  filter: brightness(1.15);
+@keyframes pulseBlue {0%,100%{opacity:.7;}50%{opacity:1;}}
+@keyframes pulsePink {0%,100%{opacity:.7;}50%{opacity:1;}}
+
+/* ---------- CONTENT SECTIONS ---------- */
+.content {
+  max-width:1200px;
+  margin:40px auto;
+  padding:10px 20px;
 }
 
-/* RIGHT — FORM */
-.contact-form {
-  flex: 1;
-}
-.form-row {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-input, textarea {
-  width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  border: none;
-  background: rgba(255,255,255,0.1);
-  color: white;
-  font-size: 15px;
-}
-input::placeholder,
-textarea::placeholder {
-  color: rgba(255,255,255,0.6);
+.grid {
+  display:grid;
+  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 }
 
-textarea {
-  min-height: 150px;
+.card {
+  padding:20px;
+  border-radius:14px;
+  background:rgba(255,255,255,0.03);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.08);
 }
 
-/* SUBMIT BUTTON */
-.submit-btn {
-  margin-top: 12px;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 8px;
-  background: linear-gradient(90deg,#6a5af9,#9b5cff);
-  color: white;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 0 18px rgba(150,100,255,0.5);
+/* Leadership */
+.leader{display:flex;align-items:center;gap:14px;}
+.avatar{
+  width:48px;height:48px;
+  border-radius:10px;
+  font-weight:700;
+  display:flex;align-items:center;justify-content:center;
 }
-.submit-btn:hover {
-  transform: translateY(-2px);
+.purple{background:#7C3AED;}
+.cyan{background:#06B6D4;}
+.pink{background:#FF2D95;}
+.green{background:#10B981;}
+
+/* ---------- CONTACT PAGE ---------- */
+.contact-container {
+  max-width:1200px;
+  margin:40px auto;
+  padding:20px;
 }
 
-/* FOOTER */
-.footer {
-  margin-top: 40px;
-  text-align: center;
-  color: rgba(255,255,255,0.6);
+.contact-box {
+  padding:30px;
+  border-radius:18px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.1);
+  backdrop-filter:blur(8px);
+  margin-bottom:30px;
 }
-.footer a { color: #a78bfa; }
 
-/* MOBILE */
-@media (max-width: 900px) {
-  .contact-card {
-    flex-direction: column;
-  }
-  .form-row {
-    flex-direction: column;
-  }
+.contact-row {display:flex;flex-wrap:wrap;gap:40px;}
+
+.contact-form input,
+.contact-form textarea {
+  width:100%;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #444;
+  background:#111;
+  color:white;
+}
+
+textarea{height:140px;}
+
+.submit-btn{
+  margin-top:12px;
+  padding:10px 20px;
+  border:0;
+  border-radius:8px;
+  background:#4cc3ff;
+  color:white;
+  font-weight:700;
+  cursor:pointer;
+}
+
+/* WhatsApp Icon */
+.whatsapp-icon{height:40px;margin-top:10px;}
+
+@media (max-width:700px){
+  .hero-text h1{font-size:34px;}
+  .hero-fullscreen{height:75vh;}
 }
