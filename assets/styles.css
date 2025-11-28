@@ -1,213 +1,52 @@
-/* === TerraForge v7.3 - Neon Corridor Hero + Site CSS ===
-   Paste this into /assets/styles.css (replaces existing)
-   - Pure CSS neon corridor background
-   - Text floats left (option 3)
-   - Responsive
-*/
 
-/* --- Reset / base --- */
 :root{
-  --bg:#07060b;
-  --card: rgba(255,255,255,0.02);
-  --text:#e7eef7;
-  --muted: rgba(231,238,247,0.65);
-  --accent1: #06b6d4;
-  --accent2: #7c3aed;
-  --maxw:1200px;
-  --radius:14px;
-  --glass: rgba(255,255,255,0.03);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --bg:#02020a; --panel:rgba(255,255,255,0.02); --muted:rgba(255,255,255,0.85);
+  --accent1:#06B6D4; --accent2:#7C3AED; --accent3:#FF2D95;
 }
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;background:linear-gradient(180deg,#01020a 0%, #071225 100%);color:var(--muted);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.container{max-width:1200px;margin:0 auto;padding:24px}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.brand{display:flex;align-items:center;gap:12px;color:var(--muted);font-weight:700}
+.brand img{height:44px;border-radius:8px}
+.menu a{margin-left:18px;color:rgba(255,255,255,0.9);font-weight:600}
 
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  background: linear-gradient(180deg, #060511 0%, #07060b 45%, #050409 100%);
-  color:var(--text);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  line-height:1.48;
-  font-size:16px;
-}
+/* HERO */
+.hero-wrap{position:relative;overflow:hidden;border-radius:14px;margin:22px 0;padding:48px;height:68vh;min-height:520px;display:flex;align-items:center;justify-content:center}
+.neon-grid{position:absolute;inset:0;pointer-events:none;background:
+  radial-gradient(800px 300px at 10% 20%, rgba(124,58,237,0.12), transparent 10%),
+  radial-gradient(700px 260px at 90% 80%, rgba(6,182,212,0.10), transparent 10%);
+  mix-blend-mode:screen;filter:blur(8px)}
+.corridor{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.corridor::before{content:"";position:absolute;width:120%;height:100%;background:
+  repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 48px);filter:blur(20px);opacity:0.12}
+.hero{position:relative;z-index:5;display:flex;gap:28px;align-items:center;width:100%;padding:12px}
+.hero-left{flex:1;padding:12px}
+.h-title{font-size:44px;line-height:1.02;font-weight:800;color:#fff;text-shadow:0 12px 40px rgba(124,58,237,0.12)}
+.h-sub{margin-top:12px;color:rgba(255,255,255,0.9);max-width:720px}
+.cta{display:inline-block;margin-top:18px;background:linear-gradient(90deg,var(--accent2),var(--accent1));padding:12px 18px;border-radius:12px;color:#fff;font-weight:700;box-shadow:0 16px 60px rgba(124,58,237,0.06)}
 
-/* --- container/header --- */
-.container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
-.header-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
-.site-header{position:sticky;top:0;z-index:60;background:linear-gradient(180deg, rgba(6,6,10,0.4), rgba(6,6,10,0.06));backdrop-filter: blur(6px);border-bottom:1px solid rgba(255,255,255,0.02)}
-.brand{display:flex;align-items:center;gap:12px;color:var(--text);text-decoration:none}
-.brand img{height:40px;border-radius:8px;display:block}
-.brand-name{font-weight:700}
-.site-nav a{color:var(--muted);text-decoration:none;margin-left:20px;font-weight:600}
-.site-nav a:hover{color:var(--text)}
+/* hero right visual */
+.hero-right{flex:1;min-height:320px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 20px 60px rgba(0,0,0,0.6)}
 
-/* --- Hero Wrap (corridor background + text over it) --- */
-.hero-wrap{
-  position:relative;
-  padding:60px 0 80px;
-  overflow:hidden;
-}
-
-/* The corridor sits absolutely and fills area */
-.corridor{
-  position:absolute;
-  left:0;right:0;top:0;height:520px;
-  transform-style:preserve-3d;
-  pointer-events:none;
-  z-index:1;
-  overflow:hidden;
-}
-
-/* vanish gradient at far end to give depth */
-.vanish-gradient{
-  position:absolute;left:0;right:0;top:0;height:60%;
-  background: linear-gradient(180deg, transparent 0%, rgba(8,6,10,0.15) 30%, rgba(8,6,10,0.55) 100%);
-  mix-blend-mode: screen;
-  z-index:3;
-}
-
-/* floor reflection to add glow */
-.floor-reflection{
-  position:absolute;left:-10%;right:-10%;bottom:-10%;height:60%;
-  background: radial-gradient(ellipse at center, rgba(6,182,212,0.06), rgba(124,58,237,0.06), transparent 60%);
-  filter: blur(40px);
-  z-index:2;
-  opacity:0.9;
-}
-
-/* TUBES create the corridor edges — multiple layers for depth */
-.corridor-tubes{position:absolute;inset:0;z-index:2;transform:translateZ(0)}
-.tube{
-  position:absolute;
-  top:0;
-  bottom:6%;
-  width:220px;
-  border-radius:10px;
-  filter:blur(2px);
-  transform-origin:center;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-  opacity:0.95;
-}
-
-/* left side tubes */
-.left-tube{left:-140px;
-  background: linear-gradient(90deg, rgba(6,182,212,0.95), rgba(124,58,237,0.15));
-  box-shadow: 40px 0 120px rgba(6,182,212,0.14);
-  transform: skewY(-2deg) scaleY(1.02);
-  animation: slideInLeft 5.6s linear infinite;
-}
-
-/* right side tubes */
-.right-tube{right:-140px;
-  background: linear-gradient(270deg, rgba(255,40,120,0.95), rgba(124,58,237,0.12));
-  box-shadow: -40px 0 120px rgba(255,40,120,0.12);
-  transform: skewY(2deg) scaleY(1.02);
-  animation: slideInRight 5.6s linear infinite;
-}
-
-/* inner layers (create repeating ribs to simulate corridor depth) */
-.tube.inner-1{width:160px;top:6%;bottom:8%;left:-90px;right:auto;opacity:0.85;animation-duration:6.2s}
-.tube.inner-1.right-tube{right:-90px;left:auto}
-.tube.inner-2{width:110px;top:12%;bottom:12%;left:-50px;opacity:0.75;animation-duration:7s}
-.tube.inner-2.right-tube{right:-50px;left:auto}
-
-/* subtle animation — creates moving glow along corridor */
-@keyframes slideInLeft{
-  0%{transform: translateX(0) skewY(-2deg) scaleY(1.02); filter:blur(2px); opacity:0.9}
-  50%{transform: translateX(18px) skewY(-1.5deg) scaleY(1.04); filter:blur(4px); opacity:1}
-  100%{transform: translateX(0) skewY(-2deg) scaleY(1.02); filter:blur(2px); opacity:0.9}
-}
-@keyframes slideInRight{
-  0%{transform: translateX(0) skewY(2deg) scaleY(1.02); filter:blur(2px); opacity:0.9}
-  50%{transform: translateX(-18px) skewY(1.5deg) scaleY(1.04); filter:blur(4px); opacity:1}
-  100%{transform: translateX(0) skewY(2deg) scaleY(1.02); filter:blur(2px); opacity:0.9}
-}
-
-/* subtle horizontal neon beams across center (pseudo 3D ribs) */
-.corridor::before,
-.corridor::after {
-  content: "";
-  position:absolute;
-  left:0;right:0;
-  top:40%;
-  height:6px;
-  background: linear-gradient(90deg, rgba(124,58,237,0.0) 0%, rgba(124,58,237,0.26) 12%, rgba(6,182,212,0.26) 88%, rgba(255,40,120,0.0) 100%);
-  filter: blur(8px);
-  transform: perspective(800px) translateZ(0);
-  z-index:3;
-  opacity:0.9;
-}
-.corridor::after{top:46%;height:3px;filter:blur(14px);opacity:0.55}
-
-/* HERO CONTENT sits above corridor */
-.hero-content{
-  position:relative;
-  z-index:10;
-  display:flex;
-  gap:28px;
-  align-items:center;
-  padding:60px 20px;
-  min-height:420px;
-}
-
-/* Left text column */
-.hero-text{flex:0 0 48%;max-width:620px}
-.hero-text h1{
-  font-size:46px;
-  line-height:1.02;
-  margin:0 0 14px;
-  font-weight:800;
-  color: #fff;
-  text-shadow: 0 12px 36px rgba(0,0,0,0.6);
-}
-.lead{color:var(--muted);font-size:16px;margin:12px 0 20px}
-
-/* Buttons */
-.actions .btn-primary,
-.actions .btn-ghost{
-  display:inline-block;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:700;margin-right:12px;
-}
-.btn-primary{
-  background: linear-gradient(90deg,var(--accent1),var(--accent2));
-  color:#fff; box-shadow: 0 10px 30px rgba(6,182,212,0.08);
-}
-.btn-primary:hover{transform:translateY(-3px)}
-.btn-ghost{
-  background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)
-}
-
-/* right visual column placeholder keeps space so corridor shows */
-.hero-visual{flex:1;min-height:260px}
-
-/* --- Grid and cards --- */
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
-.grid.small{grid-template-columns:repeat(4,1fr)}
-.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;backdrop-filter: blur(6px);box-shadow:0 8px 28px rgba(0,0,0,0.6);color:var(--muted)}
-.card h3{color:#dfefff;margin:0 0 8px}
-.domains h2, .leadership h2{margin-top:36px;color:#eaf3ff}
-
-/* leaders */
+/* content grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:24px}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;backdrop-filter: blur(6px);box-shadow:0 12px 40px rgba(0,0,0,0.6)}
 .leader{display:flex;gap:12px;align-items:center}
-.avatar{width:56px;height:56px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:18px}
+.avatar{width:64px;height:64px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:18px}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.contact-form input,.contact-form textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);color:var(--muted)}
 
 /* footer */
-.site-footer{padding:28px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02);margin-top:36px}
-.footer-inner{display:flex;justify-content:center}
+.footer{margin-top:36px;padding:18px;border-top:1px solid rgba(255,255,255,0.02);text-align:center;color:rgba(255,255,255,0.6)}
 
-/* --- Responsive --- */
-@media (max-width:980px){
-  .hero-content{flex-direction:column;align-items:flex-start;padding:40px 20px}
-  .hero-text{flex:auto;width:100%}
-  .hero-visual{display:none}
-  .grid{grid-template-columns:repeat(2,1fr)}
-}
-@media (max-width:560px){
-  .hero-text h1{font-size:28px}
-  .grid{grid-template-columns:1fr}
-  .grid.small{grid-template-columns:repeat(2,1fr)}
-}
-
-/* Accessibility: reduce motion */
-@media (prefers-reduced-motion: reduce){
-  .tube, .corridor::before, .corridor::after { animation: none; transition: none; }
+/* responsive */
+@media(max-width:880px){
+  .hero{flex-direction:column}
+  .hero-right{width:100%;min-height:220px}
+  .contact-grid{grid-template-columns:1fr}
+  .h-title{font-size:28px}
 }
