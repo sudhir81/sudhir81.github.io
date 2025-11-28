@@ -1,68 +1,164 @@
-/* ========================================================= */
-/* HERO VIDEO LAYER                                           */
-/* ========================================================= */
+/* ============================================= */
+/* BASE GLOBAL                                   */
+/* ============================================= */
+
+:root {
+  --text: #ffffff;
+  --text-soft: rgba(255,255,255,0.75);
+  --bg: #000000;
+  --card-bg: rgba(255,255,255,0.05);
+  --glow: 0 0 18px rgba(255,255,255,0.8);
+  --accent1: #00eaff;
+  --accent2: #ff00cc;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 22px;
+}
+
+/* ============================================= */
+/* NAVIGATION                                    */
+/* ============================================= */
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.brand img {
+  height: 42px;
+}
+
+.menu a {
+  margin-left: 22px;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+.menu a:hover {
+  opacity: 1;
+}
+
+/* ============================================= */
+/* HERO VIDEO                                    */
+/* ============================================= */
 
 .hero-grid {
   position: relative;
-  width: 100%;
-  height: 520px;
+  height: 420px;
+  border-radius: 18px;
   overflow: hidden;
-  border-radius: 20px;
-  background: #000;
 }
 
-/* Video element */
-.hero-video {
+.hero-grid video {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 120%;
-  height: auto;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  opacity: 0.55; /* soft cinematic fade */
-  filter: saturate(130%) brightness(130%);
-  z-index: 1;
+  filter: brightness(0.55);
 }
 
-/* Fog layer */
-.fog {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center,
-    rgba(255,255,255,0.25),
-    rgba(0,0,0,0.85) 70%);
-  z-index: 2;
-  backdrop-filter: blur(6px);
-}
-
-/* Text */
 .hero-content {
   position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 3;
-  color: white;
+  z-index: 10;
+  width: 100%;
   text-align: center;
-  max-width: 900px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 18px;
 }
 
 .hero-content h1 {
   font-size: 42px;
-  font-weight: 900;
-  margin-bottom: 14px;
-  text-shadow: 0 0 18px rgba(255,255,255,0.9);
+  font-weight: 800;
+  text-shadow: var(--glow);
 }
 
 .hero-content p {
+  margin-top: 12px;
   font-size: 18px;
-  color: rgba(255,255,255,0.9);
+  color: var(--text-soft);
 }
 
-/* MOBILE */
-@media(max-width: 880px){
-  .hero-grid { height: 430px; }
-  .hero-video { width: 150%; }
-  .hero-content h1 { font-size: 28px; }
+/* ============================================= */
+/* GRID + CARDS                                  */
+/* ============================================= */
+
+h2 {
+  margin-top: 50px;
+  margin-bottom: 22px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+.card {
+  background: var(--card-bg);
+  padding: 22px;
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 28px rgba(0,0,0,0.55);
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 14px;
+}
+
+/* ============================================= */
+/* FOOTER                                        */
+/* ============================================= */
+
+.footer {
+  text-align: center;
+  padding: 30px 0;
+  opacity: 0.7;
+  font-size: 14px;
+}
+
+/* ============================================= */
+/* MOBILE                                        */
+/* ============================================= */
+
+@media (max-width: 880px) {
+  .hero-grid {
+    height: 350px;
+  }
+  .hero-content h1 {
+    font-size: 32px;
+  }
+  .hero-content p {
+    font-size: 16px;
+  }
 }
