@@ -178,3 +178,5 @@ h2 {
   .hero-video-wrap { height:420px; }
   .hero-center h1 { font-size:30px; }
 }
+
+echo "/* rebuild $(date) */" >> assets/styles.css
