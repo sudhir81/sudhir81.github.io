@@ -1,88 +1,171 @@
-/* BASE */
+/* ========================================================= */
+/*  BASE + COLORS                                             */
+/* ========================================================= */
 :root {
-  --bg:#05050a;
-  --text:#fff;
-  --card:rgba(255,255,255,0.05);
+  --bg: #05050a;
+  --text: #ffffff;
+  --card: rgba(255,255,255,0.03);
+  --glow-blue: #00eaff;
+  --glow-pink: #ff3bd4;
 }
 
 body {
   margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:Inter,system-ui,sans-serif;
+  font-family: Inter, system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
 }
 
-.container {max-width:1200px;margin:28px auto;padding:18px}
+.container {
+  max-width: 1200px;
+  margin: 28px auto;
+  padding: 18px;
+}
 
-/* NAV */
+/* NAVIGATION */
 .nav {
-  display:flex;justify-content:space-between;align-items:center;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 .menu a {
-  margin-left:18px;color:#fff;text-decoration:none;font-weight:500;
+  color:rgba(255,255,255,0.9);
+  margin-left:18px;
+  text-decoration:none;
+  font-weight:500;
 }
-.brand {display:flex;align-items:center;gap:12px;text-decoration:none;color:white}
-
-/* ========================================================= */
-/*  N E O N   G R I D   C O R R I D O R   H E R O             */
-/* ========================================================= */
-
-.hero-grid {
-  height:480px;
-  width:100%;
-  border-radius:16px;
-  overflow:hidden;
-  background:#000;
-  position:relative;
-
-  background:linear-gradient(#020212,#050516),
-    repeating-linear-gradient(
-      #06f,
-      #06f 2px,
-      transparent 2px,
-      transparent 40px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      #f0f,
-      #f0f 2px,
-      transparent 2px,
-      transparent 40px
-    );
-
-  background-blend-mode:screen;
-  animation:gridGlow 6s infinite alternate ease-in-out;
+.brand {
+  text-decoration:none;
+  color:white;
+  display:flex;
+  gap:12px;
+  align-items:center;
 }
 
-@keyframes gridGlow {
-  0% {filter:brightness(0.7) saturate(1.4);}
-  100% {filter:brightness(1.3) saturate(2);}
+/* FOOTER */
+.footer {
+  text-align:center;
+  margin-top:40px;
+  padding:20px;
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+
+/* ========================================================= */
+/*    C I N E M A T I C   V 2   N E O N   C O R R I D O R     */
+/* ========================================================= */
+
+.hero-v2 {
+  position: relative;
+  height: 520px;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #000014;
+}
+
+/* Floor (main grid) */
+.grid-plane {
+  position:absolute;
+  bottom:0;
+  left:50%;
+  transform: translateX(-50%) perspective(800px) rotateX(60deg);
+  width:200%;
+  height:200%;
+  background:
+     repeating-linear-gradient(#00eaff55 0px, #00eaff55 2px, transparent 2px, transparent 40px),
+     repeating-linear-gradient(90deg, #ff3bd455 0px, #ff3bd455 2px, transparent 2px, transparent 40px);
+  animation: pulseGrid 4s infinite ease-in-out;
+  filter: drop-shadow(0 0 20px var(--glow-blue));
+}
+
+/* Left Wall */
+.grid-left {
+  position:absolute;
+  left:0;
+  top:0;
+  width:50%;
+  height:100%;
+  transform: perspective(1000px) rotateY(60deg);
+  transform-origin:left;
+  background:
+     repeating-linear-gradient(#00eaff55 0px, #00eaff55 2px, transparent 2px, transparent 40px),
+     repeating-linear-gradient(90deg, #ff3bd455 0px, #ff3bd455 2px, transparent 2px, transparent 40px);
+  filter: drop-shadow(0 0 20px var(--glow-blue));
+  opacity:0.75;
+}
+
+/* Right Wall */
+.grid-right {
+  position:absolute;
+  right:0;
+  top:0;
+  width:50%;
+  height:100%;
+  transform: perspective(1000px) rotateY(-60deg);
+  transform-origin:right;
+  background:
+     repeating-linear-gradient(#ff3bd455 0px, #ff3bd455 2px, transparent 2px, transparent 40px),
+     repeating-linear-gradient(90deg, #00eaff55 0px, #00eaff55 2px, transparent 2px, transparent 40px);
+  filter: drop-shadow(0 0 20px var(--glow-pink));
+  opacity:0.75;
+}
+
+/* Ceiling */
+.grid-ceiling {
+  position:absolute;
+  top:-30%;
+  left:50%;
+  transform: translateX(-50%) perspective(800px) rotateX(-60deg);
+  width:200%;
+  height:200%;
+  background:
+     repeating-linear-gradient(#00eaff55 0px, #00eaff55 2px, transparent 2px, transparent 40px),
+     repeating-linear-gradient(90deg, #ff3bd455 0px, #ff3bd455 2px, transparent 2px, transparent 40px);
+  opacity:0.75;
+  filter: drop-shadow(0 0 20px var(--glow-pink));
+}
+
+/* Grid Pulse Animation */
+@keyframes pulseGrid {
+  0%,100% { filter: brightness(1) drop-shadow(0 0 12px var(--glow-blue)); }
+  50% { filter: brightness(1.25) drop-shadow(0 0 22px var(--glow-pink)); }
 }
 
 /* HERO TEXT */
-.hero-content {
+.hero-v2-content {
   position:absolute;
-  top:40%;
+  top:50%;
   left:50%;
-  transform:translate(-50%,-40%);
+  transform: translate(-50%, -50%);
   text-align:center;
-  backdrop-filter:blur(3px);
+  z-index:5;
 }
-
-.hero-content h1 {
-  font-size:40px;font-weight:900;margin:0;
+.hero-v2-content h1 {
+  font-size:44px;
+  font-weight:900;
+  line-height:1.1;
+  text-shadow:0 0 20px rgba(0,238,255,0.55);
 }
-.hero-content p {
+.hero-v2-content p {
   margin-top:12px;
+  color:rgba(255,255,255,0.88);
   font-size:18px;
-  color:rgba(255,255,255,0.85);
+  text-shadow:0 0 12px rgba(255,60,212,0.5);
 }
 
-/* GRID CARDS */
-h2 {margin-top:32px;margin-bottom:18px;font-size:22px;font-weight:700}
+/* ========================================================= */
+/*  GRID + CARDS                                              */
+/* ========================================================= */
+h2 {
+  margin-top:32px;
+  margin-bottom:18px;
+  font-size:22px;
+  font-weight:700;
+}
+
 .grid {
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
   gap:18px;
 }
 
@@ -94,12 +177,8 @@ h2 {margin-top:32px;margin-bottom:18px;font-size:22px;font-weight:700}
   box-shadow:0 6px 22px rgba(0,0,0,0.55);
 }
 
-.footer {
-  text-align:center;margin-top:40px;padding:20px;border-top:1px solid rgba(255,255,255,0.08)
-}
-
-/* Mobile */
+/* MOBILE */
 @media(max-width:880px){
-  .hero-grid{height:420px;}
-  .hero-content h1{font-size:28px;}
+  .hero-v2 { height:420px; }
+  .hero-v2-content h1 { font-size:30px; }
 }
