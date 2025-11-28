@@ -1,220 +1,68 @@
 /* ========================================================= */
-/*  BASE + COLORS                                             */
-/* ========================================================= */
-:root {
-  --bg: #000000;
-  --text: #ffffff;
-  --card: rgba(255,255,255,0.05);
-  --accent1: #00eaff;
-  --accent2: #ff00ff;
-}
-
-body {
-  margin:0;
-  font-family: Inter, system-ui, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  overflow-x:hidden;
-  -webkit-font-smoothing: antialiased;
-}
-
-.container {
-  max-width:1200px;
-  margin:28px auto;
-  padding:18px;
-}
-
-/* ========================================================= */
-/* NAVIGATION BAR                                             */
-/* ========================================================= */
-
-.nav {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-/* Neon TF Logo */
-.logo {
-  height:48px;
-  border-radius:12px;
-  filter: drop-shadow(0 0 6px rgba(0,255,255,0.8))
-          drop-shadow(0 0 6px rgba(255,0,200,0.6));
-  transition:0.25s ease;
-}
-
-.logo:hover {
-  transform:scale(1.06);
-  filter: drop-shadow(0 0 12px rgba(0,255,255,1))
-          drop-shadow(0 0 12px rgba(255,0,200,1));
-}
-
-.menu a {
-  color:rgba(255,255,255,0.9);
-  margin-left:20px;
-  text-decoration:none;
-  font-weight:500;
-  transition:0.2s ease;
-}
-
-.menu a:hover {
-  color:#ffffff;
-  text-shadow:0 0 8px var(--accent1);
-}
-
-
-/* ========================================================= */
-/*  HERO SECTION — CINEMATIC V4 (VIDEO + DEPTH FOG)          */
+/* HERO VIDEO LAYER                                           */
 /* ========================================================= */
 
 .hero-grid {
-  position:relative;
-  width:100%;
-  height:500px;
-  overflow:hidden;
-  border-radius:18px;
-  background:#000;
+  position: relative;
+  width: 100%;
+  height: 520px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #000;
 }
 
-/* Background video */
-.hero-grid::before {
-  content:"";
-  position:absolute;
-  inset:0;
-  background:url('hero-fallback.jpg') center/cover no-repeat;
-  z-index:0;
-}
-
-/* Actual video tag styles (keep hidden behind fog) */
-.hero-grid video {
-  position:absolute;
-  top:50%;
-  left:50%;
-  min-width:100%;
-  min-height:100%;
-  width:auto;
-  height:auto;
-  transform:translate(-50%, -50%);
-  z-index:1;
+/* Video element */
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  opacity: 0.55; /* soft cinematic fade */
+  filter: saturate(130%) brightness(130%);
+  z-index: 1;
 }
 
 /* Fog layer */
 .fog {
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle at center,
-    rgba(0,0,0,0.0),
-    rgba(0,0,0,0.35) 55%,
-    rgba(0,0,0,0.75)
-  );
-  z-index:3;
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center,
+    rgba(255,255,255,0.25),
+    rgba(0,0,0,0.85) 70%);
+  z-index: 2;
+  backdrop-filter: blur(6px);
 }
 
-/* Floating hero text */
+/* Text */
 .hero-content {
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%, -50%);
-  text-align:center;
-  z-index:5;
-  width:90%;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  color: white;
+  text-align: center;
+  max-width: 900px;
 }
 
 .hero-content h1 {
-  font-size:40px;
-  font-weight:800;
-  text-shadow:
-    0 0 12px rgba(0,255,255,0.7),
-    0 0 12px rgba(255,0,200,0.7);
+  font-size: 42px;
+  font-weight: 900;
+  margin-bottom: 14px;
+  text-shadow: 0 0 18px rgba(255,255,255,0.9);
 }
 
 .hero-content p {
-  margin-top:14px;
-  font-size:18px;
-  opacity:0.9;
-  text-shadow:
-    0 0 8px rgba(0,255,255,0.6),
-    0 0 8px rgba(255,0,200,0.6);
+  font-size: 18px;
+  color: rgba(255,255,255,0.9);
 }
 
-
-/* ========================================================= */
-/*  GRID + CARDS                                             */
-/* ========================================================= */
-
-h2 {
-  margin-top:40px;
-  font-size:24px;
-  font-weight:700;
-  text-shadow:0 0 10px rgba(0,255,255,0.5);
-}
-
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
-  gap:20px;
-}
-
-.card {
-  background:var(--card);
-  padding:22px;
-  border-radius:14px;
-  backdrop-filter:blur(8px);
-  box-shadow:0 8px 25px rgba(0,0,0,0.5);
-  transition:0.25s ease;
-}
-
-.card:hover {
-  transform:translateY(-4px);
-  box-shadow:0 10px 35px rgba(0,255,255,0.3);
-}
-
-
-/* Leadership avatars */
-.leader {
-  display:flex;
-  gap:14px;
-  align-items:center;
-}
-
-.avatar {
-  width:56px;
-  height:56px;
-  border-radius:12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:700;
-  font-size:18px;
-  color:#fff;
-}
-
-
-/* ========================================================= */
-/* FOOTER                                                     */
-/* ========================================================= */
-
-.footer {
-  margin-top:50px;
-  padding:20px;
-  text-align:center;
-  opacity:0.6;
-}
-
-
-/* ========================================================= */
-/* MOBILE RESPONSIVE                                         */
-/* ========================================================= */
-
-@media(max-width:900px){
-  .hero-content h1 { font-size:30px; }
-  .hero-content p { font-size:16px; }
-  .hero-grid { height:420px; }
-}
-
-@media(max-width:600px){
-  .hero-content h1 { font-size:26px; }
-  .hero-content p { font-size:15px; }
-  .hero-grid { height:360px; }
+/* MOBILE */
+@media(max-width: 880px){
+  .hero-grid { height: 430px; }
+  .hero-video { width: 150%; }
+  .hero-content h1 { font-size: 28px; }
 }
