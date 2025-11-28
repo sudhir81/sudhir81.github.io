@@ -1,83 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Contact — TerraForge Cloud</title>
-
-<link rel="icon" href="/assets/A_2D_vector_graphic_features_a_logo_with_the_initi.png"/>
-<link rel="stylesheet" href="/assets/styles.css"/>
-
-<style>
-/* Neon Contact Page Enhancements */
-.contact-wrapper {
-  display: flex;
-  gap: 28px;
-  flex-wrap: wrap;
-  margin-top: 22px;
-}
-
-.contact-card {
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 14px;
-  padding: 22px;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 0 22px rgba(0,0,0,0.4);
-}
-
-.contact-info {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 10px 0;
-}
-
-.input, .textarea {
-  width: 100%;
-  padding: 12px;
-  font-size: 15px;
-  border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: rgba(0,0,0,0.3);
-  color: #fff;
-  outline: none;
-}
-
-.textarea {
-  height: 140px; /* Bigger message box */
-  resize: vertical;
-}
-
-.send-btn {
-  background: linear-gradient(90deg, #06B6D4, #3B82F6);
-  padding: 12px 22px;
-  border: none;
-  color: white;
-  font-weight: 700;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.send-btn:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
-}
-
-@media (max-width: 768px) {
-  .contact-wrapper {
-    flex-direction: column;
-  }
-}
-</style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — TerraForge Cloud</title>
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="icon" href="/assets/A_2D_vector_graphic_features_a_logo_with_the_initi.png" />
 </head>
 
 <body>
 
+<!-- NAVBAR -->
 <div class="container nav">
   <a class="brand" href="/index.html">
-    <img src="/assets/A_2D_vector_graphic_features_a_logo_with_the_initi.png" style="height:44px;border-radius:6px"/>
+    <img src="/assets/A_2D_vector_graphic_features_a_logo_with_the_initi.png" style="height:44px;border-radius:6px">
     <span style="font-size:18px">TerraForge Cloud</span>
   </a>
 
@@ -85,104 +21,73 @@
     <a href="/index.html">Home</a>
     <a href="/services.html">Services</a>
     <a href="/leadership.html">Leadership</a>
-    <a href="/contact.html">Contact</a>
+    <a class="active" href="/contact.html">Contact</a>
   </nav>
 </div>
 
-<main class='container'>
-<h1>Have a Question? Let’s Talk</h1>
-<p class='small'>Need something cleared up? Feel free to reach us.</p>
+<main class="container">
 
-<div class="contact-wrapper">
+  <h1 class="page-title">Have a Question? Let’s Talk</h1>
+  <p class="page-sub">Need something cleared up? Feel free to reach us.</p>
 
-  <!-- Left Section -->
-  <div style="flex:1;min-width:280px">
-    <div class="contact-card">
+  <div class="contact-card">
 
-      <div class="contact-info">
-        <img src="/assets/mail.svg" width="26"/>
+    <!-- LEFT SIDE -->
+    <div class="contact-left">
+
+      <div class="contact-row">
+        <img src="/assets/mail.svg" class="icon-small">
         <div>
-          <strong>Email</strong><br>
-          info@terraforgecloud.com
+          <strong>Email</strong>
+          <p>info@terraforgecloud.com</p>
         </div>
       </div>
 
-      <div class="contact-info">
-        <img src="/assets/phone.svg" width="26"/>
+      <div class="contact-row">
+        <img src="/assets/phone.svg" class="icon-small">
         <div>
-          <strong>Phone</strong><br>
-          +91 8588818710
+          <strong>Phone</strong>
+          <p>+91 8588818710</p>
         </div>
       </div>
 
-      <div class="contact-info">
-        <img src="/assets/whatsapp.svg" width="26"/>
+      <div class="contact-row">
+        <img src="/assets/whatsapp-logo.png" class="icon-small">
         <div>
-          <strong>WhatsApp</strong><br>
-          +91 8588818710
+          <strong>WhatsApp</strong>
+          <p>+91 8588818710</p>
+          <a class="wa-btn" target="_blank" href="https://wa.me/918588818710">Click to Chat</a>
         </div>
       </div>
-
-      <a class="cta" href="https://wa.me/918588818710" target="_blank" style="margin-top:14px;display:inline-block">
-        Chat on WhatsApp
-      </a>
 
     </div>
+
+    <!-- RIGHT SIDE — FORM -->
+    <form class="contact-form" action="mailto:info@terraforgecloud.com" method="POST" enctype="text/plain">
+
+      <div class="form-row">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="text" name="phone" placeholder="Phone Number">
+      </div>
+
+      <div class="form-row">
+        <input type="email" name="email" placeholder="Your E-mail" required>
+        <input type="text" name="subject" placeholder="Subject">
+      </div>
+
+      <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
+
+      <button type="submit" class="submit-btn">SEND MESSAGE</button>
+
+    </form>
+
   </div>
 
-  <!-- Right Section (Form with mailto) -->
-  <div style="flex:1;min-width:320px">
-    <div class="contact-card">
-
-      <form id="mailForm" onsubmit="sendMail(event)">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-          <input class="input" id="name" placeholder="Your Name" required>
-          <input class="input" id="phone" placeholder="Phone Number" required>
-          <input class="input" id="email" type="email" placeholder="Your E-mail" required>
-          <input class="input" id="subject" placeholder="Subject">
-        </div>
-
-        <div style="margin-top:12px">
-          <textarea class="textarea" id="message" placeholder="Your Message"></textarea>
-        </div>
-
-        <div style="margin-top:12px">
-          <button class="send-btn" type="submit">SEND MESSAGE</button>
-        </div>
-      </form>
-
-    </div>
-  </div>
-
-</div>
 </main>
 
 <div class="container footer">
-  <p>© TerraForge Cloud — <a href="https://www.terraforgecloud.com">terraforgecloud.com</a></p>
+  <p>© TerraForge Cloud — <a href="https://www.terraforgecloud.com" target="_blank">terraforgecloud.com</a></p>
 </div>
-
-<script>
-function sendMail(event) {
-  event.preventDefault();
-
-  const name = document.getElementById("name").value;
-  const phone = document.getElementById("phone").value;
-  const email = document.getElementById("email").value;
-  const subject = document.getElementById("subject").value;
-  const msg = document.getElementById("message").value;
-
-  const mailtoLink =
-    `mailto:info@terraforgecloud.com?subject=${encodeURIComponent(subject||"New Inquiry")}` +
-    `&body=${encodeURIComponent(
-      "Name: " + name +
-      "\nPhone: " + phone +
-      "\nEmail: " + email +
-      "\n\nMessage:\n" + msg
-    )}`;
-
-  window.location.href = mailtoLink;
-}
-</script>
 
 </body>
 </html>
