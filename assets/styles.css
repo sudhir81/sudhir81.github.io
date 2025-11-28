@@ -1,118 +1,147 @@
-/* ============================================= */
-/* BASE GLOBAL                                   */
-/* ============================================= */
+/* ========================================================= */
+/*  GLOBAL + COLORS                                           */
+/* ========================================================= */
 
 :root {
+  --bg: #0a0a0f;
   --text: #ffffff;
-  --text-soft: rgba(255,255,255,0.75);
-  --bg: #000000;
-  --card-bg: rgba(255,255,255,0.05);
-  --glow: 0 0 18px rgba(255,255,255,0.8);
-  --accent1: #00eaff;
-  --accent2: #ff00cc;
+  --card: rgba(255,255,255,0.03);
+
+  --accent1: #00d5ff;  /* Cyan neon */
+  --accent2: #ff2d95;  /* Pink neon */
 }
 
 body {
   margin: 0;
-  font-family: Inter, system-ui, sans-serif;
   background: var(--bg);
+  font-family: Inter, system-ui, sans-serif;
   color: var(--text);
   -webkit-font-smoothing: antialiased;
 }
 
 .container {
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 22px;
+  margin: 28px auto;
+  padding: 18px;
 }
 
-/* ============================================= */
-/* NAVIGATION                                    */
-/* ============================================= */
+/* ========================================================= */
+/*  NAVIGATION                                                */
+/* ========================================================= */
 
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 12px;
 }
 
 .brand {
   display: flex;
+  gap: 12px;
   align-items: center;
-  text-decoration: none;
   color: white;
-  gap: 10px;
+  text-decoration: none;
+  font-weight: 700;
   font-size: 18px;
-  font-weight: 600;
 }
 
 .brand img {
-  height: 42px;
+  height: 44px;
+  border-radius: 6px;
 }
 
 .menu a {
-  margin-left: 22px;
-  text-decoration: none;
-  color: var(--text);
+  color: rgba(255,255,255,0.85);
+  margin-left: 18px;
   font-weight: 500;
-  opacity: 0.85;
+  text-decoration: none;
+  transition: 0.25s;
 }
 
 .menu a:hover {
-  opacity: 1;
+  color: white;
 }
 
-/* ============================================= */
-/* HERO VIDEO                                    */
-/* ============================================= */
+/* ========================================================= */
+/*  CINEMATIC V5 — VIDEO HERO                                */
+/* ========================================================= */
 
 .hero-grid {
   position: relative;
-  height: 420px;
-  border-radius: 18px;
+  height: 540px;
+  border-radius: 16px;
   overflow: hidden;
+  background: #05050a;
+  margin-top: 20px;
 }
 
+/* Fullscreen video */
 .hero-grid video {
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.55);
+  inset: 0;
+  opacity: 0.82;
+  filter: contrast(1.15) brightness(1.05);
 }
 
+/* Text over video */
 .hero-content {
-  position: absolute;
+  position: relative;
   z-index: 10;
-  width: 100%;
-  text-align: center;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 0 18px;
+  padding: 90px 60px;
+  max-width: 700px;
 }
 
 .hero-content h1 {
-  font-size: 42px;
-  font-weight: 800;
-  text-shadow: var(--glow);
+  font-size: 46px;
+  font-weight: 900;
+  line-height: 1.15;
+  text-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
 .hero-content p {
-  margin-top: 12px;
-  font-size: 18px;
-  color: var(--text-soft);
+  margin-top: 14px;
+  font-size: 20px;
+  opacity: 0.9;
 }
 
-/* ============================================= */
-/* GRID + CARDS                                  */
-/* ============================================= */
+/* CTA Buttons under hero text */
+.cta-row {
+  margin-top: 28px;
+  display: flex;
+  gap: 14px;
+}
+
+.cta-btn {
+  padding: 12px 24px;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  transition: 0.25s;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.cta-btn.secondary {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+}
+
+/* ========================================================= */
+/*  GRID + CARDS                                              */
+/* ========================================================= */
 
 h2 {
-  margin-top: 50px;
-  margin-bottom: 22px;
+  margin-top: 40px;
+  margin-bottom: 18px;
   font-size: 24px;
   font-weight: 700;
 }
@@ -120,45 +149,90 @@ h2 {
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 22px;
+  gap: 18px;
 }
 
 .card {
-  background: var(--card-bg);
-  padding: 22px;
-  border-radius: 14px;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 6px 28px rgba(0,0,0,0.55);
+  background: var(--card);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.55);
+  backdrop-filter: blur(6px);
 }
 
 .card h3 {
   margin-top: 0;
-  margin-bottom: 14px;
 }
 
-/* ============================================= */
-/* FOOTER                                        */
-/* ============================================= */
+.card p {
+  margin: 6px 0;
+  opacity: 0.9;
+}
+
+/* Leadership avatars */
+.leader {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  background: var(--accent1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  color: white;
+  font-size: 18px;
+}
+
+/* ========================================================= */
+/*  FOOTER                                                    */
+/* ========================================================= */
 
 .footer {
+  margin-top: 40px;
+  padding: 20px;
   text-align: center;
-  padding: 30px 0;
-  opacity: 0.7;
-  font-size: 14px;
+  border-top: 1px solid rgba(255,255,255,0.1);
 }
 
-/* ============================================= */
-/* MOBILE                                        */
-/* ============================================= */
+.footer a {
+  color: white;
+  text-decoration: underline;
+}
+
+/* ========================================================= */
+/*  MOBILE RESPONSIVE                                         */
+/* ========================================================= */
 
 @media (max-width: 880px) {
+
   .hero-grid {
-    height: 350px;
+    height: 420px;
   }
+
+  .hero-content {
+    padding: 60px 28px;
+  }
+
   .hero-content h1 {
     font-size: 32px;
   }
-  .hero-content p {
+
+  .brand span {
     font-size: 16px;
+  }
+
+  .cta-row {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .cta-btn {
+    text-align: center;
   }
 }
