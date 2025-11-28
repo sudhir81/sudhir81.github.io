@@ -1,120 +1,195 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>TerraForge Cloud — Engineering the Future</title>
 
 <link rel="icon" href="assets/logo.svg">
 <link rel="stylesheet" href="assets/styles.css">
 
+<!-- Meta for better mobile video behaviour -->
+<meta name="theme-color" content="#05040a">
 </head>
 <body>
 
-<!-- NAVIGATION -->
-<div class="container nav">
-  <a class="brand" href="index.html">
-    <img src="assets/logo.svg" style="height:44px;border-radius:6px">
-    <span style="font-size:18px">TerraForge Cloud</span>
-  </a>
+<!-- NAV -->
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.svg" alt="TerraForge Cloud logo" />
+      <span class="brand-text">TerraForge Cloud</span>
+    </a>
 
-  <nav class="menu">
-    <a href="index.html">Home</a>
-    <a href="services.html">Services</a>
-    <a href="leadership.html">Leadership</a>
-    <a href="cases.html">Case Studies</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</div>
+    <nav class="menu" aria-label="Main navigation">
+      <a href="index.html" class="active">Home</a>
+      <a href="services.html">Services</a>
+      <a href="leadership.html">Leadership</a>
+      <a href="cases.html">Case Studies</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
 
-<!-- ========================================================= -->
-<!-- 🚀 CINEMATIC V4 — VIDEO + 3D GRID + FOG                   -->
-<!-- ========================================================= -->
-
-<section class="hero-video-wrap">
-
-  <!-- Fullscreen looping video -->
-  <video class="hero-video" autoplay muted loop playsinline preload="auto">
+<!-- HERO — Cinematic V5 -->
+<section class="hero-v5" id="hero">
+  <!-- background video (preferred) -->
+  <video id="heroVideo" class="hero-video" playsinline muted loop preload="metadata" poster="assets/hero-poster.jpg" aria-hidden="true">
     <source src="assets/hero.mp4" type="video/mp4">
+    <!-- Fallback image shown via CSS if video not supported -->
   </video>
 
-  <!-- Neon 3D diagonal grid -->
-  <div class="neon-grid"></div>
+  <!-- layered neon grid (CSS + canvas particles) -->
+  <div class="grid-layer" aria-hidden="true"></div>
+  <div class="fog-layer" aria-hidden="true"></div>
+  <canvas id="heroParticles" class="particles-layer" aria-hidden="true"></canvas>
 
-  <!-- Fog for depth -->
-  <div class="fog-layer"></div>
+  <!-- Hero content (centered) -->
+  <div class="hero-content container">
+    <h1 class="hero-title">Engineering the Future of Cloud, AI & Enterprise Platforms</h1>
+    <p class="hero-sub">Cloud • DevOps • AI Automation • Infrastructure Modernization • Messaging</p>
 
-  <!-- Hero text -->
-  <div class="hero-center">
-    <h1>Engineering the Future of Cloud, AI & Enterprise Platforms</h1>
-    <p>Cloud • DevOps • AI Automation • Infra Modernization • Messaging</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="services.html">Our Services</a>
+      <a class="btn-ghost" href="contact.html">Talk to Us</a>
+    </div>
   </div>
 
+  <!-- subtle depth rails for parallax -->
+  <div class="rail rail-left" aria-hidden="true"></div>
+  <div class="rail rail-right" aria-hidden="true"></div>
 </section>
 
-<!-- ========================================================= -->
-<!-- TECHNOLOGY DOMAINS                                        -->
-<!-- ========================================================= -->
+<main class="container main-content">
 
-<main class="container">
+  <h2>Technology Domains</h2>
 
-<h2>Technology Domains</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Cloud Engineering & Architecture</h3>
+      <ul>
+        <li>Cloud Management</li>
+        <li>Infrastructure & DevOps</li>
+        <li>Compliance & Strategy</li>
+        <li>Migration & Modernization</li>
+      </ul>
+    </div>
 
-<div class="grid">
+    <div class="card">
+      <h3>Digital Workspaces</h3>
+      <ul>
+        <li>Digital Employee Experience</li>
+        <li>Unified Endpoint Management</li>
+        <li>Virtual Desktops & Apps</li>
+      </ul>
+    </div>
 
-  <div class="card">
-    <h3>Cloud Engineering & Architecture</h3>
-    <p>- Cloud Management</p>
-    <p>- Infrastructure & DevOps</p>
-    <p>- Compliance & Strategy</p>
-    <p>- Migration & Modernization</p>
+    <div class="card">
+      <h3>AI, Data Science & Automation</h3>
+      <ul>
+        <li>LLM Automation</li>
+        <li>Data Engineering</li>
+        <li>Predictive Analytics</li>
+        <li>Conversational AI</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Messaging & Modern Workplace</h3>
+      <ul>
+        <li>Exchange Hybrid</li>
+        <li>Mail Flow Engineering</li>
+        <li>Email Security & Compliance</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>VMware & Virtualization</h3>
+      <ul>
+        <li>vSphere, ESXi</li>
+        <li>Horizon VDI</li>
+        <li>DR & SRM</li>
+        <li>Virtualization Migrations</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Wintel & Core Infrastructure</h3>
+      <ul>
+        <li>Hybrid Datacenter Integration</li>
+        <li>Procurements, Implementation & Support</li>
+      </ul>
+    </div>
   </div>
-
-  <div class="card">
-    <h3>Digital Workspaces</h3>
-    <p>- Digital Employee Experience</p>
-    <p>- Unified Endpoint Management</p>
-    <p>- Virtual Desktops & Apps</p>
-  </div>
-
-  <div class="card">
-    <h3>AI, Data Science & Automation</h3>
-    <p>- LLM Automation</p>
-    <p>- Data Engineering</p>
-    <p>- Predictive Analytics</p>
-    <p>- Conversational AI</p>
-  </div>
-
-  <div class="card">
-    <h3>Messaging & Modern Workplace</h3>
-    <p>- Exchange Hybrid</p>
-    <p>- Mail Flow Engineering</p>
-    <p>- Security & Governance</p>
-  </div>
-
-  <div class="card">
-    <h3>VMware & Virtualization</h3>
-    <p>- vSphere, ESXi</p>
-    <p>- Horizon VDI</p>
-    <p>- DR & SRM</p>
-    <p>- Virtualization Migrations</p>
-  </div>
-
-  <div class="card">
-    <h3>Wintel & Core Infrastructure</h3>
-    <p>- Hybrid Datacenter Integration</p>
-    <p>- Procurements, Implementations & Support</p>
-  </div>
-
-</div>
 
 </main>
 
-<!-- FOOTER -->
-<div class="container footer">
+<footer class="site-footer container">
   <p>© TerraForge Cloud — <a href="https://www.terraforgecloud.com">terraforgecloud.com</a></p>
-</div>
+</footer>
+
+<!-- Small script: particles + mobile video handling + subtle parallax -->
+<script>
+/* Mobile video handling: autoplay muted works on most mobile with playsinline.
+   If video is blocked, we'll fall back to CSS poster/background. */
+(function(){
+  const vid = document.getElementById('heroVideo');
+  if(!vid) return;
+
+  // Try to play on load; if blocked, add class to show fallback visual
+  function tryPlay() {
+    vid.play().catch(() => {
+      document.documentElement.classList.add('hero-video-fallback');
+    });
+  }
+
+  // Delay a tiny bit to increase chance on mobile
+  window.addEventListener('load', () => setTimeout(tryPlay, 200));
+
+  // Simple parallax for rails + grid on mouse move (desktop only)
+  const hero = document.getElementById('hero');
+  hero.addEventListener('mousemove', (e) => {
+    if(window.innerWidth < 880) return;
+    const cx = window.innerWidth/2, cy = window.innerHeight/2;
+    const dx = (e.clientX - cx)/cx;
+    const dy = (e.clientY - cy)/cy;
+    document.querySelectorAll('.rail').forEach((r,i) => {
+      const depth = (i === 0) ? -8 : 8;
+      r.style.transform = `translate3d(${dx*depth}px, ${dy*depth}px, 0)`;
+    });
+    document.querySelector('.grid-layer').style.transform = `translate3d(${dx*14}px, ${dy*10}px, 0)`;
+  });
+
+  // Lightweight particles (canvas)
+  const canvas = document.getElementById('heroParticles');
+  if(canvas && canvas.getContext){
+    const ctx = canvas.getContext('2d');
+    let w,h,particles=[];
+    function resize(){ w = canvas.width = hero.offsetWidth; h = canvas.height = hero.offsetHeight; }
+    function make(){ particles = Array.from({length: Math.round(w*h/50000)}, () => ({
+      x: Math.random()*w, y: Math.random()*h,
+      r: 0.5 + Math.random()*1.6, vx: (Math.random()-0.5)*0.2, vy: -0.05 - Math.random()*0.15,
+      life: 50 + Math.random()*120
+    })); }
+    function step(){
+      ctx.clearRect(0,0,w,h);
+      particles.forEach(p=>{
+        p.x += p.vx;
+        p.y += p.vy;
+        p.life -= 0.6;
+        if(p.life<=0 || p.y < -10 || p.x < -10 || p.x > w+10){ p.x = Math.random()*w; p.y = h + 10; p.life = 50 + Math.random()*120; }
+        ctx.beginPath();
+        ctx.fillStyle = 'rgba(255,255,255,'+(0.06 + Math.random()*0.07)+')';
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fill();
+      });
+      requestAnimationFrame(step);
+    }
+    window.addEventListener('resize', () => { resize(); make(); });
+    resize(); make(); step();
+  }
+})();
+</script>
 
 </body>
 </html>
