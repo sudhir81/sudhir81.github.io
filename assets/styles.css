@@ -1,23 +1,28 @@
 /* ========================================================= */
-/*  TERRAFORGE CLOUD — CINEMATIC V4 VIDEO HERO               */
+/*  BASE + COLORS                                             */
 /* ========================================================= */
 
 :root {
-  --bg: #05060A;
-  --card: rgba(255,255,255,0.03);
+  --bg: #05050a;
   --text: #ffffff;
+  --card: rgba(255,255,255,0.04);
+  --accent: #00d5ff;
+  --accent2: #ff2d95;
 }
 
-/* BASE */
 body {
   margin:0;
   font-family: Inter, system-ui, sans-serif;
   background: var(--bg);
   color: var(--text);
-  -webkit-font-smoothing: antialiased;
+  overflow-x:hidden;
 }
 
-.container { max-width:1200px; margin:24px auto; padding:18px; }
+.container {
+  max-width:1200px;
+  margin:28px auto;
+  padding:18px;
+}
 
 /* NAV */
 .nav {
@@ -26,106 +31,116 @@ body {
   align-items:center;
 }
 .menu a {
+  color:rgba(255,255,255,0.9);
   margin-left:18px;
   text-decoration:none;
-  color:rgba(255,255,255,0.85);
   font-weight:500;
 }
-.brand { display:flex; gap:12px; align-items:center; color:white; text-decoration:none; }
-
-/* ========================================================= */
-/*  CINEMATIC V4 — VIDEO HERO                                */
-/* ========================================================= */
-
-.hero-grid {
-  position:relative;
-  width:100%;
-  height:520px;
-  border-radius:16px;
-  overflow:hidden;
-  background:black;
+.brand {
+  text-decoration:none;
+  color:white;
+  display:flex;
+  gap:12px;
+  align-items:center;
 }
 
-/* 1) HERO VIDEO */
-.hero-grid video {
+/* ========================================================= */
+/*  CINEMATIC VIDEO HERO                                      */
+/* ========================================================= */
+
+.hero-video-wrap {
+  position:relative;
+  height:540px;
+  width:100%;
+  overflow:hidden;
+  border-radius:18px;
+}
+
+/* HERO VIDEO (fullscreen + moving) */
+.hero-video {
   position:absolute;
-  top:50%;
-  left:50%;
+  top:0;
+  left:0;
   width:100%;
   height:100%;
   object-fit:cover;
-  transform:translate(-50%, -50%);
-  opacity:0.65;
-  filter:brightness(1.25) saturate(1.4);
+  filter:brightness(0.45) contrast(1.35) saturate(1.4);
 }
 
-/* 2) GLASS OVERLAY */
-.hero-grid::before {
-  content:"";
+/* NEON GRID OVERLAY (diagonal animated lines) */
+.neon-grid {
   position:absolute;
   inset:0;
-  background:linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.2),
-    rgba(0,0,0,0.45),
-    rgba(0,0,0,0.75)
-  );
-  backdrop-filter: blur(6px);
-  z-index:2;
-}
-
-/* 3) DEPTH FOG */
-.fog {
-  position:absolute;
-  inset:0;
-  z-index:3;
-  background:radial-gradient(
-    ellipse at center,
-    rgba(255,255,255,0.07),
-    transparent 70%
-  );
+  background:
+    repeating-linear-gradient(
+      60deg,
+      rgba(0,200,255,0.20) 0px,
+      rgba(0,200,255,0.20) 2px,
+      transparent 2px,
+      transparent 45px
+    ),
+    repeating-linear-gradient(
+      -60deg,
+      rgba(255,0,140,0.20) 0px,
+      rgba(255,0,140,0.20) 2px,
+      transparent 2px,
+      transparent 45px
+    );
+  animation:gridmove 22s linear infinite;
   mix-blend-mode:screen;
-  animation:fogFloat 12s ease-in-out infinite;
-  opacity:0.55;
+  opacity:0.22;
 }
 
-@keyframes fogFloat {
-  0% { transform:translateY(0px); opacity:0.45; }
-  50% { transform:translateY(-18px); opacity:0.8; }
-  100% { transform:translateY(0px); opacity:0.45; }
+@keyframes gridmove {
+  0% { transform:translateY(0); }
+  100% { transform:translateY(-600px); }
 }
 
-/* 4) TEXT LAYER */
-.hero-content {
+/* DEEP FOG LAYER */
+.fog-layer {
   position:absolute;
-  z-index:10;
-  top:36%;
-  left:50%;
-  transform:translateX(-50%);
-  text-align:center;
-  width:90%;
+  inset:0;
+  background:radial-gradient(circle at 50% 30%,
+    rgba(255,255,255,0.18),
+    rgba(0,0,0,0.6) 70%
+  );
+  filter:blur(40px);
+  opacity:0.55;
+  pointer-events:none;
 }
 
-.hero-content h1 {
+/* CENTERED HERO TEXT */
+.hero-center {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  text-align:center;
+  z-index:20;
+  padding:20px;
+  max-width:780px;
+}
+
+.hero-center h1 {
   font-size:42px;
   font-weight:900;
-  line-height:1.15;
-  text-shadow:0 0 28px rgba(0,150,255,0.4);
+  line-height:1.1;
+  text-shadow:0 0 22px rgba(0,180,255,0.55);
 }
 
-.hero-content p {
+.hero-center p {
   margin-top:12px;
   font-size:18px;
-  opacity:0.9;
+  color:rgba(255,255,255,0.85);
 }
 
 /* ========================================================= */
-/*  CARDS + GRID                                              */
+/* GRID + CARDS                                               */
 /* ========================================================= */
 
 h2 {
   margin-top:32px;
-  margin-bottom:18px;
+  margin-bottom:16px;
   font-size:22px;
   font-weight:700;
 }
@@ -144,25 +159,22 @@ h2 {
   box-shadow:0 6px 22px rgba(0,0,0,0.55);
 }
 
-.avatar {
-  width:56px; height:56px; border-radius:10px;
-  display:flex; align-items:center; justify-content:center;
-  font-weight:700; color:white; font-size:18px;
-}
-
 .leader { display:flex; gap:12px; align-items:center; }
 
-/* FOOTER */
-.footer {
-  text-align:center;
-  margin-top:40px;
-  padding:20px;
-  border-top:1px solid rgba(255,255,255,0.08);
+.avatar {
+  width:56px;
+  height:56px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  color:white;
+  font-size:18px;
 }
 
 /* MOBILE */
 @media(max-width:880px){
-  .hero-grid { height:360px; }
-  .hero-content h1 { font-size:28px; }
-  .hero-content p { font-size:15px; }
+  .hero-video-wrap { height:420px; }
+  .hero-center h1 { font-size:30px; }
 }

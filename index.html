@@ -18,6 +18,7 @@
     <img src="assets/logo.svg" style="height:44px;border-radius:6px">
     <span style="font-size:18px">TerraForge Cloud</span>
   </a>
+
   <nav class="menu">
     <a href="index.html">Home</a>
     <a href="services.html">Services</a>
@@ -27,29 +28,30 @@
   </nav>
 </div>
 
-
 <!-- ========================================================= -->
-<!-- 🚀 CINEMATIC V4 — 3D VIDEO NEON CORRIDOR HERO             -->
+<!-- 🚀 CINEMATIC V4 — VIDEO + 3D GRID + FOG                   -->
 <!-- ========================================================= -->
 
-<section class="hero-grid">
+<section class="hero-video-wrap">
 
-  <!-- 1) Background video -->
-  <video autoplay muted loop playsinline>
+  <!-- Fullscreen looping video -->
+  <video class="hero-video" autoplay muted loop playsinline preload="auto">
     <source src="assets/hero.mp4" type="video/mp4">
   </video>
 
-  <!-- 2) Depth fog layer -->
-  <div class="fog"></div>
+  <!-- Neon 3D diagonal grid -->
+  <div class="neon-grid"></div>
 
-  <!-- 3) Floating headline -->
-  <div class="hero-content">
+  <!-- Fog for depth -->
+  <div class="fog-layer"></div>
+
+  <!-- Hero text -->
+  <div class="hero-center">
     <h1>Engineering the Future of Cloud, AI & Enterprise Platforms</h1>
     <p>Cloud • DevOps • AI Automation • Infra Modernization • Messaging</p>
   </div>
 
 </section>
-
 
 <!-- ========================================================= -->
 <!-- TECHNOLOGY DOMAINS                                        -->
@@ -108,7 +110,6 @@
 </div>
 
 </main>
-
 
 <!-- FOOTER -->
 <div class="container footer">
