@@ -6,6 +6,7 @@
   --bg: #0a0a0f;
   --text: #ffffff;
   --card: rgba(255,255,255,0.03);
+
   --accent1: #00d5ff;
   --accent2: #ff2d95;
 }
@@ -26,7 +27,7 @@ body {
 
 
 /* ========================================================= */
-/*  NAVIGATION                                               */
+/*  NAVIGATION (DESKTOP DEFAULT)                             */
 /* ========================================================= */
 
 .nav {
@@ -48,6 +49,7 @@ body {
 
 .brand img {
   height: 44px;
+  border-radius: 6px;
 }
 
 .menu {
@@ -69,7 +71,7 @@ body {
 
 
 /* ========================================================= */
-/*  HAMBURGER                                                */
+/*  HAMBURGER (HIDDEN ON DESKTOP)                            */
 /* ========================================================= */
 
 .hamburger {
@@ -104,6 +106,7 @@ body {
   height: 100%;
   object-fit: cover;
   inset: 0;
+  opacity: 0.82;
 }
 
 .hero-content {
@@ -137,6 +140,11 @@ body {
   text-decoration: none;
   border-radius: 10px;
   background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  transition: 0.25s;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
 }
 
 .cta-btn.secondary {
@@ -146,60 +154,102 @@ body {
 
 
 /* ========================================================= */
-/*  MOBILE NAVIGATION                                        */
+/*  GRID + CARDS                                             */
+/* ========================================================= */
+
+h2 {
+  margin-top: 40px;
+  margin-bottom: 18px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.55);
+  backdrop-filter: blur(6px);
+}
+
+
+/* ========================================================= */
+/*  MOBILE RESPONSIVE ONLY                                   */
 /* ========================================================= */
 
 @media (max-width: 880px) {
 
+  /* Reduce spacing */
+  .container {
+    margin: 20px auto;
+    padding: 16px;
+  }
+
+  /* Show hamburger */
   .hamburger {
     display: flex;
   }
 
+  /* Hide desktop menu */
   .menu {
     display: none;
     position: absolute;
-    top: 70px;
-    right: 20px;
+    top: 65px;
+    right: 16px;
 
     flex-direction: column;
-    gap: 18px;
+    gap: 16px;
 
     background: rgba(20,20,28,0.98);
-    padding: 24px;
-    border-radius: 16px;
+    padding: 20px;
+    border-radius: 14px;
 
-    width: 240px;
-
-    box-shadow: 0 20px 45px rgba(0,0,0,0.7);
+    width: 220px;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.7);
   }
 
+  /* Show when active */
   .menu.active {
     display: flex;
   }
 
   .menu a {
     margin: 0;
-    font-size: 15px;
   }
 
-  .hero-grid {
-    height: 420px;
-  }
-
+  /* Center hero content */
   .hero-content {
-    padding: 60px 28px;
+    padding: 50px 20px;
+    max-width: 100%;
+    text-align: center;
   }
 
   .hero-content h1 {
-    font-size: 30px;
+    font-size: 28px;
+    line-height: 1.25;
+  }
+
+  .hero-content p {
+    font-size: 16px;
   }
 
   .cta-row {
     flex-direction: column;
+    width: 100%;
   }
 
   .cta-btn {
     width: 100%;
     text-align: center;
+  }
+
+  .hero-grid {
+    height: 420px;
   }
 }
