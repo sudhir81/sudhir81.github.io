@@ -1,7 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  fetch("./navbar.html")   // IMPORTANT FIX
-    .then(response => response.text())
+  // Always load navbar from root
+  fetch("/navbar.html")
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Navbar not found");
+      }
+      return response.text();
+    })
     .then(data => {
       document.getElementById("navbar").innerHTML = data;
 
