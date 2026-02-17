@@ -11,10 +11,29 @@
 
 <body>
 
-<div id="navbar"></div>
-<script src="./assets/include.js"></script>
+<div class="container nav">
+  <a class="brand" href="index.html">
+    <img src="./assets/logo_tf.png" alt="TerraForge Logo">
+    <span>TerraForge Cloud</span>
+  </a>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <nav class="menu" id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="leadership.html">Leadership</a>
+    <a href="cases.html">Case Studies</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</div>
 
 <main class="container">
+
 <h2>Contact</h2>
 
 <div class="card">
@@ -28,6 +47,13 @@
 <div class="container footer">
   <p>© 2026 TerraForge Cloud</p>
 </div>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("navMenu");
+  menu.classList.toggle("active");
+}
+</script>
 
 </body>
 </html>
