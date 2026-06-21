@@ -1,0 +1,54 @@
+.partner-card {
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 20px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: 0.25s;
+}
+.partner-card:hover {
+  border-color: rgba(0,213,255,0.3);
+  box-shadow: 0 0 40px rgba(0,213,255,0.07);
+}
+.partner-header { display: flex; align-items: center; gap: 20px; }
+.partner-logo {
+  width: 64px; height: 64px; min-width: 64px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: 900; color: white;
+}
+.partner-header h3 { margin: 0 0 4px; font-size: 22px; font-weight: 800; }
+.partner-header .tagline { font-size: 14px; color: rgba(255,255,255,0.5); margin: 0; }
+.partner-desc { font-size: 15px; line-height: 1.75; color: rgba(255,255,255,0.75); margin: 0; }
+.partner-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.partner-tag {
+  font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 20px;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.7);
+}
+.stat-row { display: flex; gap: 28px; flex-wrap: wrap; }
+.pstat .num {
+  font-size: 24px; font-weight: 900;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.pstat .lbl { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+.partner-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+  border-top: 1px solid rgba(255,255,255,0.06); padding-top: 20px; margin-top: 4px;
+}
+.partner-footer .location { font-size: 13px; color: rgba(255,255,255,0.4); }
+.partner-link {
+  font-size: 13px; font-weight: 700; color: var(--accent1); text-decoration: none;
+  border: 1px solid rgba(0,213,255,0.3); padding: 8px 18px; border-radius: 8px; transition: 0.2s;
+}
+.partner-link:hover { background: rgba(0,213,255,0.1); }
+.page-intro {
+  text-align: center; max-width: 600px; margin: 0 auto 48px;
+  color: rgba(255,255,255,0.6); font-size: 16px; line-height: 1.7;
+}
+@media (max-width: 880px) {
+  .partner-card { padding: 28px 20px; }
+  .stat-row { gap: 16px; }
+}

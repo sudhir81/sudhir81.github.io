@@ -1,0 +1,310 @@
+<main class="container">
+  <h2>Engineering Projects</h2>
+  <p class="page-intro">
+    A selection of cloud, DevSecOps, and infrastructure-as-code projects from our founder's open-source work, spanning policy-driven pipelines, Kubernetes platforms, and enterprise Azure landing zones.
+  </p>
+
+  <div style="display:flex;flex-direction:column;gap:28px">
+
+    <!-- PROJECT 1: Enterprise DevSecOps Pipeline -->
+    <div class="proj-card">
+      <div class="proj-header">
+        <div class="proj-icon" style="background:linear-gradient(135deg,#10b981,#00d5ff)">🛡️</div>
+        <div>
+          <h3>Enterprise DevSecOps Pipeline</h3>
+          <p class="tagline">Policy-as-Code for Secure Infrastructure Delivery</p>
+        </div>
+      </div>
+
+      <p class="proj-desc">
+        A production-grade DevSecOps pipeline that embeds security scanning and policy enforcement directly into the Terraform deployment lifecycle. Every infrastructure change is linted, scanned for misconfigurations with Checkov, and validated against custom OPA/Rego policies — with a manual approval gate standing between any change and live Azure resources.
+      </p>
+
+      <div class="proj-tags">
+        <span class="proj-tag">Terraform</span>
+        <span class="proj-tag">Checkov</span>
+        <span class="proj-tag">OPA / Rego</span>
+        <span class="proj-tag">GitHub Actions</span>
+        <span class="proj-tag">Azure</span>
+        <span class="proj-tag">Policy as Code</span>
+      </div>
+
+      <div>
+        <p class="section-label">Pipeline Flow</p>
+        <div class="flow-diagram">
+          <div class="flow-step">Developer Commit</div><span class="flow-arrow">→</span>
+          <div class="flow-step">GitHub Repo</div><span class="flow-arrow">→</span>
+          <div class="flow-step">GitHub Actions</div><span class="flow-arrow">→</span>
+          <div class="flow-step">Terraform Validate / Lint</div><span class="flow-arrow">→</span>
+          <div class="flow-step">Checkov Scan</div><span class="flow-arrow">→</span>
+          <div class="flow-step">OPA Policy Eval</div>
+          <div class="flow-branch">
+            <div class="flow-branch-row">
+              <span class="flow-arrow">→</span>
+              <div class="flow-step">Terraform Plan</div>
+              <span class="flow-arrow">→</span>
+              <div class="flow-step gate">Manual Approval Gate</div>
+              <span class="flow-arrow">→</span>
+              <div class="flow-step">Terraform Apply</div>
+              <span class="flow-arrow">→</span>
+              <div class="flow-step dest">Azure Cloud Resources</div>
+            </div>
+            <div class="flow-branch-row">
+              <span class="flow-arrow">⤷</span>
+              <div class="flow-step" style="color:rgba(255,255,255,0.5)">Slack / Teams Notification (on every stage)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-highlight">
+        <span class="ico">💡</span>
+        <p>Shift-left security: non-compliant infrastructure is blocked before it's ever provisioned, with Checkov and OPA running as hard gates rather than advisory checks.</p>
+      </div>
+
+      <div class="proj-footer">
+        <a class="proj-link" href="https://github.com/sudhir81/enterprise-devsecops-pipeline" target="_blank">View on GitHub ↗</a>
+      </div>
+    </div>
+
+    <!-- PROJECT 2: Azure AKS DevSecOps Pipeline -->
+    <div class="proj-card">
+      <div class="proj-header">
+        <div class="proj-icon" style="background:linear-gradient(135deg,#3b82f6,#6366f1)">☸️</div>
+        <div>
+          <h3>Azure AKS DevSecOps Pipeline</h3>
+          <p class="tagline">Branch-Based CI/CD for Multi-Environment Kubernetes Delivery</p>
+        </div>
+      </div>
+
+      <p class="proj-desc">
+        A DevSecOps pipeline purpose-built for Azure Kubernetes Service, routing commits through dedicated dev, pre-prod, and prod branches into matching AKS namespaces. The project includes a documented real-world troubleshooting story — diagnosing and resolving a CrashLoopBackOff failure during rollout — along with a clear roadmap toward GitOps maturity.
+      </p>
+
+      <div class="proj-tags">
+        <span class="proj-tag">AKS</span>
+        <span class="proj-tag">Kubernetes</span>
+        <span class="proj-tag">GitHub Actions</span>
+        <span class="proj-tag">Terraform</span>
+        <span class="proj-tag">Docker</span>
+        <span class="proj-tag">Branch-per-Environment</span>
+      </div>
+
+      <div>
+        <p class="section-label">Pipeline Flow</p>
+        <div class="flow-diagram">
+          <div class="flow-step">dev branch</div><span class="flow-arrow">→</span>
+          <div class="flow-step dest">dev namespace</div>
+          <div class="flow-branch">
+            <div class="flow-branch-row">
+              <div class="flow-step">preprod branch</div><span class="flow-arrow">→</span>
+              <div class="flow-step dest">preprod namespace</div>
+            </div>
+            <div class="flow-branch-row">
+              <div class="flow-step">prod branch</div><span class="flow-arrow">→</span>
+              <div class="flow-step gate">Manual Approval</div><span class="flow-arrow">→</span>
+              <div class="flow-step dest">prod namespace</div>
+            </div>
+            <div class="flow-branch-row">
+              <span style="font-size:12px;color:rgba(255,255,255,0.4)">All namespaces run on a single shared AKS cluster, isolated via Kubernetes RBAC &amp; resource quotas</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-highlight">
+        <span class="ico">🔧</span>
+        <p>Includes a real troubleshooting writeup of a CrashLoopBackOff incident and its fix. Roadmap targets Helm, Ingress + TLS, Azure Monitor, Prometheus/Grafana, HPA, OPA/Gatekeeper, and ArgoCD-based GitOps.</p>
+      </div>
+
+      <div class="proj-footer">
+        <a class="proj-link" href="https://github.com/sudhir81/azure-aks-devsecops-pipeline" target="_blank">View on GitHub ↗</a>
+      </div>
+    </div>
+
+    <!-- PROJECT 3: AKS DevOps Platform -->
+    <div class="proj-card">
+      <div class="proj-header">
+        <div class="proj-icon" style="background:linear-gradient(135deg,#7C3AED,#00d5ff)">🧱</div>
+        <div>
+          <h3>AKS DevOps Platform</h3>
+          <p class="tagline">Modular Terraform Foundation for Production AKS</p>
+        </div>
+      </div>
+
+      <p class="proj-desc">
+        A reusable AKS platform built from dedicated Terraform modules for networking, monitoring, and the cluster itself — paired with Helm charts and a sample Node.js workload that exercises the platform end-to-end. The configuration was verified stable as of October 24, 2025.
+      </p>
+
+      <div class="proj-tags">
+        <span class="proj-tag">Terraform Modules</span>
+        <span class="proj-tag">AKS</span>
+        <span class="proj-tag">Helm</span>
+        <span class="proj-tag">Docker</span>
+        <span class="proj-tag">Node.js</span>
+      </div>
+
+      <div>
+        <p class="section-label">Architecture Flow</p>
+        <div class="flow-diagram">
+          <div class="flow-step">Terraform Module: network</div>
+          <div class="flow-step">Terraform Module: monitoring</div>
+          <div class="flow-step">Terraform Module: aks</div>
+          <span class="flow-arrow">→</span>
+          <div class="flow-step dest">AKS Cluster</div><span class="flow-arrow">→</span>
+          <div class="flow-step">Helm Charts</div><span class="flow-arrow">→</span>
+          <div class="flow-step dest">Sample Node.js App</div>
+        </div>
+      </div>
+
+      <div class="proj-highlight">
+        <span class="ico">✅</span>
+        <p>Clean separation between network, monitoring, and compute modules makes the platform easy to extend or fork for new clusters; a documented "stable configuration" milestone anchors the repo's reliability.</p>
+      </div>
+
+      <div class="proj-footer">
+        <a class="proj-link" href="https://github.com/sudhir81/aks-devops-platform" target="_blank">View on GitHub ↗</a>
+      </div>
+    </div>
+
+    <!-- PROJECT 4: Azure Landing Zone End-to-End -->
+    <div class="proj-card">
+      <div class="proj-header">
+        <div class="proj-icon" style="background:linear-gradient(135deg,#f97316,#ef4444)">🏛️</div>
+        <div>
+          <h3>Azure Landing Zone — End-to-End IaC Deployment</h3>
+          <p class="tagline">CAF-Aligned Landing Zone Across the Full Subscription Hierarchy</p>
+        </div>
+      </div>
+
+      <p class="proj-desc">
+        An end-to-end Infrastructure-as-Code implementation of Microsoft's Cloud Adoption Framework, provisioning a full management-group hierarchy that spans platform, dev, pre-prod, and prod subscriptions with shared services, landing zones, and workload boundaries — built on hardened defaults from day one.
+      </p>
+
+      <div class="proj-tags">
+        <span class="proj-tag">Terraform</span>
+        <span class="proj-tag">Cloud Adoption Framework</span>
+        <span class="proj-tag">Management Groups</span>
+        <span class="proj-tag">Azure Policy</span>
+        <span class="proj-tag">RBAC</span>
+      </div>
+
+      <div>
+        <p class="section-label">Architecture Flow</p>
+        <div class="flow-diagram">
+          <div class="flow-step gate">Management Group</div><span class="flow-arrow">→</span>
+          <div class="flow-step">Platform Subscription</div>
+          <div class="flow-step">Dev Subscription</div>
+          <div class="flow-step">PreProd Subscription</div>
+          <div class="flow-step">Prod Subscription</div>
+          <div class="flow-branch">
+            <div class="flow-branch-row">
+              <span class="flow-arrow">→</span>
+              <div class="flow-step dest">Shared Services</div>
+              <div class="flow-step dest">Landing Zones</div>
+              <div class="flow-step dest">Workloads</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-highlight">
+        <span class="ico">🔒</span>
+        <p>Security best practices enforced by default: TLS 1.2 minimum, no public blob access, and least-privilege RBAC across every subscription tier.</p>
+      </div>
+
+      <div class="proj-footer">
+        <a class="proj-link" href="https://github.com/sudhir81/Azure-Landing-Zone-End-to-End-IaC-Deployment" target="_blank">View on GitHub ↗</a>
+      </div>
+    </div>
+
+    <!-- PROJECT 5: LandingZoneEmpire -->
+    <div class="proj-card">
+      <div class="proj-header">
+        <div class="proj-icon" style="background:linear-gradient(135deg,#0ea5e9,#22d3ee)">🌐</div>
+        <div>
+          <h3>LandingZoneEmpire</h3>
+          <p class="tagline">Pre-Production Azure Landing Zone Automation</p>
+        </div>
+      </div>
+
+      <p class="proj-desc">
+        Automates a full pre-production landing zone footprint — resource groups, hub-spoke VNets, NSGs, Log Analytics, storage, Bastion, and Key Vault — with diagnostic settings and policy assignments wired in so pre-prod testing reflects the same governance constraints used in production.
+      </p>
+
+      <div class="proj-tags">
+        <span class="proj-tag">Terraform</span>
+        <span class="proj-tag">Hub-Spoke VNets</span>
+        <span class="proj-tag">Azure Bastion</span>
+        <span class="proj-tag">Key Vault</span>
+        <span class="proj-tag">Log Analytics</span>
+        <span class="proj-tag">Policy Assignments</span>
+      </div>
+
+      <div>
+        <p class="section-label">Architecture Flow</p>
+        <div class="flow-diagram">
+          <div class="flow-step">Resource Groups</div><span class="flow-arrow">→</span>
+          <div class="flow-step">Hub-Spoke VNets / NSGs</div><span class="flow-arrow">→</span>
+          <div class="flow-step">Bastion / Key Vault</div><span class="flow-arrow">→</span>
+          <div class="flow-step">Log Analytics &amp; Diagnostics</div><span class="flow-arrow">→</span>
+          <div class="flow-step dest">Policy Assignments</div>
+        </div>
+      </div>
+
+      <div class="proj-highlight">
+        <span class="ico">🧪</span>
+        <p>Mirrors production-grade governance controls in a pre-prod environment, so issues surface in testing rather than after promotion to production.</p>
+      </div>
+
+      <div class="proj-footer">
+        <a class="proj-link" href="https://github.com/sudhir81/LandingZoneEmpire" target="_blank">View on GitHub ↗</a>
+      </div>
+    </div>
+
+    <!-- PROJECT 6: Terraform + Ansible Production Setup -->
+    <div class="proj-card">
+      <div class="proj-header">
+        <div class="proj-icon" style="background:linear-gradient(135deg,#ec4899,#7C3AED)">⚙️</div>
+        <div>
+          <h3>Terraform + Ansible Production Setup</h3>
+          <p class="tagline">Hybrid IaC + Configuration Management for Windows Workloads</p>
+        </div>
+      </div>
+
+      <p class="proj-desc">
+        Combines Terraform for provisioning with Ansible for configuration management to stand up and configure Windows VMs in Azure. Secrets are handled entirely through GitHub Secrets — no hardcoded credentials anywhere in the codebase — with a remote Terraform state backend in Azure Storage and a full GitHub Actions pipeline running from push to a live IIS endpoint.
+      </p>
+
+      <div class="proj-tags">
+        <span class="proj-tag">Terraform</span>
+        <span class="proj-tag">Ansible</span>
+        <span class="proj-tag">Azure VMs</span>
+        <span class="proj-tag">GitHub Actions</span>
+        <span class="proj-tag">GitHub Secrets</span>
+        <span class="proj-tag">IIS</span>
+      </div>
+
+      <div>
+        <p class="section-label">Pipeline Flow</p>
+        <div class="flow-diagram">
+          <div class="flow-step">GitHub Push</div><span class="flow-arrow">→</span>
+          <div class="flow-step">GitHub Actions</div><span class="flow-arrow">→</span>
+          <div class="flow-step">Terraform: Provision 2× Windows VM</div><span class="flow-arrow">→</span>
+          <div class="flow-step">Ansible: Configure</div><span class="flow-arrow">→</span>
+          <div class="flow-step dest">Live IIS Endpoint</div>
+        </div>
+      </div>
+
+      <div class="proj-highlight">
+        <span class="ico">🔑</span>
+        <p>Secrets-free pipeline design — Azure credentials and the VM admin password are injected only via GitHub Secrets, never committed to the repo.</p>
+      </div>
+
+      <div class="proj-footer">
+        <a class="proj-link" href="https://github.com/sudhir81/terraform-azurerm-compute" target="_blank">View on GitHub ↗</a>
+      </div>
+    </div>
+
+  </div>
+</main>

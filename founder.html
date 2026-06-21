@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sudhir Dalvi — Founder & Cloud Architect | TerraForge Cloud</title>
+<link rel="icon" href="./assets/logo_tf.png">
+<link rel="stylesheet" href="./assets/styles.css">
+<style>
+  /* ── Founder page extras ── */
+
+  .founder-hero {
+    background: linear-gradient(135deg, rgba(0,213,255,0.08) 0%, rgba(255,45,149,0.08) 100%);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 20px;
+    padding: 56px 48px;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    margin-top: 10px;
+  }
+
+  .founder-avatar {
+    width: 120px;
+    height: 120px;
+    min-width: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #7C3AED, #00d5ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: 900;
+    color: white;
+    letter-spacing: -1px;
+  }
+
+  .founder-meta h1 {
+    font-size: 38px;
+    font-weight: 900;
+    margin: 0 0 6px;
+    background: linear-gradient(90deg, var(--accent1), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .founder-meta .role {
+    font-size: 18px;
+    color: rgba(255,255,255,0.7);
+    margin: 0 0 16px;
+  }
+
+  .founder-links {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .founder-links a {
+    color: var(--accent1);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid rgba(0,213,255,0.3);
+    padding: 6px 14px;
+    border-radius: 20px;
+    transition: 0.2s;
+  }
+
+  .founder-links a:hover {
+    background: rgba(0,213,255,0.1);
+  }
+
+  .stat-bar {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat .num {
+    font-size: 36px;
+    font-weight: 900;
+    background: linear-gradient(90deg, var(--accent1), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .stat .label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    margin-top: 2px;
+  }
+
+  /* ── Bio ── */
+  .bio {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 32px;
+    line-height: 1.75;
+    font-size: 16px;
+    color: rgba(255,255,255,0.85);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* ── Section heading ── */
+  .section-label {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent1);
+    margin-bottom: 16px;
+  }
+
+  /* ── Skills tags ── */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .tag {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 7px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .tag.accent {
+    border-color: rgba(0,213,255,0.35);
+    color: var(--accent1);
+  }
+
+  /* ── Timeline ── */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .tl-item {
+    display: grid;
+    grid-template-columns: 160px 1px 1fr;
+    gap: 0 24px;
+  }
+
+  .tl-date {
+    text-align: right;
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    padding-top: 4px;
+    padding-bottom: 32px;
+  }
+
+  .tl-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tl-dot {
+    width: 12px;
+    height: 12px;
+    min-height: 12px;
+    background: var(--accent1);
+    border-radius: 50%;
+    margin-top: 4px;
+  }
+
+  .tl-pipe {
+    flex: 1;
+    width: 2px;
+    background: rgba(255,255,255,0.08);
+    margin-top: 6px;
+  }
+
+  .tl-item:last-child .tl-pipe {
+    display: none;
+  }
+
+  .tl-content {
+    padding-bottom: 32px;
+  }
+
+  .tl-content strong {
+    font-size: 15px;
+  }
+
+  .tl-content .co {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 2px;
+    margin-bottom: 8px;
+  }
+
+  .tl-content ul {
+    margin: 0;
+    padding-left: 18px;
+    color: rgba(255,255,255,0.7);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* ── Projects ── */
+  .project-card {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    padding: 22px 24px;
+  }
+
+  .project-card h4 {
+    margin: 0 0 8px;
+    font-size: 15px;
+    color: white;
+  }
+
+  .project-card p {
+    margin: 0;
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+  }
+
+  /* ── Certs ── */
+  .cert-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .cert-item:last-child {
+    border-bottom: none;
+  }
+
+  .cert-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #7C3AED, #00d5ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+
+  .cert-item span {
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+  }
+
+  /* ── Two-col layout ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  @media (max-width: 880px) {
+    .founder-hero { flex-direction: column; padding: 32px 24px; gap: 24px; }
+    .founder-meta h1 { font-size: 28px; }
+    .tl-item { grid-template-columns: 90px 1px 1fr; gap: 0 14px; }
+    .two-col { grid-template-columns: 1fr; }
+    .stat-bar { gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="container nav">
+  <a class="brand" href="index.html">
+    <img src="./assets/logo_tf.png" alt="TerraForge Logo">
+    <span>TerraForge Cloud</span>
+  </a>
+  <nav class="menu">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="leadership.html">Leadership</a>
+    <a href="founder.html">Founder</a>
+    <a href="cases.html">Case Studies</a>
+    <a href="projects.html">Projects</a>
+    <a href="partners.html">Partners</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</div>
+
+<main class="container" style="margin-top:0">
+
+  <!-- HERO -->
+  <div class="founder-hero">
+    <div class="founder-avatar">SD</div>
+    <div class="founder-meta">
+      <h1>Sudhir Dalvi</h1>
+      <p class="role">Founder & Hybrid Cloud Solutions Architect</p>
+      <div class="founder-links">
+        <a href="https://linkedin.com/in/sudhir-dalvi" target="_blank">↗ LinkedIn</a>
+        <a href="mailto:sudhir.dalvi@hotmail.com">✉ sudhir.dalvi@hotmail.com</a>
+        <a href="leadership.html">← Back to Leadership</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stat-bar" style="margin-top:36px; margin-bottom:36px; justify-content:center">
+    <div class="stat">
+      <div class="num">19+</div>
+      <div class="label">Years IT Experience</div>
+    </div>
+    <div class="stat">
+      <div class="num">10+</div>
+      <div class="label">Years Azure Focus</div>
+    </div>
+    <div class="stat">
+      <div class="num">1200+</div>
+      <div class="label">Workloads Migrated</div>
+    </div>
+    <div class="stat">
+      <div class="num">MCT</div>
+      <div class="label">Certified Since 2008</div>
+    </div>
+  </div>
+
+  <!-- BIO -->
+  <div style="margin-bottom:40px">
+    <p class="section-label">About</p>
+    <div class="bio">
+      Cloud & Infrastructure Architect with 19+ years of IT experience, including 10+ years specializing in Microsoft Azure architecture, infrastructure modernization, and large-scale migration projects. Proven expertise in designing, deploying, and optimizing Azure IaaS/PaaS solutions, implementing Infrastructure as Code (Terraform, ARM, Bicep), and leading Azure transformation workstreams for enterprise clients. Certified Microsoft Trainer (MCT) and experienced Azure Solutions Architect skilled in hybrid environments, DevOps automation, and Well-Architected Framework assessments. Known for strong technical leadership, mentoring engineers, and driving cost-optimized, secure, and scalable cloud solutions.
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div style="margin-bottom:40px">
+    <p class="section-label">Core Competencies</p>
+    <div class="tags">
+      <span class="tag accent">Azure IaaS / PaaS</span>
+      <span class="tag accent">AKS</span>
+      <span class="tag accent">Terraform</span>
+      <span class="tag accent">ARM Templates</span>
+      <span class="tag accent">Bicep</span>
+      <span class="tag accent">Azure DevOps</span>
+      <span class="tag accent">GitHub Actions</span>
+      <span class="tag">CI/CD Pipelines</span>
+      <span class="tag">PowerShell / YAML</span>
+      <span class="tag">Hybrid & Multi-Cloud</span>
+      <span class="tag">VMware / Hyper-V</span>
+      <span class="tag">AWS-to-Azure Migration</span>
+      <span class="tag">Azure AD / Entra ID</span>
+      <span class="tag">IAM (B2B/B2C)</span>
+      <span class="tag">Azure Well-Architected Framework</span>
+      <span class="tag">Cloud Adoption Framework</span>
+      <span class="tag">Cost Management & Governance</span>
+      <span class="tag">Security & Compliance</span>
+      <span class="tag">Azure Site Recovery / Backup</span>
+      <span class="tag">Technical Leadership & Mentoring</span>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div style="margin-bottom:40px">
+    <p class="section-label">Experience</p>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-date">Jul 2022 – Sep 2025</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-pipe"></div></div>
+        <div class="tl-content">
+          <strong>Technical Lead</strong>
+          <div class="co">Callaway Digitech · Remote / India</div>
+          <ul>
+            <li>Designed complex Azure architectures (IaaS, PaaS, hybrid) for global enterprise clients.</li>
+            <li>Led Azure migration and modernization workstreams using Azure Migrate, Quest, and Okta.</li>
+            <li>Developed and reviewed Terraform and ARM templates to standardize deployments.</li>
+            <li>Conducted Azure Well-Architected Framework reviews and delivered optimization reports.</li>
+            <li>Mentored mid-level cloud engineers on Azure best practices, IaC, and DevOps workflows.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">Jul 2018 – Jul 2022</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-pipe"></div></div>
+        <div class="tl-content">
+          <strong>Sr. Tech Lead</strong>
+          <div class="co">Estuate Software Pvt Ltd (Client: Callaway Golf)</div>
+          <ul>
+            <li>Spearheaded Azure transformation and hybrid cloud initiatives across multiple global data centers.</li>
+            <li>Automated environment provisioning via Terraform and PowerShell, reducing deployment times by 40%.</li>
+            <li>Delivered Azure governance and compliance frameworks including RBAC, policies, and cost control.</li>
+            <li>Managed failover clustering and DR using Azure Site Recovery and Storage Replication.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">Nov 2017 – Jul 2018</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-pipe"></div></div>
+        <div class="tl-content">
+          <strong>Sr. Consultant</strong>
+          <div class="co">Innovation Technology By Design</div>
+          <ul>
+            <li>Delivered consulting for Microsoft cloud technologies: SCCM, Exchange, Hyper-V, Azure AD, and O365.</li>
+            <li>Assisted enterprise clients in cloud migration roadmaps and infrastructure design.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">Dec 2015 – Nov 2017</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-pipe"></div></div>
+        <div class="tl-content">
+          <strong>Module Leader</strong>
+          <div class="co">Espire Infolabs</div>
+          <ul>
+            <li>Supported Azure cloud environments for UK-based clients with security governance and compliance.</li>
+            <li>Designed secure Windows Server and Hyper-V clusters for HA/DR capabilities.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">Nov 2014 – Oct 2015</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-pipe"></div></div>
+        <div class="tl-content">
+          <strong>Sr. Specialist</strong>
+          <div class="co">HCL Technologies</div>
+          <ul>
+            <li>Managed IT infrastructure and cloud operations for global clients including Johnson & Johnson.</li>
+            <li>Delivered ITIL-based incident and SLA management across large distributed teams.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PROJECTS + CERTS side by side -->
+  <div class="two-col" style="margin-bottom:40px">
+
+    <div>
+      <p class="section-label">Key Projects</p>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="project-card">
+          <h4>Azure Enterprise Migration — Callaway Golf</h4>
+          <p>Migrated 1200+ workloads from on-premises and AWS to Azure, covering IaaS, PaaS, and identity.</p>
+        </div>
+        <div class="project-card">
+          <h4>Infrastructure Automation</h4>
+          <p>Developed reusable Terraform modules for multi-region provisioning and policy enforcement.</p>
+        </div>
+        <div class="project-card">
+          <h4>Well-Architected Review Initiative</h4>
+          <p>Delivered performance and cost optimization reports across multiple Azure workloads.</p>
+        </div>
+        <div class="project-card">
+          <h4>Identity Federation Project</h4>
+          <p>Implemented Entra ID (Azure AD) with Okta and Duo for enterprise B2B/B2C authentication.</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="section-label">Certifications</p>
+      <div class="bio" style="padding:20px 24px">
+        <div class="cert-item">
+          <div class="cert-icon">🏅</div>
+          <span>Microsoft Certified Trainer (MCT) — Since 2008</span>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">☁️</div>
+          <span>Microsoft Certified: Azure Solutions Architect Expert</span>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">🎓</div>
+          <span>MCSE, MCTS, MCITP (Microsoft Certified Systems Engineer / IT Professional)</span>
+        </div>
+        <div class="cert-item">
+          <div class="cert-icon">📋</div>
+          <span>Exam 70-533: Implementing Azure Infrastructure Solutions</span>
+        </div>
+      </div>
+
+      <p class="section-label" style="margin-top:32px">Training & Freelance</p>
+      <div class="bio" style="padding:20px 24px; font-size:14px">
+        Delivered corporate trainings on Azure, AD, Exchange, SCCM, and Terraform for enterprises in India, UK, and US. Conducted Azure strategy workshops and assisted organizations with Cloud Adoption Frameworks.
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+  <!-- ARTICLES -->
+  <div style="margin-bottom:40px">
+    <p class="section-label">Published Articles</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px">
+
+      <!-- Article 1 -->
+      <div style="background:var(--card);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:16px;transition:0.25s" onmouseover="this.style.borderColor='rgba(0,213,255,0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)'">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:36px;height:36px;min-width:36px;border-radius:8px;background:linear-gradient(135deg,#0a66c2,#00d5ff);display:flex;align-items:center;justify-content:center;font-size:16px">✅</div>
+          <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em">Project Delivery</span>
+        </div>
+        <h4 style="margin:0;font-size:17px;font-weight:700;line-height:1.4;color:white">End-to-End IT Solution Delivered for ShineBlast</h4>
+        <p style="margin:0;font-size:14px;color:rgba(255,255,255,0.6);line-height:1.7">
+          Delivered a complete web and communication infrastructure for ShineBlast — covering website deployment, domain & DNS architecture, secure professional email hosting with SMTP, and production go-live support. The solution is live, stable, and scalable.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6)">#CloudServices</span>
+          <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6)">#EmailInfrastructure</span>
+          <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6)">#WebHosting</span>
+          <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6)">#DigitalTransformation</span>
+        </div>
+        <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:16px;margin-top:auto">
+          <a href="https://www.linkedin.com/posts/sudhir-dalvi-0591a95a_home-activity-7413778842500161536-H_8h" target="_blank" style="font-size:13px;font-weight:700;color:var(--accent1);text-decoration:none;border:1px solid rgba(0,213,255,0.3);padding:8px 16px;border-radius:8px;display:inline-block;transition:0.2s" onmouseover="this.style.background='rgba(0,213,255,0.1)'" onmouseout="this.style.background='transparent'">Read on LinkedIn ↗</a>
+        </div>
+      </div>
+
+      <!-- Article 2 -->
+      <div style="background:var(--card);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:16px;transition:0.25s" onmouseover="this.style.borderColor='rgba(0,213,255,0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)'">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:36px;height:36px;min-width:36px;border-radius:8px;background:linear-gradient(135deg,#7C3AED,#00d5ff);display:flex;align-items:center;justify-content:center;font-size:16px">🚀</div>
+          <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em">DevOps & Cloud</span>
+        </div>
+        <h4 style="margin:0;font-size:17px;font-weight:700;line-height:1.4;color:white">Enterprise-Grade AKS & DevOps Platform on Azure</h4>
+        <p style="margin:0;font-size:14px;color:rgba(255,255,255,0.6);line-height:1.7">
+          Built an enterprise-grade Azure Kubernetes Service (AKS) + DevOps platform featuring automated CI/CD pipelines with GitHub Actions & Azure DevOps, Infrastructure as Code using Terraform, and AKS deployment with monitoring — designed to modernize cloud infrastructure and improve release velocity at scale.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6)">#AzureKubernetes</span>
+          <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6)">#Terraform</span>
+          <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6)">#GitHubActions</span>
+          <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6)">#DevOps</span>
+        </div>
+        <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:16px;margin-top:auto">
+          <a href="https://www.linkedin.com/feed/update/urn:li:share:7388415432132767744/" target="_blank" style="font-size:13px;font-weight:700;color:var(--accent1);text-decoration:none;border:1px solid rgba(0,213,255,0.3);padding:8px 16px;border-radius:8px;display:inline-block;transition:0.2s" onmouseover="this.style.background='rgba(0,213,255,0.1)'" onmouseout="this.style.background='transparent'">Read on LinkedIn ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<div class="container footer">
+  <p>© 2026 TerraForge Cloud • <a href="https://www.terraforgecloud.com">terraforgecloud.com</

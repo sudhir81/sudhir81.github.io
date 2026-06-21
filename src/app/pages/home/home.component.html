@@ -1,0 +1,162 @@
+<section class="hero-grid">
+  <video autoplay muted loop playsinline>
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-content">
+    <h1>Engineering the Future of Cloud, AI &amp; Enterprise Platforms</h1>
+    <p>Cloud • DevOps • AI Automation • Infra Modernization • Messaging</p>
+    <div class="cta-row">
+      <a class="cta-btn" routerLink="/services">Our Services</a>
+      <a class="cta-btn secondary" routerLink="/contact">Talk to Us</a>
+    </div>
+  </div>
+</section>
+
+<main class="container">
+
+  <!-- AT A GLANCE -->
+  <h2 class="reveal">TerraForge at a Glance</h2>
+  <p class="section-sub reveal">A quick look at where we've delivered — click a tile to explore.</p>
+
+  <div class="stat-tiles">
+    <a class="stat-tile reveal" href="#domains">
+      <div class="num">6</div>
+      <div class="lbl">Technology Domains</div>
+      <span class="go">View Below ↓</span>
+    </a>
+    <a class="stat-tile reveal" routerLink="/cases">
+      <div class="num">3</div>
+      <div class="lbl">Case Studies Delivered</div>
+      <span class="go">See Case Studies →</span>
+    </a>
+    <a class="stat-tile reveal" routerLink="/projects">
+      <div class="num">6</div>
+      <div class="lbl">Open-Source Engineering Projects</div>
+      <span class="go">See Projects →</span>
+    </a>
+    <a class="stat-tile reveal" routerLink="/partners">
+      <div class="num">2</div>
+      <div class="lbl">Strategic Technology Partners</div>
+      <span class="go">See Partners →</span>
+    </a>
+  </div>
+
+  <!-- TECHNOLOGY DOMAINS -->
+  <h2 id="domains" class="reveal">Technology Domains</h2>
+  <p class="section-sub reveal">Hover a tile (or tap on mobile) to see what's inside.</p>
+
+  <div class="domain-grid">
+
+    <div class="tile reveal" (click)="toggleTile($event)">
+      <div class="tile-inner">
+        <div class="tile-face tile-front">
+          <div class="tile-icon">☁️</div>
+          <h3>Cloud Engineering &amp; Architecture</h3>
+          <span class="tile-hint">Hover to explore</span>
+        </div>
+        <div class="tile-face tile-back">
+          <h4>Cloud Engineering &amp; Architecture</h4>
+          <ul>
+            <li>Cloud Management</li>
+            <li>Infrastructure &amp; DevOps</li>
+            <li>Compliance &amp; Strategy</li>
+            <li>Migration &amp; Modernization</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="tile reveal" (click)="toggleTile($event)">
+      <div class="tile-inner">
+        <div class="tile-face tile-front">
+          <div class="tile-icon">🖥️</div>
+          <h3>Digital Workspaces</h3>
+          <span class="tile-hint">Hover to explore</span>
+        </div>
+        <div class="tile-face tile-back">
+          <h4>Digital Workspaces</h4>
+          <ul>
+            <li>Digital Employee Experience</li>
+            <li>Unified Endpoint Management</li>
+            <li>Virtual Desktops &amp; Apps</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="tile reveal" (click)="toggleTile($event)">
+      <div class="tile-inner">
+        <div class="tile-face tile-front">
+          <div class="tile-icon">🤖</div>
+          <h3>AI, Data Science &amp; Automation</h3>
+          <span class="tile-hint">Hover to explore</span>
+        </div>
+        <div class="tile-face tile-back">
+          <h4>AI, Data Science &amp; Automation</h4>
+          <ul>
+            <li>LLM Automation</li>
+            <li>Data Engineering</li>
+            <li>Predictive Analytics</li>
+            <li>Conversational AI</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="tile reveal" (click)="toggleTile($event)">
+      <div class="tile-inner">
+        <div class="tile-face tile-front">
+          <div class="tile-icon">✉️</div>
+          <h3>Messaging &amp; Modern Workplace</h3>
+          <span class="tile-hint">Hover to explore</span>
+        </div>
+        <div class="tile-face tile-back">
+          <h4>Messaging &amp; Modern Workplace</h4>
+          <ul>
+            <li>Exchange Hybrid</li>
+            <li>Mail Flow Engineering</li>
+            <li>Security &amp; Governance</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="tile reveal" (click)="toggleTile($event)">
+      <div class="tile-inner">
+        <div class="tile-face tile-front">
+          <div class="tile-icon">🧩</div>
+          <h3>VMware &amp; Virtualization</h3>
+          <span class="tile-hint">Hover to explore</span>
+        </div>
+        <div class="tile-face tile-back">
+          <h4>VMware &amp; Virtualization</h4>
+          <ul>
+            <li>vSphere, ESXi</li>
+            <li>Horizon VDI</li>
+            <li>DR &amp; SRM</li>
+            <li>Virtualization Migrations</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="tile reveal" (click)="toggleTile($event)">
+      <div class="tile-inner">
+        <div class="tile-face tile-front">
+          <div class="tile-icon">🗄️</div>
+          <h3>Wintel &amp; Core Infrastructure</h3>
+          <span class="tile-hint">Hover to explore</span>
+        </div>
+        <div class="tile-face tile-back">
+          <h4>Wintel &amp; Core Infrastructure</h4>
+          <ul>
+            <li>Hybrid Datacenter Integration</li>
+            <li>Procurements, Implementations &amp; Support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</main>

@@ -1,0 +1,9 @@
+# Angular
+dist/
+node_modules/
+.angular/
+*.js.map
+
+# Misc
+.DS_Store
+.env

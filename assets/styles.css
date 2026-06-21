@@ -178,6 +178,24 @@ h2 {
   backdrop-filter: blur(6px);
 }
 
+/* ========================================================= */
+/*  SCROLL PARALLAX LAG                                      */
+/*  Tiles drift a beat behind the page on scroll — driven by */
+/*  --parallax, set continuously by assets/parallax.js.      */
+/*  Uses the standalone `translate` property so it composes  */
+/*  with hover lifts / flips instead of fighting `transform`.*/
+/* ========================================================= */
+
+.card,
+.tile,
+.stat-tile,
+.partner-card,
+.proj-card,
+.project-card {
+  translate: 0 var(--parallax, 0px);
+  will-change: translate;
+}
+
 
 /* ========================================================= */
 /*  MOBILE RESPONSIVE ONLY                                   */

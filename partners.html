@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Partners — TerraForge Cloud</title>
+<link rel="icon" href="./assets/logo_tf.png">
+<link rel="stylesheet" href="./assets/styles.css">
+<style>
+  .partner-card {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: 0.25s;
+  }
+
+  .partner-card:hover {
+    border-color: rgba(0,213,255,0.3);
+    box-shadow: 0 0 40px rgba(0,213,255,0.07);
+  }
+
+  .partner-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .partner-logo {
+    width: 64px;
+    height: 64px;
+    min-width: 64px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 900;
+    color: white;
+    letter-spacing: -1px;
+  }
+
+  .partner-header h3 {
+    margin: 0 0 4px;
+    font-size: 22px;
+    font-weight: 800;
+  }
+
+  .partner-header .tagline {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    margin: 0;
+  }
+
+  .partner-desc {
+    font-size: 15px;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.75);
+    margin: 0;
+  }
+
+  .partner-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .partner-tag {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.7);
+  }
+
+  .partner-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 20px;
+    margin-top: 4px;
+  }
+
+  .partner-footer .location {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .partner-link {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent1);
+    text-decoration: none;
+    border: 1px solid rgba(0,213,255,0.3);
+    padding: 8px 18px;
+    border-radius: 8px;
+    transition: 0.2s;
+  }
+
+  .partner-link:hover {
+    background: rgba(0,213,255,0.1);
+  }
+
+  .stat-row {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+
+  .pstat .num {
+    font-size: 24px;
+    font-weight: 900;
+    background: linear-gradient(90deg, var(--accent1), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .pstat .lbl {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 2px;
+  }
+
+  .page-intro {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 48px;
+    color: rgba(255,255,255,0.6);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 880px) {
+    .partner-card { padding: 28px 20px; }
+    .stat-row { gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="container nav">
+  <a class="brand" href="index.html">
+    <img src="./assets/logo_tf.png" alt="TerraForge Logo">
+    <span>TerraForge Cloud</span>
+  </a>
+  <nav class="menu">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="leadership.html">Leadership</a>
+    <a href="founder.html">Founder</a>
+    <a href="cases.html">Case Studies</a>
+    <a href="projects.html">Projects</a>
+    <a href="partners.html">Partners</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</div>
+
+<main class="container">
+
+  <h2>Our Partners</h2>
+  <p class="page-intro">
+    TerraForge Cloud works with trusted technology partners who share our commitment to enterprise-grade solutions, innovation, and real-world impact.
+  </p>
+
+  <div style="display:flex;flex-direction:column;gap:28px">
+
+    <!-- ACKEETECH -->
+    <div class="partner-card">
+      <div class="partner-header">
+        <div class="partner-logo" style="background:linear-gradient(135deg,#f97316,#ef4444)">AT</div>
+        <div>
+          <h3>Ackeetech</h3>
+          <p class="tagline">AI, Automation & Digital Transformation Solutions</p>
+        </div>
+      </div>
+
+      <p class="partner-desc">
+        Ackeetech delivers enterprise-grade AI solutions, intelligent automation, cloud services, and cybersecurity for businesses, government, healthcare, and education. With deep expertise spanning cloud migration, SD-WAN, managed IT services, and PMO-as-a-service, Ackeetech helps organizations modernize their infrastructure and unlock the full potential of digital transformation — from strategy through execution.
+      </p>
+
+      <div class="stat-row">
+        <div class="pstat"><div class="num">AI</div><div class="lbl">Intelligent Automation</div></div>
+        <div class="pstat"><div class="num">Cloud</div><div class="lbl">Migration & Management</div></div>
+        <div class="pstat"><div class="num">Gov</div><div class="lbl">& Healthcare Focus</div></div>
+      </div>
+
+      <div class="partner-tags">
+        <span class="partner-tag">AI Solutions</span>
+        <span class="partner-tag">Intelligent Automation</span>
+        <span class="partner-tag">Cloud Migration</span>
+        <span class="partner-tag">Cybersecurity</span>
+        <span class="partner-tag">SD-WAN</span>
+        <span class="partner-tag">Managed IT Services</span>
+        <span class="partner-tag">PMO as a Service</span>
+        <span class="partner-tag">Disaster Recovery</span>
+        <span class="partner-tag">Digital Transformation</span>
+      </div>
+
+      <div class="partner-footer">
+        <span class="location">📍 Delhi, India</span>
+        <a class="partner-link" href="https://www.ackeetech.com" target="_blank">Visit ackeetech.com ↗</a>
+      </div>
+    </div>
+
+    <!-- HALOGUARD -->
+    <div class="partner-card">
+      <div class="partner-header">
+        <div class="partner-logo" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)">HG</div>
+        <div>
+          <h3>Halo Guard</h3>
+          <p class="tagline">Managed Cybersecurity for Small Businesses</p>
+        </div>
+      </div>
+
+      <p class="partner-desc">
+        Halo Guard delivers enterprise-grade endpoint protection and managed cybersecurity built specifically for small and medium businesses — without the complexity or overhead. Founded by an IT professional with nearly 20 years of experience in software development, cloud architecture, and enterprise systems, Halo Guard brings the same calibre of security used by large enterprises to SMBs in Kitchener-Waterloo and beyond. Their 24/7 threat monitoring, automated remediation, and AI-powered antivirus keep businesses protected around the clock, with clear plain-English reporting and local, responsive support.
+      </p>
+
+      <div class="stat-row">
+        <div class="pstat"><div class="num">24/7</div><div class="lbl">Threat Monitoring</div></div>
+        <div class="pstat"><div class="num">43%</div><div class="lbl">of attacks target SMBs</div></div>
+        <div class="pstat"><div class="num">11s</div><div class="lbl">a cyberattack hits globally</div></div>
+      </div>
+
+      <div class="partner-tags">
+        <span class="partner-tag">Endpoint Detection & Response</span>
+        <span class="partner-tag">Managed Cybersecurity</span>
+        <span class="partner-tag">24/7 Monitoring</span>
+        <span class="partner-tag">Automated Remediation</span>
+        <span class="partner-tag">Next-Gen Antivirus</span>
+        <span class="partner-tag">CompTIA Security+</span>
+        <span class="partner-tag">SMB Focused</span>
+        <span class="partner-tag">Cloud Architecture</span>
+      </div>
+
+      <div class="partner-footer">
+        <span class="location">📍 Kitchener-Waterloo, Ontario, Canada</span>
+        <a class="partner-link" href="https://www.haloguard.ca" target="_blank">Visit haloguard.ca ↗</a>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<div class="container footer">
+  <p>© 2026 TerraForge Cloud • <a href="https://www.terraforgecloud.com">terraforgecloud.com</

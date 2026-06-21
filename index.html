@@ -8,109 +8,129 @@
 
 <link rel="icon" href="assets/logo_tf.png">
 <link rel="stylesheet" href="assets/styles.css">
+<style>
+  /* ── Reveal-on-scroll ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-</head>
-<body>
+  /* ── Section intro ── */
+  .section-sub {
+    margin: -6px 0 26px;
+    color: rgba(255,255,255,0.55);
+    font-size: 14.5px;
+  }
 
-<!-- NAVIGATION -->
-<div class="container nav">
-  <a class="brand" href="index.html">
-    <img src="assets/logo_tf.png" alt="TF Logo">
-    <span>TerraForge Cloud</span>
-  </a>
+  /* ── At-a-glance stat tiles ── */
+  .stat-tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+    margin: 8px 0 56px;
+  }
 
-  <nav class="menu">
-    <a href="index.html">Home</a>
-    <a href="services.html">Services</a>
-    <a href="leadership.html">Leadership</a>
-    <a href="cases.html">Case Studies</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</div>
+  .stat-tile {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 16px;
+    padding: 26px 18px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    transition: 0.3s;
+  }
 
+  .stat-tile:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0,213,255,0.35);
+    box-shadow: 0 16px 36px rgba(0,213,255,0.12);
+  }
 
-<!-- ======================================== -->
-<!-- CINEMATIC V5 VIDEO HERO                  -->
-<!-- ======================================== -->
-<section class="hero-grid">
+  .stat-tile .num {
+    font-size: 34px;
+    font-weight: 900;
+    background: linear-gradient(90deg, var(--accent1), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 
-  <video autoplay muted loop playsinline>
-    <source src="assets/hero.mp4" type="video/mp4">
-  </video>
+  .stat-tile .lbl {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 6px;
+  }
 
-  <div class="hero-content">
-    <h1>Engineering the Future of Cloud, AI & Enterprise Platforms</h1>
-    <p>Cloud • DevOps • AI Automation • Infra Modernization • Messaging</p>
+  .stat-tile .go {
+    display: block;
+    margin-top: 10px;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent1);
+    opacity: 0;
+    transform: translateY(4px);
+    transition: 0.25s;
+  }
 
-    <div class="cta-row">
-      <a class="cta-btn" href="services.html">Our Services</a>
-      <a class="cta-btn secondary" href="contact.html">Talk to Us</a>
-    </div>
-  </div>
+  .stat-tile:hover .go {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-</section>
+  /* ── Flip tiles ── */
+  .domain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 22px;
+  }
 
+  .tile {
+    perspective: 1200px;
+    height: 240px;
+    cursor: pointer;
+  }
 
-<!-- TECHNOLOGY DOMAINS -->
-<main class="container">
+  .tile-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s cubic-bezier(.4,.2,.2,1);
+    transform-style: preserve-3d;
+  }
 
-<h2>Technology Domains</h2>
+  .tile:hover .tile-inner,
+  .tile.flipped .tile-inner {
+    transform: rotateY(180deg);
+  }
 
-<div class="grid">
+  .tile-face {
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+  }
 
-  <div class="card">
-    <h3>Cloud Engineering & Architecture</h3>
-    <p>- Cloud Management</p>
-    <p>- Infrastructure & DevOps</p>
-    <p>- Compliance & Strategy</p>
-    <p>- Migration & Modernization</p>
-  </div>
+  .tile-front {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.07);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 12px;
+  }
 
-  <div class="card">
-    <h3>Digital Workspaces</h3>
-    <p>- Digital Employee Experience</p>
-    <p>- Unified Endpoint Management</p>
-    <p>- Virtual Desktops & Apps</p>
-  </div>
-
-  <div class="card">
-    <h3>AI, Data Science & Automation</h3>
-    <p>- LLM Automation</p>
-    <p>- Data Engineering</p>
-    <p>- Predictive Analytics</p>
-    <p>- Conversational AI</p>
-  </div>
-
-  <div class="card">
-    <h3>Messaging & Modern Workplace</h3>
-    <p>- Exchange Hybrid</p>
-    <p>- Mail Flow Engineering</p>
-    <p>- Security & Governance</p>
-  </div>
-
-  <div class="card">
-    <h3>VMware & Virtualization</h3>
-    <p>- vSphere, ESXi</p>
-    <p>- Horizon VDI</p>
-    <p>- DR & SRM</p>
-    <p>- Virtualization Migrations</p>
-  </div>
-
-  <div class="card">
-    <h3>Wintel & Core Infrastructure</h3>
-    <p>- Hybrid Datacenter Integration</p>
-    <p>- Procurements, Implementations & Support</p>
-  </div>
-
-</div>
-
-</main>
-
-
-<!-- FOOTER -->
-<div class="container footer">
-  <p>© TerraForge Cloud • <a href="https://www.terraforgecloud.com">terraforgecloud.com</a></p>
-</div>
-
-</body>
-</html>
+  .tile-icon {
+    font-size: 40px;
+    transition: tran

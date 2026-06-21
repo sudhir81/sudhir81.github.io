@@ -1,0 +1,197 @@
+.page-intro {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 48px;
+  color: rgba(255,255,255,0.6);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.proj-card {
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 20px;
+  padding: 36px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  transition: 0.25s;
+}
+
+.proj-card:hover {
+  border-color: rgba(0,213,255,0.3);
+  box-shadow: 0 0 40px rgba(0,213,255,0.07);
+}
+
+.proj-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.proj-icon {
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.proj-header h3 {
+  margin: 0 0 4px;
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.proj-header .tagline {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  margin: 0;
+}
+
+.proj-desc {
+  font-size: 15px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.75);
+  margin: 0;
+}
+
+.proj-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.proj-tag {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.7);
+}
+
+.section-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent1);
+  margin-bottom: 4px;
+}
+
+.flow-diagram {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  background: rgba(0,0,0,0.18);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+  padding: 22px;
+}
+
+.flow-step {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  text-align: center;
+  line-height: 1.4;
+}
+
+.flow-step.gate {
+  border-color: rgba(255,45,149,0.4);
+  color: var(--accent2);
+  background: rgba(255,45,149,0.06);
+}
+
+.flow-step.dest {
+  border-color: rgba(0,213,255,0.4);
+  color: var(--accent1);
+  background: rgba(0,213,255,0.06);
+}
+
+.flow-arrow {
+  color: rgba(255,255,255,0.3);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.flow-branch {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(255,255,255,0.08);
+}
+
+.flow-branch-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.flow-branch-row .flow-step {
+  font-size: 12px;
+}
+
+.proj-highlight {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: rgba(0,213,255,0.05);
+  border: 1px solid rgba(0,213,255,0.2);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+
+.proj-highlight .ico {
+  font-size: 16px;
+}
+
+.proj-highlight p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.75);
+}
+
+.proj-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 18px;
+  margin-top: -2px;
+}
+
+.proj-link {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent1);
+  text-decoration: none;
+  border: 1px solid rgba(0,213,255,0.3);
+  padding: 8px 18px;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.proj-link:hover {
+  background: rgba(0,213,255,0.1);
+}
+
+@media (max-width: 880px) {
+  .proj-card { padding: 26px 22px; }
+  .flow-diagram { padding: 16px; }
+}
