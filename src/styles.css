@@ -185,6 +185,137 @@ h2 {
   display: flex;
   align-items: center;
   gap: 14px;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ========================================================= */
+/*  SCROLL REVEAL                                            */
+/*  .reveal elements fade + slide in once they enter the     */
+/*  viewport. Wired up per-component via ngAfterViewInit.    */
+/* ========================================================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.section-sub {
+  margin: -6px 0 26px;
+  color: rgba(255,255,255,0.55);
+  font-size: 14.5px;
+}
+
+/* ========================================================= */
+/*  AT-A-GLANCE STAT TILES                                   */
+/*  Shared by the homepage and any other page that wants a   */
+/*  row of clickable highlight tiles (e.g. Contact).         */
+/* ========================================================= */
+
+.stat-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+  margin: 8px 0 56px;
+}
+
+.stat-tile {
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 16px;
+  padding: 26px 18px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  transition: 0.3s;
+}
+
+.stat-tile:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0,213,255,0.35);
+  box-shadow: 0 16px 36px rgba(0,213,255,0.12);
+}
+
+.stat-tile .num {
+  font-size: 34px;
+  font-weight: 900;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-tile .lbl {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  margin-top: 6px;
+}
+
+.stat-tile .go {
+  display: block;
+  margin-top: 10px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent1);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: 0.25s;
+}
+
+.stat-tile:hover .go {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================================= */
+/*  GENERIC CARD HOVER ENERGY                                */
+/*  Gives every plain .card / .project-card the same hover   */
+/*  lift the homepage's stat/proj/partner tiles already had. */
+/* ========================================================= */
+
+.card,
+.project-card {
+  border: 1px solid rgba(255,255,255,0.07);
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.card:hover,
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0,213,255,0.3);
+  box-shadow: 0 16px 36px rgba(0,213,255,0.10);
+}
+
+/* Small icon shown at the top of a .card — pops on hover like the homepage tiles */
+.card-icon {
+  font-size: 28px;
+  display: inline-block;
+  margin-bottom: 10px;
+  transition: transform 0.35s;
+}
+
+.card:hover .card-icon {
+  transform: scale(1.15) rotate(-6deg);
+}
+
+.card:hover .avatar {
+  transform: scale(1.08) rotate(-4deg);
 }
 
 /* ========================================================= */
@@ -216,6 +347,16 @@ h2 {
   font-weight: 700;
   font-size: 16px;
   color: white;
+  transition: transform 0.35s;
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
 }
 
 .small {

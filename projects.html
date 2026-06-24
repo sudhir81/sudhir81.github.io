@@ -47,6 +47,11 @@
     align-items: center;
     justify-content: center;
     font-size: 24px;
+    transition: transform 0.35s;
+  }
+
+  .proj-card:hover .proj-icon {
+    transform: scale(1.12) rotate(-6deg);
   }
 
   .proj-header h3 {
@@ -229,15 +234,15 @@
 
 <main class="container">
 
-  <h2>Engineering Projects</h2>
-  <p class="page-intro">
+  <h2 class="reveal">Engineering Projects</h2>
+  <p class="page-intro reveal">
     A selection of cloud, DevSecOps, and infrastructure-as-code projects from our founder's open-source work, spanning policy-driven pipelines, Kubernetes platforms, and enterprise Azure landing zones.
   </p>
 
   <div style="display:flex;flex-direction:column;gap:28px">
 
     <!-- PROJECT 1: Enterprise DevSecOps Pipeline -->
-    <div class="proj-card">
+    <div class="proj-card reveal">
       <div class="proj-header">
         <div class="proj-icon" style="background:linear-gradient(135deg,#10b981,#00d5ff)">🛡️</div>
         <div>
@@ -298,7 +303,7 @@
     </div>
 
     <!-- PROJECT 2: Azure AKS DevSecOps Pipeline -->
-    <div class="proj-card">
+    <div class="proj-card reveal">
       <div class="proj-header">
         <div class="proj-icon" style="background:linear-gradient(135deg,#3b82f6,#6366f1)">☸️</div>
         <div>
@@ -353,7 +358,7 @@
     </div>
 
     <!-- PROJECT 3: AKS DevOps Platform -->
-    <div class="proj-card">
+    <div class="proj-card reveal">
       <div class="proj-header">
         <div class="proj-icon" style="background:linear-gradient(135deg,#7C3AED,#00d5ff)">🧱</div>
         <div>
@@ -398,7 +403,7 @@
     </div>
 
     <!-- PROJECT 4: Azure Landing Zone End-to-End -->
-    <div class="proj-card">
+    <div class="proj-card reveal">
       <div class="proj-header">
         <div class="proj-icon" style="background:linear-gradient(135deg,#f97316,#ef4444)">🏛️</div>
         <div>
@@ -449,7 +454,7 @@
     </div>
 
     <!-- PROJECT 5: LandingZoneEmpire -->
-    <div class="proj-card">
+    <div class="proj-card reveal">
       <div class="proj-header">
         <div class="proj-icon" style="background:linear-gradient(135deg,#0ea5e9,#22d3ee)">🌐</div>
         <div>
@@ -493,7 +498,7 @@
     </div>
 
     <!-- PROJECT 6: Terraform + Ansible Production Setup -->
-    <div class="proj-card">
+    <div class="proj-card reveal">
       <div class="proj-header">
         <div class="proj-icon" style="background:linear-gradient(135deg,#ec4899,#7C3AED)">⚙️</div>
         <div>
@@ -542,4 +547,11 @@
 
 <!-- FOOTER -->
 <div class="container footer">
-  <p>© 2026 TerraForge Cloud • <a href="https://www.terraforgecloud.com">terraforgecloud.com</
+  <p>© 2026 TerraForge Cloud • <a href="https://www.terraforgecloud.com">terraforgecloud.com</a></p>
+</div>
+
+<script src="./assets/parallax.js"></script>
+<script src="./assets/interactive.js"></script>
+
+</body>
+</html>

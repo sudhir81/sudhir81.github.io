@@ -17,6 +17,10 @@
   width: 64px; height: 64px; min-width: 64px; border-radius: 14px;
   display: flex; align-items: center; justify-content: center;
   font-size: 22px; font-weight: 900; color: white;
+  transition: transform 0.35s;
+}
+.partner-card:hover .partner-logo {
+  transform: scale(1.1) rotate(-4deg);
 }
 .partner-header h3 { margin: 0 0 4px; font-size: 22px; font-weight: 800; }
 .partner-header .tagline { font-size: 14px; color: rgba(255,255,255,0.5); margin: 0; }

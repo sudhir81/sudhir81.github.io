@@ -17,4 +17,7 @@ export const routes: Routes = [
   { path: 'cases',      component: CasesComponent,      title: 'Case Studies — TerraForge Cloud' },
   { path: 'projects',   component: ProjectsComponent,   title: 'Projects — TerraForge Cloud' },
   { path: 'partners',   component: PartnersComponent,   title: 'Partners — TerraForge Cloud' },
-  { path: 'faq',        component: FaqComponent,        title: 'FAQ — TerraForge 
+  { path: 'faq',        component: FaqComponent,        title: 'FAQ — TerraForge Cloud' },
+  { path: 'contact',    component: ContactComponent,    title: 'Contact — TerraForge Cloud' },
+  { path: '**',         redirectTo: '' }
+];

@@ -29,10 +29,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
     font-size: 40px;
     font-weight: 900;
     color: white;
     letter-spacing: -1px;
+    transition: transform 0.35s;
+  }
+
+  .founder-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+  }
+
+  .founder-hero:hover .founder-avatar {
+    transform: scale(1.06) rotate(-3deg);
   }
 
   .founder-meta h1 {
@@ -255,11 +269,109 @@
     align-items: center;
     justify-content: center;
     font-size: 16px;
+    transition: transform 0.35s;
+  }
+
+  .cert-item:hover .cert-icon {
+    transform: scale(1.15) rotate(-6deg);
   }
 
   .cert-item span {
     font-size: 14px;
     color: rgba(255,255,255,0.8);
+  }
+
+  /* ── Articles ── */
+  .article-card {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 16px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: 0.25s;
+  }
+
+  .article-card:hover {
+    border-color: rgba(0,213,255,0.3);
+    box-shadow: 0 0 40px rgba(0,213,255,0.07);
+  }
+
+  .article-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: transform 0.35s;
+  }
+
+  .article-card:hover .article-icon {
+    transform: scale(1.15) rotate(-6deg);
+  }
+
+  .article-cat {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .article-card h4 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: white;
+  }
+
+  .article-card p {
+    margin: 0;
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+  }
+
+  .article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .article-tags span {
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.6);
+  }
+
+  .article-footer {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 16px;
+    margin-top: auto;
+  }
+
+  .li-link {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent1);
+    text-decoration: none;
+    border: 1px solid rgba(0,213,255,0.3);
+    padding: 8px 16px;
+    border-radius: 8px;
+    display: inline-block;
+    transition: 0.2s;
+  }
+
+  .li-link:hover {
+    background: rgba(0,213,255,0.1);
   }
 
   /* ── Two-col layout ── */
@@ -302,8 +414,8 @@
 <main class="container" style="margin-top:0">
 
   <!-- HERO -->
-  <div class="founder-hero">
-    <div class="founder-avatar">SD</div>
+  <div class="founder-hero reveal">
+    <div class="founder-avatar"><img src="./assets/Sudhir-pfp.jpeg" alt="Sudhir Dalvi"></div>
     <div class="founder-meta">
       <h1>Sudhir Dalvi</h1>
       <p class="role">Founder & Hybrid Cloud Solutions Architect</p>
@@ -316,7 +428,7 @@
   </div>
 
   <!-- STATS -->
-  <div class="stat-bar" style="margin-top:36px; margin-bottom:36px; justify-content:center">
+  <div class="stat-bar reveal" style="margin-top:36px; margin-bottom:36px; justify-content:center">
     <div class="stat">
       <div class="num">19+</div>
       <div class="label">Years IT Experience</div>
@@ -336,7 +448,7 @@
   </div>
 
   <!-- BIO -->
-  <div style="margin-bottom:40px">
+  <div class="reveal" style="margin-bottom:40px">
     <p class="section-label">About</p>
     <div class="bio">
       Cloud & Infrastructure Architect with 19+ years of IT experience, including 10+ years specializing in Microsoft Azure architecture, infrastructure modernization, and large-scale migration projects. Proven expertise in designing, deploying, and optimizing Azure IaaS/PaaS solutions, implementing Infrastructure as Code (Terraform, ARM, Bicep), and leading Azure transformation workstreams for enterprise clients. Certified Microsoft Trainer (MCT) and experienced Azure Solutions Architect skilled in hybrid environments, DevOps automation, and Well-Architected Framework assessments. Known for strong technical leadership, mentoring engineers, and driving cost-optimized, secure, and scalable cloud solutions.
@@ -344,7 +456,7 @@
   </div>
 
   <!-- SKILLS -->
-  <div style="margin-bottom:40px">
+  <div class="reveal" style="margin-bottom:40px">
     <p class="section-label">Core Competencies</p>
     <div class="tags">
       <span class="tag accent">Azure IaaS / PaaS</span>
@@ -371,7 +483,7 @@
   </div>
 
   <!-- EXPERIENCE -->
-  <div style="margin-bottom:40px">
+  <div class="reveal" style="margin-bottom:40px">
     <p class="section-label">Experience</p>
     <div class="timeline">
 
@@ -449,7 +561,7 @@
   </div>
 
   <!-- PROJECTS + CERTS side by side -->
-  <div class="two-col" style="margin-bottom:40px">
+  <div class="two-col reveal" style="margin-bottom:40px">
 
     <div>
       <p class="section-label">Key Projects</p>
@@ -502,52 +614,50 @@
 
   </div>
 
-</main>
-
   <!-- ARTICLES -->
-  <div style="margin-bottom:40px">
+  <div class="reveal" style="margin-bottom:40px">
     <p class="section-label">Published Articles</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px">
 
       <!-- Article 1 -->
-      <div style="background:var(--card);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:16px;transition:0.25s" onmouseover="this.style.borderColor='rgba(0,213,255,0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)'">
+      <div class="article-card">
         <div style="display:flex;align-items:center;gap:10px">
-          <div style="width:36px;height:36px;min-width:36px;border-radius:8px;background:linear-gradient(135deg,#0a66c2,#00d5ff);display:flex;align-items:center;justify-content:center;font-size:16px">✅</div>
-          <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em">Project Delivery</span>
+          <div class="article-icon" style="background:linear-gradient(135deg,#0a66c2,#00d5ff)">✅</div>
+          <span class="article-cat">Project Delivery</span>
         </div>
-        <h4 style="margin:0;font-size:17px;font-weight:700;line-height:1.4;color:white">End-to-End IT Solution Delivered for ShineBlast</h4>
-        <p style="margin:0;font-size:14px;color:rgba(255,255,255,0.6);line-height:1.7">
+        <h4>End-to-End IT Solution Delivered for ShineBlast</h4>
+        <p>
           Delivered a complete web and communication infrastructure for ShineBlast — covering website deployment, domain & DNS architecture, secure professional email hosting with SMTP, and production go-live support. The solution is live, stable, and scalable.
         </p>
-        <div style="display:flex;flex-wrap:wrap;gap:8px">
-          <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6)">#CloudServices</span>
-          <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6)">#EmailInfrastructure</span>
-          <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6)">#WebHosting</span>
-          <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6)">#DigitalTransformation</span>
+        <div class="article-tags">
+          <span>#CloudServices</span>
+          <span>#EmailInfrastructure</span>
+          <span>#WebHosting</span>
+          <span>#DigitalTransformation</span>
         </div>
-        <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:16px;margin-top:auto">
-          <a href="https://www.linkedin.com/posts/sudhir-dalvi-0591a95a_home-activity-7413778842500161536-H_8h" target="_blank" style="font-size:13px;font-weight:700;color:var(--accent1);text-decoration:none;border:1px solid rgba(0,213,255,0.3);padding:8px 16px;border-radius:8px;display:inline-block;transition:0.2s" onmouseover="this.style.background='rgba(0,213,255,0.1)'" onmouseout="this.style.background='transparent'">Read on LinkedIn ↗</a>
+        <div class="article-footer">
+          <a href="https://www.linkedin.com/posts/sudhir-dalvi-0591a95a_home-activity-7413778842500161536-H_8h" target="_blank" class="li-link">Read on LinkedIn ↗</a>
         </div>
       </div>
 
       <!-- Article 2 -->
-      <div style="background:var(--card);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:16px;transition:0.25s" onmouseover="this.style.borderColor='rgba(0,213,255,0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)'">
+      <div class="article-card">
         <div style="display:flex;align-items:center;gap:10px">
-          <div style="width:36px;height:36px;min-width:36px;border-radius:8px;background:linear-gradient(135deg,#7C3AED,#00d5ff);display:flex;align-items:center;justify-content:center;font-size:16px">🚀</div>
-          <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em">DevOps & Cloud</span>
+          <div class="article-icon" style="background:linear-gradient(135deg,#7C3AED,#00d5ff)">🚀</div>
+          <span class="article-cat">DevOps & Cloud</span>
         </div>
-        <h4 style="margin:0;font-size:17px;font-weight:700;line-height:1.4;color:white">Enterprise-Grade AKS & DevOps Platform on Azure</h4>
-        <p style="margin:0;font-size:14px;color:rgba(255,255,255,0.6);line-height:1.7">
+        <h4>Enterprise-Grade AKS & DevOps Platform on Azure</h4>
+        <p>
           Built an enterprise-grade Azure Kubernetes Service (AKS) + DevOps platform featuring automated CI/CD pipelines with GitHub Actions & Azure DevOps, Infrastructure as Code using Terraform, and AKS deployment with monitoring — designed to modernize cloud infrastructure and improve release velocity at scale.
         </p>
-        <div style="display:flex;flex-wrap:wrap;gap:8px">
-          <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6)">#AzureKubernetes</span>
-          <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6)">#Terraform</span>
-          <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6)">#GitHubActions</span>
-          <span style="font-size:11px;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6)">#DevOps</span>
+        <div class="article-tags">
+          <span>#AzureKubernetes</span>
+          <span>#Terraform</span>
+          <span>#GitHubActions</span>
+          <span>#DevOps</span>
         </div>
-        <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:16px;margin-top:auto">
-          <a href="https://www.linkedin.com/feed/update/urn:li:share:7388415432132767744/" target="_blank" style="font-size:13px;font-weight:700;color:var(--accent1);text-decoration:none;border:1px solid rgba(0,213,255,0.3);padding:8px 16px;border-radius:8px;display:inline-block;transition:0.2s" onmouseover="this.style.background='rgba(0,213,255,0.1)'" onmouseout="this.style.background='transparent'">Read on LinkedIn ↗</a>
+        <div class="article-footer">
+          <a href="https://www.linkedin.com/feed/update/urn:li:share:7388415432132767744/" target="_blank" class="li-link">Read on LinkedIn ↗</a>
         </div>
       </div>
 
@@ -558,4 +668,11 @@
 
 <!-- FOOTER -->
 <div class="container footer">
-  <p>© 2026 TerraForge Cloud • <a href="https://www.terraforgecloud.com">terraforgecloud.com</
+  <p>© 2026 TerraForge Cloud • <a href="https://www.terraforgecloud.com">terraforgecloud.com</a></p>
+</div>
+
+<script src="./assets/parallax.js"></script>
+<script src="./assets/interactive.js"></script>
+
+</body>
+</html>
